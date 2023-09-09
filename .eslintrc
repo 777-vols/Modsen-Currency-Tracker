@@ -1,0 +1,27 @@
+{
+  "extends": ["airbnb-base","prettier","plugin:react/recommended"],
+  "env": {
+    "es6":true,
+    "browser": true
+  },
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "simple-import-sort",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier":"warn",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "prefer-const": "error",
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [
+      0,
+      "error",
+      "windows"
+    ]
+  }
+}
