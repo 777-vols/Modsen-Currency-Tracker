@@ -6,7 +6,10 @@ export const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 100px;
+  padding: 0 100px 0 50px;
+  @media (max-width: 700px) {
+    padding: 0 15px 0 10px;
+  }
 `;
 export const StyledNav = styled.nav`
   max-width: 657px;
@@ -18,17 +21,21 @@ export const MenuList = styled.ul`
 `;
 export const LinkWrapper = styled.div`
   padding: 0 10px;
+  @media (max-width: 700px) {
+    padding: 0 5px;
+  }
 `;
 export const LogoLink = styled(NavLink)`
   cursor: pointer;
-  font-size: 21px;
-  text-decoration: none;
-  color: #fef6f6;
-  white-space: nowrap;
 `;
 export const Logo = styled.img`
   width: 40px;
   height: 41px;
+
+  @media (max-width: 700px) {
+    width: 12px;
+    height: 13px;
+  }
 `;
 export const MenuLink = styled(NavLink)`
   text-decoration: none;
@@ -54,5 +61,9 @@ export const MenuLink = styled(NavLink)`
       height: 2px;
       background-color: white;
     }
+  }
+
+  @media (max-width: 700px) {
+    font-size: 15px;
   }
 `;

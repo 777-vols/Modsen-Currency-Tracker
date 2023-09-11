@@ -2,7 +2,7 @@ import logo from '@assets/logo.svg';
 import * as urls from '@constants/urls';
 import React from 'react';
 
-import Checkbox from '../Checkbox/Index';
+import Checkbox from './Checkbox/Index';
 import {
   LinkWrapper,
   Logo,
