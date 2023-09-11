@@ -1,10 +1,13 @@
+import Header from '@components/Header/Index.jsx';
 import React from 'react';
+
+import { AppWrapper } from './styled.js';
 
 function App() {
   return (
-    <div>
-      <h1>Curency tracker</h1>
-    </div>
+    <AppWrapper>
+      <Header />
+    </AppWrapper>
   );
 }
 

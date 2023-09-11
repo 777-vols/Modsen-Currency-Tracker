@@ -9,6 +9,13 @@
     "simple-import-sort",
     "prettier"
   ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
   "rules": {
     "prettier/prettier":"warn",
     "no-unused-vars": "warn",
@@ -22,6 +29,7 @@
       0,
       "error",
       "windows"
-    ]
+    ],
+    "import/extensions": [0, {  "<js>": "always"  }],
   }
 }
