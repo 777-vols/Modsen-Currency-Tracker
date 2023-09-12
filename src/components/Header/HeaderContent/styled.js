@@ -108,7 +108,7 @@ export const ContentImage = styled.img`
   width: 100%;
   max-width: 313px;
   @media (max-width: 1105px) {
-    max-width: 250px;
+    max-width: 245px;
   }
   @media (max-width: 900px) {
     display: none;

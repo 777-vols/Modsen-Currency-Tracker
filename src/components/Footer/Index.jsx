@@ -39,22 +39,34 @@ function Footer() {
               <FooterMenuItem>
                 <FooterMenuSpan>General</FooterMenuSpan>
                 <FooterMenuList>
-                  <ListItem>Market</ListItem>
-                  <ListItem>Service</ListItem>
+                  <li>
+                    <ListItem>Market</ListItem>
+                  </li>
+                  <li>
+                    <ListItem>Service</ListItem>
+                  </li>
                 </FooterMenuList>
               </FooterMenuItem>
               <FooterMenuItem>
                 <FooterMenuSpan>Product</FooterMenuSpan>
                 <FooterMenuList>
-                  <ListItem>Sparks</ListItem>
-                  <ListItem>Snaps</ListItem>
+                  <li>
+                    <ListItem>Sparks</ListItem>
+                  </li>
+                  <li>
+                    <ListItem>Snaps</ListItem>
+                  </li>
                 </FooterMenuList>
               </FooterMenuItem>
               <FooterMenuItem>
                 <FooterMenuSpan>Community</FooterMenuSpan>
                 <FooterMenuList>
-                  <ListItem>Ideas</ListItem>
-                  <ListItem>Streams</ListItem>
+                  <li>
+                    <ListItem>Ideas</ListItem>
+                  </li>
+                  <li>
+                    <ListItem>Streams</ListItem>
+                  </li>
                 </FooterMenuList>
               </FooterMenuItem>
             </FooterMenu>
