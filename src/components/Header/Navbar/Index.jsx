@@ -47,7 +47,7 @@ function Navbar() {
           </li>
           <li>
             <LinkWrapper>
-              <MenuLink link_test="menu_contacts" to={urls.contacts}>
+              <MenuLink link_test="menu_contacts" to={urls.contact}>
                 Contato
               </MenuLink>
             </LinkWrapper>

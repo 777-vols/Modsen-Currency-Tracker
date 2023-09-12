@@ -11,6 +11,7 @@ export const AppWrapper = styled.div`
   background-color: #030304;
   color: #ffffff;
   min-width: 360px;
+  padding-bottom: 40px;
 `;
 
 export const Container = styled.div`

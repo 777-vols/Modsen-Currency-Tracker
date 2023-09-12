@@ -1,20 +1,19 @@
 import React from 'react';
 
 import { Container } from '../../styled';
-import HeaderContent from './HeaderContent/HeaderContent';
+import HeaderContent from './HeaderContent/Index';
 import LastUpadate from './LastUpdate/Index';
 import Navbar from './Navbar/Index';
-import { HeaderInner, StyledHeader } from './styles';
 
 function Header() {
   return (
-    <StyledHeader>
+    <header>
       <Container>
         <Navbar />
         <HeaderContent />
         <LastUpadate />
       </Container>
-    </StyledHeader>
+    </header>
   );
 }
 

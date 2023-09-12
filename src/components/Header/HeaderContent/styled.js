@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
+  margin: 0 auto;
+  max-width: 1420px;
   background: linear-gradient(45deg, rgba(18, 18, 18, 1) 10%, rgba(36, 121, 64, 0) 100%);
   filter: drop-shadow(rgba(36, 121, 64, 0.7) 0px 0px 0px);
   padding: 32px 0px 58px 45px;
