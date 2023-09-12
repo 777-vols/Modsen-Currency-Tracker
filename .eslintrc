@@ -17,7 +17,6 @@
     }
   },
   "rules": {
-    "prettier/prettier":"warn",
     "no-unused-vars": "warn",
     "no-console": "warn",
     "simple-import-sort/imports": "error",
@@ -31,5 +30,8 @@
       "windows"
     ],
     "import/extensions": [0, {  "<js>": "always"  }],
+    "prettier/prettier": ["error",{
+      "endOfLine": "auto"}
+    ]
   }
 }

@@ -22,7 +22,7 @@ export const StyledLabel = styled.label`
     transition: 0.2s;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 750px) {
     width: 30px;
     height: 15px;
     border: 1px solid white;

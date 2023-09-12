@@ -7,13 +7,18 @@ export const NavbarWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 100px 0 50px;
-  @media (max-width: 700px) {
+  @media (max-width: 750px) {
     padding: 0 15px 0 10px;
+    height: 50px;
   }
 `;
 export const StyledNav = styled.nav`
-  max-width: 657px;
+  max-width: 697px;
   width: 100%;
+  padding: 0 20px;
+  @media (max-width: 700px) {
+    padding: 0 10px;
+  }
 `;
 export const MenuList = styled.ul`
   display: flex;
@@ -65,5 +70,8 @@ export const MenuLink = styled(NavLink)`
 
   @media (max-width: 700px) {
     font-size: 15px;
+  }
+  @media (max-width: 400px) {
+    font-size: 12px;
   }
 `;
