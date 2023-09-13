@@ -39,6 +39,7 @@
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
+    "react-loader-spinner": "^5.4.5",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
