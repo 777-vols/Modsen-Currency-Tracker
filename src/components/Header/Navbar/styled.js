@@ -46,17 +46,20 @@ export const MenuLink = styled(NavLink)`
   text-decoration: none;
   cursor: pointer;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.7);
+  opacity: 0.8;
+  color: ${(props) => props.theme.color};
   transition: 0.2s;
   white-space: nowrap;
 
   &:hover {
-    color: #fef6f6;
+    opacity: 0.8;
+    color: ${(props) => props.theme.color};
   }
 
   &[aria-current] {
+    opacity: 1;
     text-decoration: none;
-    color: #fef6f6;
+    color: ${(props) => props.theme.color};
 
     &::after {
       margin-top: 1px;
@@ -64,7 +67,7 @@ export const MenuLink = styled(NavLink)`
       display: block;
       width: 100%;
       height: 2px;
-      background-color: white;
+      background-color: ${(props) => props.theme.color};
     }
   }
 

@@ -5,6 +5,8 @@ import App from './App.jsx';
 import Global from './GlobalStyled.js';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary/Index.jsx';
+import { Provider } from 'react-redux';
+import store from '@store/index.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,7 +14,9 @@ root.render(
   <ErrorBoundary>
     <BrowserRouter>
       <Global />
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </ErrorBoundary>
 );

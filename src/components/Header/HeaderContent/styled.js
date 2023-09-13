@@ -41,7 +41,7 @@ export const InfoTopPart = styled.h1`
 
   @media (max-width: 1105px) {
     line-height: 90px;
-    font-size: 60px;
+    font-size: 58px;
   }
   @media (max-width: 900px) {
     line-height: 60px;
@@ -88,6 +88,7 @@ export const ContentSpan = styled.span`
   font-weight: 300;
   line-height: 46px;
   text-align: center;
+  color: rgb(255, 255, 255);
   @media (max-width: 1105px) {
     font-size: 20px;
     line-height: 35px;

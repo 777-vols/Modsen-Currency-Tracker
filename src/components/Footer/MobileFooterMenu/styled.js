@@ -29,7 +29,7 @@ export const MenuListItem = styled.li`
 export const MenuListSpan = styled.span``;
 
 export const MenuButton = styled.button`
-  color: white;
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -37,7 +37,7 @@ export const MenuButton = styled.button`
   justify-content: space-between;
   height: 54px;
   border: none;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${(props) => props.theme.color};
 `;
 
 export const MenuItemArrow = styled.img`

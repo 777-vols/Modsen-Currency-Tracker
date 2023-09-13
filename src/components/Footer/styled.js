@@ -90,7 +90,7 @@ export const FooterMenuSpan = styled.span`
 export const FooterMenuList = styled.ul``;
 export const ListItem = styled.span`
   display: block;
-  color: #898989;
+  color: rgb(137, 137, 137);
   font-size: 24px;
   padding: 8px 0;
   @media (max-width: 1050px) {
@@ -101,7 +101,7 @@ export const ListItem = styled.span`
 `;
 export const FooterSpan = styled.div`
   padding: 55px 0 40px 0;
-  color: #898989;
+  color: rgb(137, 137, 137);
   display: flex;
   justify-content: center;
   font-size: 24px;
