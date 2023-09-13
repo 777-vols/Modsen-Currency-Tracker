@@ -2,6 +2,7 @@ import logo from '@assets/logo.svg';
 import React from 'react';
 
 import { Container } from '../../styled';
+import MobileFooterMenu from './MobileFooterMenu/Index';
 import {
   FooterInfo,
   FooterInfoBody,
@@ -35,6 +36,7 @@ function Footer() {
                 tickets sold daily to tens of thousands of traders worldwide.
               </FooterInfoBody>
             </FooterInfo>
+            <MobileFooterMenu />
             <FooterMenu>
               <FooterMenuItem>
                 <FooterMenuSpan>General</FooterMenuSpan>
