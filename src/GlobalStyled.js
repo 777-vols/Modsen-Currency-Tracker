@@ -3,6 +3,20 @@ import { createGlobalStyle } from 'styled-components';
 const Global = createGlobalStyle`
 html {
 	box-sizing: border-box;
+
+  ::-webkit-scrollbar {
+	  width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+	  background: rgb(39, 39, 39);
+  }
+
+  ::-webkit-scrollbar-thumb {
+	  background: rgb(22, 218, 12);
+	  border-radius: 10px;
+	  border: 1px solid rgb(39, 39, 39);
+  }
 }
 
 *,

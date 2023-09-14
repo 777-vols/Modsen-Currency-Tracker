@@ -5,6 +5,10 @@ export const FooterWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
+  padding-top: 96px;
+  @media (max-width: 650px) {
+    padding-top: 150px;
+  }
 `;
 export const FooterInner = styled.div`
   display: flex;

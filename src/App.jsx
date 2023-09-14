@@ -21,12 +21,14 @@ function App() {
       <AppWrapper>
         <Suspense fallback={<Loading />}>
           <Header />
-          <Routes>
-            <Route path={urls.home} element={<Home />} />
-            <Route path={urls.timeline} element={<Timeline />} />
-            <Route path={urls.bankCard} element={<BankCard />} />
-            <Route path={urls.contact} element={<Contact />} />
-          </Routes>
+          <main>
+            <Routes>
+              <Route path={urls.home} element={<Home />} />
+              <Route path={urls.timeline} element={<Timeline />} />
+              <Route path={urls.bankCard} element={<BankCard />} />
+              <Route path={urls.contact} element={<Contact />} />
+            </Routes>
+          </main>
           <Footer />
         </Suspense>
       </AppWrapper>
