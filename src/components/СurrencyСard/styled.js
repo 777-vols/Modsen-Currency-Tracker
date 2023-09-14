@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
+  cursor: pointer;
   max-width: 520px;
   width: 100%;
   height: 153px;
@@ -10,6 +11,11 @@ export const CardWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 50px;
+  transition: 0.2s;
+  &:hover {
+    background-color: rgb(41, 41, 41);
+  }
+
   @media (max-width: 1100px) {
     height: 120px;
   }

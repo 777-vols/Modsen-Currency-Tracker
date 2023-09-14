@@ -46,13 +46,13 @@ export const MenuLink = styled(NavLink)`
   text-decoration: none;
   cursor: pointer;
   font-size: 20px;
-  opacity: 0.8;
+  opacity: 0.7;
   color: ${(props) => props.theme.color};
   transition: 0.2s;
   white-space: nowrap;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
     color: ${(props) => props.theme.color};
   }
 

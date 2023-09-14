@@ -30,7 +30,6 @@ export const StyledLabel = styled.label`
       left: ${({ $currentTheme }) => ($currentTheme ? '0px' : '11px')};
       width: 15.5px;
       height: 15.5px;
-      /* top: -2 px; */
       border: 1px solid ${(props) => props.theme.color};
     }
   }
