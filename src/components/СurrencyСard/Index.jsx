@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
-import currencyImg from '../../assets/Currencies/Euro Icon.svg';
 import Modal from '../Modal/Index';
 import {
   CardInner,
@@ -13,7 +13,7 @@ import {
 
 const modal = document.querySelector('#modal');
 
-function CurrencyCard() {
+function CurrencyCard({ firstVal, name, currencyImg }) {
   const [open, setOpen] = useState(false);
   const [element, setElement] = useState('');
 
@@ -33,16 +33,23 @@ function CurrencyCard() {
   }
 
   return (
-    <CardWrapper onClick={openCloseWindow}>
+    <CardWrapper id={`card-${firstVal}`} onClick={openCloseWindow}>
       <CardInner>
         <CarrencyImage src={currencyImg} />
         <CurrencyStats>
-          <CarrencyName>Euro</CarrencyName>
+          <CarrencyName>{name}</CarrencyName>
           <CurrencyRate>R$ 5,43</CurrencyRate>
         </CurrencyStats>
       </CardInner>
     </CardWrapper>
   );
 }
+
+CurrencyCard.propTypes = {
+  firstVal: PropTypes.string,
+  name: PropTypes.string,
+  sign: PropTypes.string,
+  currencyImg: PropTypes.string
+};
 
 export default CurrencyCard;
