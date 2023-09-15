@@ -17,7 +17,7 @@ function CurrencyCard({ firstVal, name, currencyImg, openModalWindow }) {
         <CarrencyImage src={currencyImg} />
         <CurrencyStats>
           <CarrencyName>{name}</CarrencyName>
-          <CurrencyRate>R$ 5,43</CurrencyRate>
+          <CurrencyRate>$ 5,43</CurrencyRate>
         </CurrencyStats>
       </CardInner>
     </CardWrapper>

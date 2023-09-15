@@ -6,6 +6,7 @@ import {
   CloseModalButton,
   ModalBackground,
   ModalHeader,
+  ModalStyledSpan,
   ModalWindow,
   Result,
   SelectBlock,
@@ -24,12 +25,12 @@ function Modal({ isOpen, closeModalWindow }) {
           <ModalHeader>Currency Converter</ModalHeader>
           <SelectWrapper>
             <SelectBlock>
-              <SelectSpan>Amount of currency</SelectSpan>
-              <StyledSelect></StyledSelect>
+              <SelectSpan>Sum</SelectSpan>
+              <ModalStyledSpan>1</ModalStyledSpan>
             </SelectBlock>
             <SelectBlock>
               <SelectSpan>From</SelectSpan>
-              <StyledSelect></StyledSelect>
+              <ModalStyledSpan>usd</ModalStyledSpan>
             </SelectBlock>
             <SelectBlock>
               <SelectSpan>To</SelectSpan>

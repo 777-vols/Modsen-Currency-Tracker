@@ -21,6 +21,7 @@ export const ModalWindow = styled.div`
   border-radius: 20px;
   position: relative;
   padding: 20px;
+  margin: 20px;
 `;
 export const CloseModalButton = styled.button`
   cursor: pointer;
@@ -45,6 +46,9 @@ export const ModalHeader = styled.h5`
   font-size: 30px;
   display: flex;
   justify-content: center;
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 
 export const SelectWrapper = styled.div`
@@ -56,16 +60,41 @@ export const SelectBlock = styled.div`
   min-width: 60px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  width: 100%;
 `;
 export const SelectSpan = styled.span`
   margin-bottom: 10px;
   color: rgb(255, 255, 255);
   font-size: 20px;
+  white-space: nowrap;
+  text-align: center;
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
+`;
+export const ModalStyledSpan = styled.span`
+  text-align: center;
+  font-size: 20px;
+  background: rgb(255, 255, 255);
+  display: block;
+  width: 100%;
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 export const Result = styled.span`
+  text-align: center;
   color: rgb(255, 255, 255);
   font-size: 30px;
   margin-left: 40px;
+  @media (max-width: 500px) {
+    margin-left: 25px;
+    font-size: 25px;
+  }
 `;
 
-export const StyledSelect = styled.select``;
+export const StyledSelect = styled.select`
+  width: 100%;
+`;
