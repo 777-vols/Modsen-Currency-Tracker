@@ -9,9 +9,10 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(85, 85, 85, 0.5);
+  background: rgb(85, 85, 85, 0.7);
 `;
 export const ModalWindow = styled.div`
+  font-family: 'Poppins', sans-serif;
   background: rgb(25, 25, 25);
   max-width: 500px;
   width: 100%;
@@ -28,7 +29,6 @@ export const CloseModalButton = styled.button`
   border-radius: 5px;
   width: 35px;
   height: 35px;
-  font-family: 'Poppins', sans-serif;
   background: transparent;
   border: none;
   position: absolute;

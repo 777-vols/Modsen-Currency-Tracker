@@ -1,4 +1,4 @@
-const colors = {
+const themes = {
   light: {
     background: 'rgb(217, 217, 217)',
     color: 'rgb(3, 3, 4)'
@@ -9,4 +9,4 @@ const colors = {
   }
 };
 
-export default colors;
+export default themes;

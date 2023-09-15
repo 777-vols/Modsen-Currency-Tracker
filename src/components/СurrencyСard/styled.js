@@ -11,9 +11,11 @@ export const CardWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 50px;
-  transition: 0.2s;
+  transition: 0.3s;
   &:hover {
     background-color: rgb(41, 41, 41);
+    box-shadow: 10px 5px 5px rgb(22, 218, 12);
+    border: 1px solid rgb(22, 218, 12);
   }
 
   @media (max-width: 1100px) {

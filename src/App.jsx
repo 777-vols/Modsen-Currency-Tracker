@@ -1,5 +1,8 @@
 import Footer from '@components/Footer/Index.jsx';
 import Header from '@components/Header/Index.jsx';
+import Loading from '@components/Loading/Index.jsx';
+import Modal from '@components/Modal/Index.jsx';
+import currencyCardsData from '@constants/currencyCardsData.js';
 import * as urls from '@constants/urls';
 import axios from 'axios';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
@@ -7,8 +10,6 @@ import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import Loading from './components/Loading/Index.jsx';
-import currencyCardsData from './constants/currencyCardsData.js';
 import { AppWrapper } from './styled.js';
 
 const Home = lazy(() => import('@pages/Home/Index.jsx'));
@@ -18,7 +19,7 @@ const Contact = lazy(() => import('@pages/Contact/Index.jsx'));
 
 function App() {
   const theme = useSelector((state) => state.themes.currentTheme);
-
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [currenciesData, setCurrenciesData] = useState({});
   const [currenciesList, setCurrenciesList] = useState([]);
 
@@ -31,6 +32,10 @@ function App() {
       });
   }, []);
 
+  function openCloseModal() {
+    setIsOpenModal(!isOpenModal);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <AppWrapper>
@@ -38,7 +43,10 @@ function App() {
           <Header />
           <main>
             <Routes>
-              <Route path={urls.home} element={<Home cardsData={currencyCardsData} />} />
+              <Route
+                path={urls.home}
+                element={<Home cardsData={currencyCardsData} openModalWindow={openCloseModal} />}
+              />
               <Route path={urls.timeline} element={<Timeline />} />
               <Route path={urls.bankCard} element={<BankCard />} />
               <Route path={urls.contact} element={<Contact />} />
@@ -47,6 +55,7 @@ function App() {
           <Footer />
         </Suspense>
       </AppWrapper>
+      <Modal isOpen={isOpenModal} closeModalWindow={openCloseModal} />
     </ThemeProvider>
   );
 }

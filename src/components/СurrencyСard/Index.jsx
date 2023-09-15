@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import Modal from '../Modal/Index';
 import {
   CardInner,
   CardWrapper,
@@ -11,29 +10,9 @@ import {
   CurrencyStats
 } from './styled';
 
-const modal = document.querySelector('#modal');
-
-function CurrencyCard({ firstVal, name, currencyImg }) {
-  const [open, setOpen] = useState(false);
-  const [element, setElement] = useState('');
-
-  useEffect(() => {
-    setElement(document.createElement('div'));
-  }, []);
-  useEffect(() => {
-    if (open) modal.appendChild(element);
-  });
-
-  function openCloseWindow() {
-    setOpen(!open);
-  }
-
-  if (open) {
-    return <Modal closeWindow={openCloseWindow} parentEl={element} />;
-  }
-
+function CurrencyCard({ firstVal, name, currencyImg, openModalWindow }) {
   return (
-    <CardWrapper id={`card-${firstVal}`} onClick={openCloseWindow}>
+    <CardWrapper onClick={openModalWindow} id={`card-${firstVal}`}>
       <CardInner>
         <CarrencyImage src={currencyImg} />
         <CurrencyStats>
@@ -49,7 +28,8 @@ CurrencyCard.propTypes = {
   firstVal: PropTypes.string,
   name: PropTypes.string,
   sign: PropTypes.string,
-  currencyImg: PropTypes.string
+  currencyImg: PropTypes.string,
+  openModalWindow: PropTypes.func
 };
 
 export default CurrencyCard;

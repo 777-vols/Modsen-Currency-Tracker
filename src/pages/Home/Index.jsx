@@ -5,7 +5,7 @@ import React from 'react';
 import { Container } from '../../styled';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledHeader, StyledSpan } from './styled';
 
-function Home({ cardsData }) {
+function Home({ cardsData, openModalWindow }) {
   const quotesCards = Object.keys(cardsData).reduce(
     (acc, e) => [
       ...acc,
@@ -14,6 +14,7 @@ function Home({ cardsData }) {
         firstVal={e.toLowerCase()}
         name={cardsData[e].name}
         currencyImg={cardsData[e].img}
+        openModalWindow={openModalWindow}
       />
     ],
     []
@@ -45,7 +46,8 @@ function Home({ cardsData }) {
 }
 
 Home.propTypes = {
-  cardsData: PropTypes.object
+  cardsData: PropTypes.object,
+  openModalWindow: PropTypes.func
 };
 
 export default Home;
