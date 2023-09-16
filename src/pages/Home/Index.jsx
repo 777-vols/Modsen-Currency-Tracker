@@ -5,23 +5,47 @@ import React, { useMemo } from 'react';
 import { Container } from '../../styled';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledHeader, StyledSpan } from './styled';
 
-function Home({ cardsData, openModalWindow }) {
-  const quotesCards = useMemo(
+function Home({ apiCurrenciesData, cardsDataValues, openModalWindow, exchangeCurrenciesHandler }) {
+  // console.log(apiCurrenciesData);
+
+  const { quotesCards, stocksCards } = cardsDataValues;
+
+  const quotesCardsList = useMemo(
     () =>
-      Object.keys(cardsData).reduce(
-        (acc, e) => [
+      Object.keys(quotesCards).reduce(
+        (acc, element) => [
           ...acc,
           <CurrencyCard
-            key={e}
-            firstVal={e.toLowerCase()}
-            name={cardsData[e].name}
-            currencyImg={cardsData[e].img}
+            key={element}
+            currencyShortName={element.toLowerCase()}
+            currencyFullName={quotesCards[element].name}
+            currencyImg={quotesCards[element].img}
             openModalWindow={openModalWindow}
+            usdData={apiCurrenciesData.usd}
+            exchangeCurrenciesHandler={exchangeCurrenciesHandler}
           />
         ],
         []
       ),
-    [cardsData]
+    [quotesCards]
+  );
+
+  const stocksCardsList = useMemo(
+    () =>
+      Object.keys(stocksCards).reduce(
+        (acc, element) => [
+          ...acc,
+          <CurrencyCard
+            key={element}
+            currencyShortName={element.toLowerCase()}
+            currencyFullName={stocksCards[element].name}
+            currencyImg={stocksCards[element].img}
+            openModalWindow={null}
+          />
+        ],
+        []
+      ),
+    [stocksCards]
   );
 
   return (
@@ -32,16 +56,13 @@ function Home({ cardsData, openModalWindow }) {
             <StyledHeader>
               <StyledSpan>Stocks</StyledSpan>
             </StyledHeader>
-            <CardsWrapper>
-              {/* <CurrencyCard />
-              <CurrencyCard /> */}
-            </CardsWrapper>
+            <CardsWrapper>{stocksCardsList}</CardsWrapper>
           </Stocks>
           <Quotes>
             <StyledHeader>
               <StyledSpan>Quotes</StyledSpan>
             </StyledHeader>
-            <CardsWrapper>{quotesCards}</CardsWrapper>
+            <CardsWrapper>{quotesCardsList}</CardsWrapper>
           </Quotes>
         </HomeWrapper>
       </Container>
@@ -50,8 +71,10 @@ function Home({ cardsData, openModalWindow }) {
 }
 
 Home.propTypes = {
-  cardsData: PropTypes.object,
-  openModalWindow: PropTypes.func
+  cardsDataValues: PropTypes.object,
+  apiCurrenciesData: PropTypes.object,
+  openModalWindow: PropTypes.func,
+  exchangeCurrenciesHandler: PropTypes.func
 };
 
 export default Home;

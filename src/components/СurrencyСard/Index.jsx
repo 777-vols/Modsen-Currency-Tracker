@@ -10,14 +10,30 @@ import {
   CurrencyStats
 } from './styled';
 
-function CurrencyCard({ firstVal, name, currencyImg, openModalWindow }) {
+function CurrencyCard({
+  currencyShortName,
+  currencyFullName,
+  currencyImg,
+  openModalWindow,
+  usdData,
+  exchangeCurrenciesHandler
+}) {
+  function cardClickHandler() {
+    if (openModalWindow) {
+      openModalWindow();
+      exchangeCurrenciesHandler(currencyShortName, 'usd');
+    }
+  }
+
+  const convertCurrency = () => (1 / usdData[currencyShortName]).toFixed(4);
+
   return (
-    <CardWrapper onClick={openModalWindow} id={`card-${firstVal}`}>
+    <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
       <CardInner>
         <CarrencyImage src={currencyImg} />
         <CurrencyStats>
-          <CarrencyName>{name}</CarrencyName>
-          <CurrencyRate>$ 5,43</CurrencyRate>
+          <CarrencyName>{currencyFullName}</CarrencyName>
+          <CurrencyRate>{usdData ? `$ ${convertCurrency()}` : '0.15%'}</CurrencyRate>
         </CurrencyStats>
       </CardInner>
     </CardWrapper>
@@ -25,11 +41,13 @@ function CurrencyCard({ firstVal, name, currencyImg, openModalWindow }) {
 }
 
 CurrencyCard.propTypes = {
-  firstVal: PropTypes.string,
-  name: PropTypes.string,
+  currencyShortName: PropTypes.string,
+  currencyFullName: PropTypes.string,
   sign: PropTypes.string,
   currencyImg: PropTypes.string,
-  openModalWindow: PropTypes.func
+  openModalWindow: PropTypes.func,
+  usdData: PropTypes.object,
+  exchangeCurrenciesHandler: PropTypes.func
 };
 
 export default CurrencyCard;

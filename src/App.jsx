@@ -5,7 +5,7 @@ import Modal from '@components/Modal/Index.jsx';
 import currencyCardsData from '@constants/currencyCardsData.js';
 import * as urls from '@constants/urls';
 import axios from 'axios';
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -20,20 +20,26 @@ const Contact = lazy(() => import('@pages/Contact/Index.jsx'));
 function App() {
   const theme = useSelector((state) => state.themes.currentTheme);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [currenciesData, setCurrenciesData] = useState({});
+  const [apiCurrenciesData, setApiCurrenciesData] = useState({});
   const [currenciesList, setCurrenciesList] = useState([]);
+  const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
   useEffect(() => {
     axios
       .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
       .then((res) => {
-        setCurrenciesData(() => res.data);
+        setApiCurrenciesData(() => res.data);
         setCurrenciesList(() => Object.keys(res.data.usd));
       });
   }, []);
 
   function openCloseModal() {
     setIsOpenModal(!isOpenModal);
+  }
+
+  function exchangeCurrenciesHandler(newFrom, newTo) {
+    currentExchangeCurrencies.current.from = newFrom;
+    currentExchangeCurrencies.current.to = newTo;
   }
 
   return (
@@ -45,7 +51,14 @@ function App() {
             <Routes>
               <Route
                 path={urls.home}
-                element={<Home cardsData={currencyCardsData} openModalWindow={openCloseModal} />}
+                element={
+                  <Home
+                    apiCurrenciesData={apiCurrenciesData}
+                    cardsDataValues={currencyCardsData}
+                    openModalWindow={openCloseModal}
+                    exchangeCurrenciesHandler={exchangeCurrenciesHandler}
+                  />
+                }
               />
               <Route path={urls.timeline} element={<Timeline />} />
               <Route path={urls.bankCard} element={<BankCard />} />
@@ -55,7 +68,13 @@ function App() {
           <Footer />
         </Suspense>
       </AppWrapper>
-      <Modal isOpen={isOpenModal} closeModalWindow={openCloseModal} />
+      <Modal
+        convertFromTo={currentExchangeCurrencies.current}
+        allCurrenciesList={currenciesList}
+        usdCourse={apiCurrenciesData.usd}
+        isOpen={isOpenModal}
+        closeModalWindow={openCloseModal}
+      />
     </ThemeProvider>
   );
 }

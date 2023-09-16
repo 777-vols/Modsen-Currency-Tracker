@@ -52,7 +52,7 @@ export const ModalHeader = styled.h5`
 `;
 
 export const SelectWrapper = styled.div`
-  padding: 40px 0;
+  padding: 40px 0 20px 0;
   display: flex;
   justify-content: space-around;
 `;
@@ -61,6 +61,7 @@ export const SelectBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: start;
   padding: 15px;
   width: 100%;
 `;
@@ -78,7 +79,15 @@ export const ModalStyledSpan = styled.span`
   text-align: center;
   font-size: 20px;
   background: rgb(255, 255, 255);
-  display: block;
+  width: 100%;
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
+`;
+export const ModalStyledInput = styled.input`
+  text-align: center;
+  font-size: 20px;
+  background: rgb(255, 255, 255);
   width: 100%;
   @media (max-width: 500px) {
     font-size: 20px;
@@ -88,7 +97,7 @@ export const Result = styled.span`
   text-align: center;
   color: rgb(255, 255, 255);
   font-size: 30px;
-  margin-left: 40px;
+  padding: 0px 0px 20px 30px;
   @media (max-width: 500px) {
     margin-left: 25px;
     font-size: 25px;
@@ -97,4 +106,8 @@ export const Result = styled.span`
 
 export const StyledSelect = styled.select`
   width: 100%;
+  text-align: center;
+  font-size: 20px;
+  background: rgb(255, 255, 255);
+  max-height: 200px;
 `;

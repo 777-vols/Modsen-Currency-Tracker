@@ -1,11 +1,12 @@
 import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes, { element, func } from 'prop-types';
+import React, { useState } from 'react';
 
 import {
   CloseModalButton,
   ModalBackground,
   ModalHeader,
+  ModalStyledInput,
   ModalStyledSpan,
   ModalWindow,
   Result,
@@ -15,7 +16,21 @@ import {
   StyledSelect
 } from './styled';
 
-function Modal({ isOpen, closeModalWindow }) {
+function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }) {
+  const [sumValue, setSumValue] = useState(1);
+  const [convertToValue, setConvertToValue] = useState('usd');
+
+  function handleInputType(event) {
+    setSumValue(event.target.value);
+  }
+
+  function selectorHandler(event) {
+    setConvertToValue(event.target.value);
+  }
+
+  const convertCurrency = () =>
+    ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
+
   if (!isOpen) return null;
   return (
     <PortalCreator wrapperId="currency-modal">
@@ -26,18 +41,24 @@ function Modal({ isOpen, closeModalWindow }) {
           <SelectWrapper>
             <SelectBlock>
               <SelectSpan>Sum</SelectSpan>
-              <ModalStyledSpan>1</ModalStyledSpan>
+              <ModalStyledInput value={sumValue} onChange={handleInputType} />
             </SelectBlock>
             <SelectBlock>
               <SelectSpan>From</SelectSpan>
-              <ModalStyledSpan>usd</ModalStyledSpan>
+              <ModalStyledSpan>{convertFromTo.from}</ModalStyledSpan>
             </SelectBlock>
             <SelectBlock>
               <SelectSpan>To</SelectSpan>
-              <StyledSelect></StyledSelect>
+              <StyledSelect value={convertToValue} onChange={selectorHandler}>
+                {allCurrenciesList.map((currencyName) => (
+                  <option key={currencyName} value={currencyName}>
+                    {currencyName}
+                  </option>
+                ))}
+              </StyledSelect>
             </SelectBlock>
           </SelectWrapper>
-          <Result>Result: </Result>
+          <Result>Result: {usdCourse ? convertCurrency() : ''}</Result>
         </ModalWindow>
       </ModalBackground>
     </PortalCreator>
@@ -46,7 +67,10 @@ function Modal({ isOpen, closeModalWindow }) {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool,
-  closeModalWindow: PropTypes.func
+  closeModalWindow: PropTypes.func,
+  convertFromTo: PropTypes.object,
+  allCurrenciesList: PropTypes.array,
+  usdCourse: PropTypes.object
 };
 
 export default Modal;
