@@ -1,40 +1,63 @@
+import Modal from '@components/Modal/Index';
 import CurrencyCard from '@components/СurrencyСard/Index';
-import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import currencyCardsData from '@constants/currencyCardsData.js';
+import axios from 'axios';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Container } from '../../styled';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledHeader, StyledSpan } from './styled';
 
-function Home({ apiCurrenciesData, cardsDataValues, openModalWindow, exchangeCurrenciesHandler }) {
-  // console.log(apiCurrenciesData);
+function Home() {
+  const { quotesCards, stocksCards } = currencyCardsData;
 
-  const { quotesCards, stocksCards } = cardsDataValues;
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [apiCurrenciesData, setApiCurrenciesData] = useState({});
+  const [currenciesList, setCurrenciesList] = useState([]);
+  const [currentExchangeCurrencies, setCurrentExchangeCurrencies] = useState({ from: '', to: '' });
+
+  useEffect(() => {
+    axios
+      .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
+      .then((res) => {
+        // console.log(res);
+        setApiCurrenciesData(() => res.data);
+        setCurrenciesList(() => Object.keys(res.data.usd));
+      });
+  }, []);
+
+  function openCloseModal() {
+    setIsOpenModal(!isOpenModal);
+  }
+
+  function exchangeCurrenciesHandler(newFrom, newTo = 'usd') {
+    setCurrentExchangeCurrencies({ from: newFrom, to: newTo });
+  }
 
   const quotesCardsList = useMemo(
     () =>
       Object.keys(quotesCards).reduce(
-        (acc, element) => [
-          ...acc,
+        (accum, element) => [
+          ...accum,
           <CurrencyCard
             key={element}
             currencyShortName={element.toLowerCase()}
             currencyFullName={quotesCards[element].name}
             currencyImg={quotesCards[element].img}
-            openModalWindow={openModalWindow}
+            openModalWindow={openCloseModal}
             usdData={apiCurrenciesData.usd}
             exchangeCurrenciesHandler={exchangeCurrenciesHandler}
           />
         ],
         []
       ),
-    [quotesCards]
+    [apiCurrenciesData]
   );
 
   const stocksCardsList = useMemo(
     () =>
       Object.keys(stocksCards).reduce(
-        (acc, element) => [
-          ...acc,
+        (accum, element) => [
+          ...accum,
           <CurrencyCard
             key={element}
             currencyShortName={element.toLowerCase()}
@@ -66,15 +89,22 @@ function Home({ apiCurrenciesData, cardsDataValues, openModalWindow, exchangeCur
           </Quotes>
         </HomeWrapper>
       </Container>
+      <Modal
+        convertFromTo={currentExchangeCurrencies}
+        allCurrenciesList={currenciesList}
+        usdCourse={apiCurrenciesData.usd}
+        isOpen={isOpenModal}
+        closeModalWindow={openCloseModal}
+      />
     </section>
   );
 }
 
-Home.propTypes = {
-  cardsDataValues: PropTypes.object,
-  apiCurrenciesData: PropTypes.object,
-  openModalWindow: PropTypes.func,
-  exchangeCurrenciesHandler: PropTypes.func
-};
+// Home.propTypes = {
+//   cardsDataValues: PropTypes.object,
+//   apiCurrenciesData: PropTypes.object,
+//   openModalWindow: PropTypes.func,
+//   exchangeCurrenciesHandler: PropTypes.func
+// };
 
 export default Home;

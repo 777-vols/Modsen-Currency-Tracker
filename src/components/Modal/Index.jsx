@@ -1,5 +1,5 @@
 import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes, { element, func } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import {
@@ -27,7 +27,6 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
   function selectorHandler(event) {
     setConvertToValue(event.target.value);
   }
-
   const convertCurrency = () =>
     ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
 

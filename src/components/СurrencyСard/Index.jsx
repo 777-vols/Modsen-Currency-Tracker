@@ -21,12 +21,11 @@ function CurrencyCard({
   function cardClickHandler() {
     if (openModalWindow) {
       openModalWindow();
-      exchangeCurrenciesHandler(currencyShortName, 'usd');
+      exchangeCurrenciesHandler(currencyShortName);
     }
   }
 
   const convertCurrency = () => (1 / usdData[currencyShortName]).toFixed(4);
-
   return (
     <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
       <CardInner>
