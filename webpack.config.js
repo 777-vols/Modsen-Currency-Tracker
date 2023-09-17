@@ -31,6 +31,12 @@ module.exports = {
       title: 'Currency-tracker',
       template: './public/index.html',
       favicon: './public/favicon.png'
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_COINAPI_KEY': JSON.stringify(process.env.REACT_APP_COINAPI_KEY)
     })
   ],
   module: {

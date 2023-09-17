@@ -24,7 +24,6 @@ function CurrencyCard({
       exchangeCurrenciesHandler(currencyShortName);
     }
   }
-
   const convertCurrency = () => (1 / usdData[currencyShortName]).toFixed(4);
   return (
     <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>

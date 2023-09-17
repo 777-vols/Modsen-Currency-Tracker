@@ -19,7 +19,6 @@ function Home() {
     axios
       .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
       .then((res) => {
-        // console.log(res);
         setApiCurrenciesData(() => res.data);
         setCurrenciesList(() => Object.keys(res.data.usd));
       });
@@ -99,12 +98,5 @@ function Home() {
     </section>
   );
 }
-
-// Home.propTypes = {
-//   cardsDataValues: PropTypes.object,
-//   apiCurrenciesData: PropTypes.object,
-//   openModalWindow: PropTypes.func,
-//   exchangeCurrenciesHandler: PropTypes.func
-// };
 
 export default Home;
