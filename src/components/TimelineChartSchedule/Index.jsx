@@ -18,28 +18,28 @@ const data = {
   datasets: [
     {
       label: 1,
-      data: [1, 2, 3],
+      data: [10],
       backgroundColor: 'green',
       borderColor: 'red',
       borderWidth: 1
     },
     {
       label: 2,
-      data: [4, 5, 6],
+      data: [20],
       backgroundColor: 'red',
       borderColor: 'red',
       borderWidth: 1
     },
     {
       label: 3,
-      data: [7, 8, 9],
+      data: [30],
       backgroundColor: 'purple',
       borderColor: 'red',
       borderWidth: 1
     },
     {
       label: 4,
-      data: [10, 11, 12],
+      data: [40],
       backgroundColor: 'blue',
       borderColor: 'red',
       borderWidth: 1
@@ -53,7 +53,7 @@ class TimelineChartSchedule extends Component {
   render() {
     return (
       <>
-        <Bar data={data} options={options} />
+        <Bar data={data} options={barOptions1} />
       </>
     );
   }

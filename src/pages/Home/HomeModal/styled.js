@@ -13,7 +13,7 @@ export const ModalBackground = styled.div`
 `;
 export const ModalWindow = styled.div`
   font-family: 'Poppins', sans-serif;
-  background: rgb(25, 25, 25);
+  background: ${(props) => props.theme.background};
   max-width: 500px;
   width: 100%;
   max-height: 300px;
@@ -25,7 +25,7 @@ export const ModalWindow = styled.div`
 `;
 export const CloseModalButton = styled.button`
   cursor: pointer;
-  color: rgb(255, 255, 255);
+  color: ${(props) => props.theme.color};
   font-size: 23px;
   border-radius: 5px;
   width: 35px;
@@ -42,7 +42,7 @@ export const CloseModalButton = styled.button`
 `;
 
 export const ModalHeader = styled.h5`
-  color: rgb(255, 255, 255);
+  color: ${(props) => props.theme.color};
   font-size: 30px;
   display: flex;
   justify-content: center;
@@ -67,7 +67,7 @@ export const SelectBlock = styled.div`
 export const SelectSpan = styled.span`
   margin: 0 auto;
   margin-bottom: 10px;
-  color: rgb(255, 255, 255);
+  color: ${(props) => props.theme.color};
   font-size: 20px;
   white-space: nowrap;
   @media (max-width: 500px) {
@@ -94,7 +94,7 @@ export const ModalStyledInput = styled.input`
 `;
 export const Result = styled.span`
   text-align: center;
-  color: rgb(255, 255, 255);
+  color: ${(props) => props.theme.color};
   font-size: 30px;
   padding: 0px 0px 20px 30px;
   @media (max-width: 500px) {

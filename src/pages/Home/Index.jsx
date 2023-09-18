@@ -1,10 +1,10 @@
-import Modal from '@components/Modal/Index';
 import CurrencyCard from '@components/СurrencyСard/Index';
 import currencyCardsData from '@constants/currencyCardsData.js';
 import axios from 'axios';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { Container } from '../../styled';
+import Modal from './HomeModal/Index';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledHeader, StyledSpan } from './styled';
 
 function Home() {

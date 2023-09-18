@@ -32,7 +32,7 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
 
   if (!isOpen) return null;
   return (
-    <PortalCreator wrapperId="currency-modal">
+    <PortalCreator wrapperId="home-modal">
       <ModalBackground>
         <ModalWindow>
           <CloseModalButton onClick={closeModalWindow}>X</CloseModalButton>
