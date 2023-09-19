@@ -6,11 +6,10 @@ export const ModalInputWrapper = styled.div`
   padding: 10px;
 `;
 export const ModalInputHeader = styled.span`
-  color: white;
   color: ${(props) => props.theme.color};
   margin-bottom: 5px;
 `;
 export const ModalStyledInput = styled.input`
-  color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.background};
   width: 100%;
 `;

@@ -40,8 +40,10 @@ export const SelectOption = styled.option`
   font-size: 20px;
 `;
 
-export const TimelineScheduleWrapper = styled.div``;
-export const TimelineCurrencyCard = styled.div``;
+export const TimelineScheduleWrapper = styled.div`
+  margin-top: 123px;
+`;
+// export const TimelineCurrencyCard = styled.div``;
 export const TimelineSchedule = styled.div`
   width: 100%;
   display: flex;

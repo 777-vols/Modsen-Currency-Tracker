@@ -1,5 +1,5 @@
 import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes, { func } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { CloseModalButton, ModalBackground } from '../../Home/HomeModal/styled';
@@ -7,16 +7,28 @@ import { TimelineModalInputsWrapper, TimelineModalWindow } from './styled';
 import TimelineModalInput from './TimelineModalInput/Index';
 
 class TimelineModal extends Component {
-  render() {
-    function inputsMaper() {
-      const inputsArray = [];
-      for (let i = 1; i <= 30; i += 1) {
-        inputsArray.push(<TimelineModalInput day={i} />);
-      }
-      return inputsArray;
-    }
+  handleInput = (day, value) => {
+    // console.log(day, value);
+    this.props.handleInputsChange(day, value);
+  };
 
-    const inputsArray = inputsMaper();
+  inputsMaper = () => {
+    const inputsArray = [];
+    for (let i = 1; i <= 30; i += 1) {
+      inputsArray.push(
+        <TimelineModalInput
+          key={i}
+          day={i}
+          inputValue={this.props.iputsData[i] ?? ''}
+          handleInput={this.handleInput}
+        />
+      );
+    }
+    return inputsArray;
+  };
+
+  render() {
+    const inputsArray = this.inputsMaper();
 
     const { isOpen, closeModalWindow } = this.props;
 
@@ -38,5 +50,7 @@ export default TimelineModal;
 
 TimelineModal.propTypes = {
   isOpen: PropTypes.bool,
-  closeModalWindow: PropTypes.func
+  closeModalWindow: PropTypes.func,
+  handleInputsChange: PropTypes.func,
+  iputsData: PropTypes.object
 };
