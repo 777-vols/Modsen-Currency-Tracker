@@ -8,6 +8,9 @@ export const TimelineWrapper = styled.div`
 export const TimelineSelectWrapper = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 export const TimelineSelect = styled.select`
   cursor: pointer;
@@ -17,6 +20,11 @@ export const TimelineSelect = styled.select`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   font-size: 30px;
+  @media (max-width: 600px) {
+    max-width: 250px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 `;
 export const TimelineModalOpenButton = styled.button`
   cursor: pointer;
@@ -33,15 +41,24 @@ export const TimelineModalOpenButton = styled.button`
     border: 1px solid rgb(22, 218, 12);
     color: rgb(22, 218, 12);
   }
+  @media (max-width: 600px) {
+    font-size: 15px;
+  }
 `;
 export const SelectOption = styled.option`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   font-size: 20px;
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 export const TimelineScheduleWrapper = styled.div`
   margin-top: 123px;
+  @media (max-width: 800px) {
+    margin-top: 60px;
+  }
 `;
 // export const TimelineCurrencyCard = styled.div``;
 export const TimelineSchedule = styled.div`

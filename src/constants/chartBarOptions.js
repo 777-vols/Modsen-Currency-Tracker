@@ -1,30 +1,4 @@
-export const barOptions1 = {
-  plugins: {
-    title: {
-      display: true
-    },
-    legend: {
-      display: true,
-      labels: {
-        color: 'rgb(16, 50, 188)'
-      }
-    }
-  },
-  responsive: true,
-  scales: {
-    x: {
-      stacked: true,
-      display: true
-    },
-    y: {
-      stacked: false,
-      position: 'right',
-      beginAtZero: false
-    }
-  }
-};
-
-export const barOptions2 = {
+const barOptions = {
   plugins: {
     title: {
       display: true
@@ -44,7 +18,12 @@ export const barOptions2 = {
     },
     y: {
       stacked: false,
-      position: 'right'
+      position: 'right',
+      grid: {
+        color: 'white'
+      }
     }
   }
 };
+
+export default barOptions;

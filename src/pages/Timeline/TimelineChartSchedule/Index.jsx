@@ -1,4 +1,5 @@
-import { barOptions1, barOptions2 } from '@constants/chartBarOptions';
+import barOptions from '@constants/chartBarOptions';
+import parseDataForSchedule from '@helpers/parseDataForShedule';
 import {
   BarElement,
   CategoryScale,
@@ -14,27 +15,23 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
-const data = {
-  labels: [1, 3, 4, 5, 6, 7, 8, 9, 10],
-  datasets: [
-    {
-      label: 1,
-      data: [15000, 20000, 30000, 40000, 50000, 30000, 70000, 80000, 60000, 100000],
-      backgroundColor: 'green',
-      // borderColor: 'red',
-      borderWidth: 1
-    }
-  ]
-};
-
-const options = {};
-
 class TimelineChartSchedule extends Component {
   render() {
-    console.log(this.props.modalData);
+    const scheduleData = {
+      labels: Object.keys(this.props.modalData).map((day) => `Day: ${day}`),
+      datasets: [
+        {
+          label: 'price_high',
+          data: [...Object.values(this.props.modalData)],
+          backgroundColor: parseDataForSchedule(Object.values(this.props.modalData)),
+          barPercentage: 0.7
+        }
+      ]
+    };
+    if (Object.keys(this.props.modalData).length === 0) return null;
     return (
       <>
-        <Bar data={data} options={barOptions1} />
+        <Bar data={scheduleData} options={barOptions} />
       </>
     );
   }

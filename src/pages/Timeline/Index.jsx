@@ -42,9 +42,10 @@ class Timeline extends Component {
   };
 
   setTimelineCurrency = (event) => {
-    this.setState({ currentTimelineCurrency: event.target.value });
     this.setState({
-      timelineCurrencyCard: currencyCardsData.quotesCards[event.target.value]
+      currentTimelineCurrency: event.target.value,
+      timelineCurrencyCard: currencyCardsData.quotesCards[event.target.value],
+      scheduleModalInputsData: {}
     });
   };
 
