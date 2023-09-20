@@ -16,12 +16,34 @@ function Home() {
   const [currentExchangeCurrencies, setCurrentExchangeCurrencies] = useState({ from: '', to: '' });
 
   useEffect(() => {
-    axios
-      .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
-      .then((res) => {
-        setApiCurrenciesData(() => res.data);
-        setCurrenciesList(() => Object.keys(res.data.usd));
-      });
+    const limit = 24 * 3600 * 1000;
+    const localStorageInitTime = localStorage.getItem('localStorageInitTime');
+    const localStorageInitData = localStorage.getItem('localStorageCurrencyData');
+    if (localStorageInitTime === null || localStorageInitData == null) {
+      axios
+        .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
+        .then((res) => {
+          localStorage.setItem('localStorageInitTime', +new Date());
+          localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+
+          setApiCurrenciesData(res.data);
+          setCurrenciesList(Object.keys(res.data.usd));
+        });
+    } else if (+new Date() - localStorageInitTime > limit) {
+      axios
+        .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
+        .then((res) => {
+          localStorage.clear();
+          localStorage.setItem('localStorageInitTime', +new Date());
+          localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+        });
+    }
+
+    if (localStorage.getItem('localStorageCurrencyData')) {
+      const data = JSON.parse(localStorage.getItem('localStorageCurrencyData'));
+      setApiCurrenciesData(data);
+      setCurrenciesList(Object.keys(data.usd));
+    }
   }, []);
 
   function openCloseModal() {

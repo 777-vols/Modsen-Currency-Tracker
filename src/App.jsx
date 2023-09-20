@@ -2,7 +2,7 @@ import Footer from '@components/Footer/Index.jsx';
 import Header from '@components/Header/Index.jsx';
 import Loading from '@components/Loading/Index.jsx';
 import * as urls from '@constants/urls';
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useTransition } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -15,6 +15,9 @@ const BankCard = lazy(() => import('@pages/BankCard/Index.jsx'));
 const Contact = lazy(() => import('@pages/Contact/Index.jsx'));
 
 function App() {
+  const [isPending, startTransition] = useTransition({
+    timeoutMs: 3000
+  });
   const theme = useSelector((state) => state.themes.currentTheme);
   return (
     <ThemeProvider theme={theme}>

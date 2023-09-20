@@ -21,7 +21,7 @@ class TimelineChartSchedule extends Component {
       labels: Object.keys(this.props.modalData).map((day) => `Day: ${day}`),
       datasets: [
         {
-          label: 'price_high',
+          label: 'Price',
           data: [...Object.values(this.props.modalData)],
           backgroundColor: parseDataForSchedule(Object.values(this.props.modalData)),
           barPercentage: 0.7
