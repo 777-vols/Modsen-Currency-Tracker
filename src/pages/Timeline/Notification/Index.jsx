@@ -5,12 +5,6 @@ import React, { Component } from 'react';
 import { NotificationSpan, NotificationWrapper } from './styled';
 
 class Notification extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isOpen: false
-  //   };
-  // }
   render() {
     if (!this.props.isOpen) return null;
     return (

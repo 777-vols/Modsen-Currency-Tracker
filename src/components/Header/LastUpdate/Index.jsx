@@ -5,7 +5,7 @@ import { CircleAnimation, LastUpadateSpan, LastUpadateWrapper } from './styled';
 
 function LastUpadate() {
   function currentDate() {
-    const date = new Date();
+    const date = new Date(+localStorage.getItem('localStorageInitTime'));
     let hours = date.getHours();
     let minutes = date.getMinutes();
     const ampm = hours >= 12 ? 'pm' : 'am';
