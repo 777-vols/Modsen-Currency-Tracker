@@ -21,15 +21,31 @@ class Timeline extends Component {
     this.state = {
       currentTimelineCurrency: 'USD',
       timelineCurrencyCard: currencyCardsData.quotesCards.USD,
-      scheduleModalInputsData: {},
-      modalIsOpen: false
+      modalInputsData: {},
+      sheduleData: {},
+      modalIsOpen: false,
+      listeners: []
     };
   }
 
+  subscribe = (listener) => {
+    this.setState((prevState) => ({ listeners: [...prevState.listeners, listener] }));
+
+    return () => {
+      this.setState((prevState) => ({
+        listeners: [...prevState.listeners.filter((element) => element !== listener)]
+      }));
+    };
+  };
+
+  notifyAll = () => {
+    this.state.listeners.forEach((listener) => listener());
+  };
+
   setModalInputsData = (day, value) => {
     this.setState((prevState) => ({
-      scheduleModalInputsData: {
-        ...prevState.scheduleModalInputsData,
+      modalInputsData: {
+        ...prevState.modalInputsData,
         [day]: value
       }
     }));
@@ -39,13 +55,22 @@ class Timeline extends Component {
     this.setState((prevState) => ({
       modalIsOpen: !prevState.modalIsOpen
     }));
+    if (
+      Object.values(this.state.modalInputsData).filter((value) => value !== '').length === 30 &&
+      this.state.modalIsOpen
+    ) {
+      this.notifyAll();
+    }
+    if (this.state.modalIsOpen) {
+      this.setState((prevState) => ({ sheduleData: { ...prevState.modalInputsData } }));
+    }
   };
 
   setTimelineCurrency = (event) => {
     this.setState({
       currentTimelineCurrency: event.target.value,
       timelineCurrencyCard: currencyCardsData.quotesCards[event.target.value],
-      scheduleModalInputsData: {}
+      modalInputsData: {}
     });
   };
 
@@ -79,7 +104,10 @@ class Timeline extends Component {
                 currencyImg={this.state.timelineCurrencyCard.img}
               />
               <TimelineSchedule>
-                <TimelineChartSchedule modalData={this.state.scheduleModalInputsData} />
+                <TimelineChartSchedule
+                  subscribe={this.subscribe}
+                  modalData={this.state.sheduleData}
+                />
               </TimelineSchedule>
             </TimelineScheduleWrapper>
           </TimelineWrapper>
@@ -88,7 +116,7 @@ class Timeline extends Component {
           isOpen={this.state.modalIsOpen}
           closeModalWindow={this.setModalIsOpen}
           handleInputsChange={this.setModalInputsData}
-          iputsData={this.state.scheduleModalInputsData}
+          iputsData={this.state.modalInputsData}
         />
       </section>
     );

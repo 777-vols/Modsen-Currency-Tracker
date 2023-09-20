@@ -8,7 +8,6 @@ import TimelineModalInput from './TimelineModalInput/Index';
 
 class TimelineModal extends Component {
   handleInput = (day, value) => {
-    // console.log(day, value);
     this.props.handleInputsChange(day, value);
   };
 
