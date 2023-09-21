@@ -41,7 +41,7 @@ export const InfoTopPart = styled.h1`
 
   @media (max-width: 1105px) {
     line-height: 90px;
-    font-size: 58px;
+    font-size: 57px;
   }
   @media (max-width: 900px) {
     line-height: 60px;
@@ -61,7 +61,7 @@ export const InfoBottomPart = styled.h2`
 
   @media (max-width: 1105px) {
     line-height: 100px;
-    font-size: 75px;
+    font-size: 73px;
   }
   @media (max-width: 900px) {
     justify-content: center;

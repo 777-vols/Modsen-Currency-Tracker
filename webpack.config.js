@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -35,9 +36,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       process: 'process/browser'
     }),
-    new webpack.DefinePlugin({
-      'process.env.REACT_APP_COINAPI_KEY': JSON.stringify(process.env.REACT_APP_COINAPI_KEY)
-    })
+    new Dotenv()
   ],
   module: {
     rules: [
