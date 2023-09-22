@@ -9,7 +9,7 @@ class SerachAnswer extends Component {
   };
 
   render() {
-    const { fullName, shortName, handleClick } = this.props;
+    const { fullName, shortName } = this.props;
     return (
       <AnswerWrapper onClick={this.handleClick}>
         <AnswerFullname>{fullName}</AnswerFullname>

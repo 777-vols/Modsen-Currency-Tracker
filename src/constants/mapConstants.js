@@ -1,6 +1,6 @@
 export const mapSettings = {
-  longitude: 27.56667,
-  latitude: 53.9,
+  longitude: 27.556846,
+  latitude: 53.90187,
   zoom: 10,
   attributionControl: false
 };

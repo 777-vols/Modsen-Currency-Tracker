@@ -1,9 +1,10 @@
 import searchImg from '@assets/search-normal.svg';
+import banksList from '@constants/banksList';
 import currencyCardsData from '@constants/currencyCardsData';
 import React, { Component } from 'react';
 
 import { Container } from '../../styled';
-import BanckCardMap from './BanckCardMap/Index';
+import BankCardMap from './BankCardMap/Index';
 import SerachAnswer from './SearchAnswer/Index';
 import {
   BankCardHeader,
@@ -23,7 +24,8 @@ class BankCard extends Component {
       currentCyrrency: {},
       currencies: [],
       searchAnswers: [],
-      searchValue: ''
+      searchValue: '',
+      banksCoords: []
     };
   }
 
@@ -36,7 +38,7 @@ class BankCard extends Component {
   }
 
   elasticSearchHandle = (event) => {
-    this.setState({ value: event.target.value });
+    this.setState({ searchValue: event.target.value });
     if (event.target.value !== '') {
       const answers = Object.values(this.state.currencies).filter((currency) => {
         const inputValue = event.target.value.toLowerCase();
@@ -54,7 +56,9 @@ class BankCard extends Component {
   };
 
   handleCurrencySelection = (shortName) => {
-    this.setState({ searchAnswers: [], value: shortName });
+    this.setState({ searchAnswers: [], searchValue: shortName });
+    const banks = banksList.filter((bank) => bank.currencies.includes(shortName.toLowerCase()));
+    this.setState({ banksCoords: banks });
   };
 
   render() {
@@ -74,7 +78,7 @@ class BankCard extends Component {
               <BankCardHeader>Search currency in the bank</BankCardHeader>
               <BankCardInputWrapper>
                 <BankCardInput
-                  value={this.state.value}
+                  value={this.state.searchValue}
                   onChange={this.elasticSearchHandle}
                   placeholder="Currency search..."
                 />
@@ -83,7 +87,7 @@ class BankCard extends Component {
               </BankCardInputWrapper>
             </BankCardHeaderWrapper>
             <BankCardMapWrapper>
-              <BanckCardMap />
+              <BankCardMap banksCoords={this.state.banksCoords} />
             </BankCardMapWrapper>
           </BankCardWrapper>
         </Container>
