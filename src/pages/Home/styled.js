@@ -19,7 +19,6 @@ export const CardsWrapper = styled.div`
 `;
 
 export const Stocks = styled.div``;
-export const StyledHeader = styled.div``;
 export const StyledSpan = styled.h3`
   max-width: 520px;
   width: 100%;
@@ -39,7 +38,6 @@ export const StyledSpan = styled.h3`
     padding-bottom: 10px;
   }
 `;
-export const QuotesHeader = styled.div``;
 
 export const Quotes = styled.div`
   margin-top: 86px;

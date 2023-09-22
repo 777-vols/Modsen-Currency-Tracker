@@ -74,18 +74,18 @@ class BankCard extends Component {
       <section>
         <Container>
           <BankCardWrapper>
-            <BankCardHeaderWrapper>
-              <BankCardHeader>Search currency in the bank</BankCardHeader>
-              <BankCardInputWrapper>
-                <BankCardInput
-                  value={this.state.searchValue}
-                  onChange={this.elasticSearchHandle}
-                  placeholder="Currency search..."
-                />
-                <SearchInputImage src={searchImg} />
-                <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
-              </BankCardInputWrapper>
-            </BankCardHeaderWrapper>
+            {/* <BankCardHeaderWrapper> */}
+            <BankCardHeader>Search currency in the bank</BankCardHeader>
+            <BankCardInputWrapper>
+              <BankCardInput
+                value={this.state.searchValue}
+                onChange={this.elasticSearchHandle}
+                placeholder="Currency search..."
+              />
+              <SearchInputImage src={searchImg} />
+              <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
+            </BankCardInputWrapper>
+            {/* </BankCardHeaderWrapper> */}
             <BankCardMapWrapper>
               <BankCardMap banksCoords={this.state.banksCoords} />
             </BankCardMapWrapper>

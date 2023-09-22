@@ -14,7 +14,6 @@ export const TimelineModalWindow = styled.div`
   padding: 20px;
   margin: 20px;
   @media (max-width: 900px) {
-    /* max-height: 700px; */
     overflow: auto;
   }
 `;
@@ -25,4 +24,3 @@ export const TimelineModalInputsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-export const TimelineModalWindowInput = styled.input``;

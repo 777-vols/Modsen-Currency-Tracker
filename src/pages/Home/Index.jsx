@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { Container } from '../../styled';
 import Modal from './HomeModal/Index';
-import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledHeader, StyledSpan } from './styled';
+import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
 
 function Home() {
   const { quotesCards, stocksCards } = currencyCardsData;
@@ -97,15 +97,11 @@ function Home() {
       <Container>
         <HomeWrapper>
           <Stocks>
-            <StyledHeader>
-              <StyledSpan>Stocks</StyledSpan>
-            </StyledHeader>
+            <StyledSpan>Stocks</StyledSpan>
             <CardsWrapper>{stocksCardsList}</CardsWrapper>
           </Stocks>
           <Quotes>
-            <StyledHeader>
-              <StyledSpan>Quotes</StyledSpan>
-            </StyledHeader>
+            <StyledSpan>Quotes</StyledSpan>
             <CardsWrapper>{quotesCardsList}</CardsWrapper>
           </Quotes>
         </HomeWrapper>

@@ -60,7 +60,6 @@ export const TimelineScheduleWrapper = styled.div`
     margin-top: 60px;
   }
 `;
-// export const TimelineCurrencyCard = styled.div``;
 export const TimelineSchedule = styled.div`
   width: 100%;
   display: flex;
