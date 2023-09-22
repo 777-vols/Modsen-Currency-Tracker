@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { useLayoutEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 
 function createWrapperAndAppendToBody(wrapperId) {

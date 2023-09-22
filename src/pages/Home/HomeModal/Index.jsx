@@ -1,6 +1,7 @@
-import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+import PortalCreator from '@helpers/createPortalHelper';
 
 import {
   CloseModalButton,

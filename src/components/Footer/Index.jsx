@@ -1,7 +1,9 @@
-import logo from '@assets/logo.svg';
 import React from 'react';
 
+import logo from '@assets/logo.svg';
+
 import { Container } from '../../styled';
+
 import MobileFooterMenu from './MobileFooterMenu/Index';
 import {
   FooterInfo,

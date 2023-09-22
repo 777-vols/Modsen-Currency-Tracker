@@ -1,5 +1,6 @@
-import arrow from '@assets/arrow.svg';
 import React from 'react';
+
+import arrow from '@assets/arrow.svg';
 
 import {
   MenuButton,

@@ -1,5 +1,6 @@
-import contentImg from '@assets/contentImage.svg';
 import React from 'react';
+
+import contentImg from '@assets/contentImage.svg';
 
 import {
   ContentImage,

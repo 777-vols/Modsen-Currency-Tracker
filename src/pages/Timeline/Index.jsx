@@ -1,7 +1,12 @@
-import currencyCardsData from '@constants/currencyCardsData';
 import React, { Component } from 'react';
 
+import currencyCardsData from '@constants/currencyCardsData';
+
 import { Container } from '../../styled';
+
+import TimelineChartSchedule from './TimelineChartSchedule/Index';
+import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
+import TimelineModal from './TimelineModal/Index';
 import {
   SelectOption,
   TimelineModalOpenButton,
@@ -11,9 +16,6 @@ import {
   TimelineSelectWrapper,
   TimelineWrapper
 } from './styled';
-import TimelineChartSchedule from './TimelineChartSchedule/Index';
-import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
-import TimelineModal from './TimelineModal/Index';
 
 class Timeline extends Component {
   constructor(props) {

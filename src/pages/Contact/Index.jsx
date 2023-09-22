@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container } from '../../styled';
+
 import { ContactItem, Contacts, ContactSpan } from './styled';
 
 function Contact() {

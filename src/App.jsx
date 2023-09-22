@@ -1,7 +1,8 @@
-import Loading from '@components/Loading/Index.jsx';
 import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+
+import Loading from '@components/Loading/Index.jsx';
 
 const Layout = lazy(() => import('@components/Layout/Index.jsx'));
 

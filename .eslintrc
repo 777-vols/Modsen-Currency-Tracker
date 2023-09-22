@@ -17,11 +17,23 @@
     }
   },
   "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react$", "^next", "^[a-z]"],
+          ["^@"],
+          ["^~"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.s?css$"],
+          ["^\\u0000"]
+        ]
+      }
+    ],
     "no-param-reassign": [2, { "props": false }],
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "prefer-const": "error",
     "linebreak-style": 0,
     "global-require": 0,

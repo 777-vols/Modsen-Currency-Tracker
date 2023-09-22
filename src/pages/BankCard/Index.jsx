@@ -1,14 +1,15 @@
+import React, { Component } from 'react';
+
 import searchImg from '@assets/search-normal.svg';
 import banksList from '@constants/banksList';
 import currencyCardsData from '@constants/currencyCardsData';
-import React, { Component } from 'react';
 
 import { Container } from '../../styled';
+
 import BankCardMap from './BankCardMap/Index';
 import SerachAnswer from './SearchAnswer/Index';
 import {
   BankCardHeader,
-  BankCardHeaderWrapper,
   BankCardInput,
   BankCardInputWrapper,
   BankCardMapWrapper,
@@ -74,7 +75,6 @@ class BankCard extends Component {
       <section>
         <Container>
           <BankCardWrapper>
-            {/* <BankCardHeaderWrapper> */}
             <BankCardHeader>Search currency in the bank</BankCardHeader>
             <BankCardInputWrapper>
               <BankCardInput
@@ -85,7 +85,6 @@ class BankCard extends Component {
               <SearchInputImage src={searchImg} />
               <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
             </BankCardInputWrapper>
-            {/* </BankCardHeaderWrapper> */}
             <BankCardMapWrapper>
               <BankCardMap banksCoords={this.state.banksCoords} />
             </BankCardMapWrapper>

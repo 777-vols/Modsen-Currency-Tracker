@@ -1,9 +1,10 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Map, { Marker } from 'react-map-gl';
 
 import { mapSettings, mapStyles } from '@constants/mapConstants';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import Map, { Marker } from 'react-map-gl';
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 class BankCardMap extends Component {
   render() {

@@ -1,5 +1,6 @@
-import circleImg from '@assets/circleAnimation.svg';
 import React from 'react';
+
+import circleImg from '@assets/circleAnimation.svg';
 
 import { CircleAnimation, LastUpadateSpan, LastUpadateWrapper } from './styled';
 

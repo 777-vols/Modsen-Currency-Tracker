@@ -1,9 +1,11 @@
-import CurrencyCard from '@components/СurrencyСard/Index';
-import currencyCardsData from '@constants/currencyCardsData.js';
-import axios from 'axios';
 import React, { useEffect, useMemo, useState } from 'react';
 
+import getCurrenciesList from '@api/apiRequests';
+import CurrencyCard from '@components/СurrencyСard/Index';
+import currencyCardsData from '@constants/currencyCardsData.js';
+
 import { Container } from '../../styled';
+
 import Modal from './HomeModal/Index';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
 
@@ -20,23 +22,19 @@ function Home() {
     const localStorageInitTime = localStorage.getItem('localStorageInitTime');
     const localStorageInitData = localStorage.getItem('localStorageCurrencyData');
     if (localStorageInitTime === null || localStorageInitData == null) {
-      axios
-        .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
-        .then((res) => {
-          localStorage.setItem('localStorageInitTime', +new Date());
-          localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+      getCurrenciesList().then((res) => {
+        localStorage.setItem('localStorageInitTime', +new Date());
+        localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
 
-          setApiCurrenciesData(res.data);
-          setCurrenciesList(Object.keys(res.data.usd));
-        });
+        setApiCurrenciesData(res.data);
+        setCurrenciesList(Object.keys(res.data.usd));
+      });
     } else if (+new Date() - localStorageInitTime > limit) {
-      axios
-        .get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`)
-        .then((res) => {
-          localStorage.clear();
-          localStorage.setItem('localStorageInitTime', +new Date());
-          localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
-        });
+      getCurrenciesList().then((res) => {
+        localStorage.clear();
+        localStorage.setItem('localStorageInitTime', +new Date());
+        localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+      });
     }
 
     if (localStorage.getItem('localStorageCurrencyData')) {

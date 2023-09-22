@@ -1,10 +1,12 @@
-import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import PortalCreator from '@helpers/createPortalHelper';
 
 import { CloseModalButton, ModalBackground } from '../../Home/HomeModal/styled';
-import { TimelineModalInputsWrapper, TimelineModalWindow } from './styled';
+
 import TimelineModalInput from './TimelineModalInput/Index';
+import { TimelineModalInputsWrapper, TimelineModalWindow } from './styled';
 
 class TimelineModal extends Component {
   handleInput = (day, value) => {

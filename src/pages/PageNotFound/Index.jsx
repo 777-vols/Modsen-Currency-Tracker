@@ -1,7 +1,9 @@
-import * as urls from '@constants/urls';
 import React from 'react';
 
+import * as urls from '@constants/urls';
+
 import { Container } from '../../styled';
+
 import { LinkWrapper, PageNotFoundHeader, PageNotFoundLink } from './styled';
 
 function PageNotFound() {
