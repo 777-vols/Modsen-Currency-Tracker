@@ -20,7 +20,7 @@ const barOptions = {
       stacked: false,
       position: 'right',
       grid: {
-        color: 'white'
+        color: 'rgb(255, 255, 255)'
       }
     }
   }

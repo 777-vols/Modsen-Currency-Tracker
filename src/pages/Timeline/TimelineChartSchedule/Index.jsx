@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   BarElement,
   CategoryScale,
@@ -18,7 +18,7 @@ import Notification from '../Notification/Index';
 
 ChartJS.register(BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
-class TimelineChartSchedule extends Component {
+class TimelineChartSchedule extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,15 +45,20 @@ class TimelineChartSchedule extends Component {
 
   render() {
     const filtredData = Object.fromEntries(
-      Object.entries(this.props.modalData).filter((el) => el[1] !== '')
+      Object.entries(this.props.modalData).filter((el) => {
+        if (el[1].highPrice !== undefined && el[1].lowPrice !== undefined) {
+          return el;
+        }
+        return null;
+      })
     );
 
     const scheduleData = {
       labels: Object.keys(filtredData).map((day) => `Day: ${day}`),
       datasets: [
         {
-          label: 'Price',
-          data: [...Object.values(filtredData)],
+          label: 'High & Low price',
+          data: [...Object.values(filtredData).map((element) => Object.values(element))],
           backgroundColor: parseDataForSchedule(Object.values(filtredData)),
           barPercentage: 0.7
         }

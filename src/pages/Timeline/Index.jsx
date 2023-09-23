@@ -44,11 +44,26 @@ class Timeline extends Component {
     this.state.listeners.forEach((listener) => listener());
   };
 
-  setModalInputsData = (day, value) => {
+  setModalInputsDataLow = (day, value) => {
+    if (
+      this.state.modalInputsData[day] === undefined ||
+      +this.state.modalInputsData[day].highPrice < +value
+    ) {
+      return;
+    }
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: value
+        [day]: { ...this.state.modalInputsData[day], lowPrice: value }
+      }
+    }));
+  };
+
+  setModalInputsDataHigh = (day, value) => {
+    this.setState((prevState) => ({
+      modalInputsData: {
+        ...prevState.modalInputsData,
+        [day]: { ...this.state.modalInputsData[day], highPrice: value }
       }
     }));
   };
@@ -117,8 +132,9 @@ class Timeline extends Component {
         <TimelineModal
           isOpen={this.state.modalIsOpen}
           closeModalWindow={this.setModalIsOpen}
-          handleInputsChange={this.setModalInputsData}
-          iputsData={this.state.modalInputsData}
+          handleInputLow={this.setModalInputsDataLow}
+          handleInputHigh={this.setModalInputsDataHigh}
+          inputsData={this.state.modalInputsData}
         />
       </section>
     );
