@@ -1,7 +1,8 @@
 import allThemes from '@constants/themes';
+import { getLocaleStorageItem } from '@helpers/localeStorageHelpers';
 import { createSlice } from '@reduxjs/toolkit';
 
-const theme = Boolean(+localStorage.getItem('darkTheme'));
+const theme = Boolean(Number(getLocaleStorageItem('darkTheme')));
 
 const themeSlice = createSlice({
   name: 'themes',

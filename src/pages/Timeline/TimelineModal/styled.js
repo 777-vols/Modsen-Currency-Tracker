@@ -5,22 +5,21 @@ export const TimelineModalWindow = styled.div`
   align-items: center;
   font-family: 'Poppins', sans-serif;
   background: ${(props) => props.theme.background};
-  max-width: 1000px;
+  max-width: 1050px;
   width: 100%;
-  max-height: 500px;
+  max-height: 510px;
   height: 100%;
   border-radius: 20px;
   position: relative;
   padding: 20px;
   margin: 20px;
-  @media (max-width: 900px) {
-    overflow: auto;
-  }
 `;
 
 export const TimelineModalInputsWrapper = styled.div`
-  max-height: 500px;
-  padding: 15px;
+  max-height: 470px;
+  margin: 15px;
+  margin-right: 40px;
   display: flex;
   flex-wrap: wrap;
+  overflow: auto;
 `;

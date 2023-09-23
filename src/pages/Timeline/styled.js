@@ -20,6 +20,9 @@ export const TimelineSelect = styled.select`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   font-size: 30px;
+  @media (max-width: 900px) {
+    font-size: 25px;
+  }
   @media (max-width: 600px) {
     max-width: 250px;
     font-size: 18px;
@@ -41,22 +44,28 @@ export const TimelineModalOpenButton = styled.button`
     border: 1px solid rgb(22, 218, 12);
     color: rgb(22, 218, 12);
   }
+  @media (max-width: 900px) {
+    font-size: 17px;
+  }
   @media (max-width: 600px) {
-    font-size: 15px;
+    font-size: 14px;
   }
 `;
 export const SelectOption = styled.option`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   font-size: 20px;
+  @media (max-width: 900px) {
+    font-size: 17px;
+  }
   @media (max-width: 600px) {
-    font-size: 13px;
+    font-size: 14px;
   }
 `;
 
 export const TimelineScheduleWrapper = styled.div`
   margin-top: 123px;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     margin-top: 60px;
   }
 `;

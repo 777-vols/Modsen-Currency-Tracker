@@ -1,8 +1,13 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import getCurrenciesList from '@api/apiRequests';
 import CurrencyCard from '@components/СurrencyСard/Index';
 import currencyCardsData from '@constants/currencyCardsData.js';
+import {
+  clearLocaleStorage,
+  getLocaleStorageItem,
+  setLocaleStorageItem
+} from '@helpers/localeStorageHelpers';
 
 import { Container } from '../../styled';
 
@@ -15,30 +20,30 @@ function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});
   const [currenciesList, setCurrenciesList] = useState([]);
-  const [currentExchangeCurrencies, setCurrentExchangeCurrencies] = useState({ from: '', to: '' });
+  const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
   useEffect(() => {
     const limit = 24 * 3600 * 1000;
-    const localStorageInitTime = localStorage.getItem('localStorageInitTime');
-    const localStorageInitData = localStorage.getItem('localStorageCurrencyData');
+    const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
+    const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
     if (localStorageInitTime === null || localStorageInitData == null) {
       getCurrenciesList().then((res) => {
-        localStorage.setItem('localStorageInitTime', +new Date());
-        localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
+        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
 
         setApiCurrenciesData(res.data);
         setCurrenciesList(Object.keys(res.data.usd));
       });
-    } else if (+new Date() - localStorageInitTime > limit) {
+    } else if (Number(new Date() - localStorageInitTime > limit)) {
       getCurrenciesList().then((res) => {
-        localStorage.clear();
-        localStorage.setItem('localStorageInitTime', +new Date());
-        localStorage.setItem('localStorageCurrencyData', JSON.stringify(res.data));
+        clearLocaleStorage();
+        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
+        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
       });
     }
 
-    if (localStorage.getItem('localStorageCurrencyData')) {
-      const data = JSON.parse(localStorage.getItem('localStorageCurrencyData'));
+    if (getLocaleStorageItem('localStorageCurrencyData')) {
+      const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
       setApiCurrenciesData(data);
       setCurrenciesList(Object.keys(data.usd));
     }
@@ -49,7 +54,8 @@ function Home() {
   }
 
   function exchangeCurrenciesHandler(newFrom, newTo = 'usd') {
-    setCurrentExchangeCurrencies({ from: newFrom, to: newTo });
+    currentExchangeCurrencies.current.from = newFrom;
+    currentExchangeCurrencies.current.to = newTo;
   }
 
   const quotesCardsList = useMemo(
@@ -105,7 +111,7 @@ function Home() {
         </HomeWrapper>
       </Container>
       <Modal
-        convertFromTo={currentExchangeCurrencies}
+        convertFromTo={currentExchangeCurrencies.current}
         allCurrenciesList={currenciesList}
         usdCourse={apiCurrenciesData.usd}
         isOpen={isOpenModal}
