@@ -10,7 +10,7 @@ class Notification extends Component {
     if (!this.props.isOpen) return null;
     return (
       <PortalCreator wrapperId="timeline-notification">
-        <NotificationWrapper>
+        <NotificationWrapper id="timeline-notification">
           <NotificationSpan>The 30-day schedule has been successfully completed</NotificationSpan>
         </NotificationWrapper>
       </PortalCreator>

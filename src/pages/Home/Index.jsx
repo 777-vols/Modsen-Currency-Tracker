@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import getCurrenciesList from '@api/apiRequests';
 import CurrencyCard from '@components/СurrencyСard/Index';

@@ -17,42 +17,32 @@ import {
 function Navbar() {
   return (
     <NavbarWrapper>
-      <LinkWrapper>
-        <LogoLink link_test="logo" to={urls.baseUrl}>
-          <Logo src={logo} alt="logo" />
-        </LogoLink>
-      </LinkWrapper>
+      <LogoLink link_test="logo" to={urls.baseUrl}>
+        <Logo src={logo} alt="logo" />
+      </LogoLink>
 
       <StyledNav>
-        <MenuList>
-          <li>
-            <LinkWrapper>
-              <MenuLink link_test="menu_home" to={urls.home}>
-                Home
-              </MenuLink>
-            </LinkWrapper>
-          </li>
-          <li>
-            <LinkWrapper>
-              <MenuLink link_test="menu_timeline" to={urls.timeline}>
-                Timeline
-              </MenuLink>
-            </LinkWrapper>
-          </li>
-          <li>
-            <LinkWrapper>
-              <MenuLink link_test="menu_bankCard" to={urls.bankCard}>
-                Bank card
-              </MenuLink>
-            </LinkWrapper>
-          </li>
-          <li>
-            <LinkWrapper>
-              <MenuLink link_test="menu_contacts" to={urls.contact}>
-                Contato
-              </MenuLink>
-            </LinkWrapper>
-          </li>
+        <MenuList id="menuList">
+          <LinkWrapper>
+            <MenuLink link_test="menu_home" to={urls.home}>
+              Home
+            </MenuLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <MenuLink link_test="menu_timeline" to={urls.timeline}>
+              Timeline
+            </MenuLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <MenuLink link_test="menu_bankCard" to={urls.bankCard}>
+              Bank card
+            </MenuLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <MenuLink link_test="menu_contacts" to={urls.contact}>
+              Contato
+            </MenuLink>
+          </LinkWrapper>
         </MenuList>
       </StyledNav>
 

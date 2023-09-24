@@ -45,7 +45,9 @@ class TimelineModal extends PureComponent {
       <PortalCreator wrapperId="timeline-modal">
         <ModalBackground>
           <TimelineModalWindow>
-            <CloseModalButton onClick={closeModalWindow}>X</CloseModalButton>
+            <CloseModalButton id="chart-modal-close" onClick={closeModalWindow}>
+              X
+            </CloseModalButton>
             <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
           </TimelineModalWindow>
         </ModalBackground>

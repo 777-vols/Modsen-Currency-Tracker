@@ -9,7 +9,9 @@
     "webpack:prod": "webpack --config webpack.prod.js",
     "lint": "eslint -c .eslintrc --ext .js,.jsx .",
     "lint:fix": "yarn lint -- --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+		"cypress": "cypress open",
+		"test:cypress": "start-server-and-test webpack:dev http://localhost:3000 cypress"
   },
   "author": "Samokhvalov Vladislav",
   "license": "MIT",
@@ -24,6 +26,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "cypress": "^13.2.0",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.49.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -45,6 +48,7 @@
     "react-error-overlay": "6.0.9",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
+    "start-server-and-test": "^2.0.1",
     "style-loader": "^3.3.3",
     "styled-components": "^6.0.8",
     "uglifyjs-webpack-plugin": "^2.2.0",

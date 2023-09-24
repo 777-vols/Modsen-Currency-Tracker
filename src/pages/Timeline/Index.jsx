@@ -107,10 +107,10 @@ class Timeline extends Component {
         <Container>
           <TimelineWrapper>
             <TimelineSelectWrapper>
-              <TimelineSelect onChange={this.setTimelineCurrency}>
+              <TimelineSelect id="timeline-select" onChange={this.setTimelineCurrency}>
                 {this.selectOptionsList}
               </TimelineSelect>
-              <TimelineModalOpenButton onClick={this.setModalIsOpen}>
+              <TimelineModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
                 Enter your values
               </TimelineModalOpenButton>
             </TimelineSelectWrapper>

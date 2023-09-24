@@ -24,13 +24,14 @@ export const MenuList = styled.ul`
   display: flex;
   justify-content: space-between;
 `;
-export const LinkWrapper = styled.div`
+export const LinkWrapper = styled.li`
   padding: 0 10px;
   @media (max-width: 700px) {
     padding: 0 5px;
   }
 `;
 export const LogoLink = styled(NavLink)`
+  padding: 0 10px;
   cursor: pointer;
 `;
 export const Logo = styled.img`
