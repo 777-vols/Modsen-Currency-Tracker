@@ -1,6 +1,6 @@
 import React from 'react';
 
-import circleImg from '@assets/circleAnimation.svg';
+import circleImg from '@assets/LastUpdateIcons/small.svg';
 import { getLocaleStorageItem } from '@helpers/localeStorageHelpers';
 
 import { CircleAnimation, LastUpadateSpan, LastUpadateWrapper } from './styled';

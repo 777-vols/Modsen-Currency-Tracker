@@ -4,6 +4,7 @@ export const LastUpadateWrapper = styled.div`
   padding: 56px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   @media (max-width: 900px) {
     padding: 30px 0;
   }
@@ -25,11 +26,21 @@ export const LastUpadateSpan = styled.span`
     line-height: 23px;
   }
 `;
+
 export const CircleAnimation = styled.img`
-  @media (max-width: 900px) {
-    width: 30px;
-  }
-  @media (max-width: 500px) {
-    width: 25px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: pulse 3s infinite;
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(50, 205, 50, 0.6);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(50, 205, 50, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(50, 205, 50, 0);
+    }
   }
 `;

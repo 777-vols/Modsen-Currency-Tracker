@@ -32,7 +32,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Currency-tracker',
       template: './public/index.html',
-      favicon: './public/favicon.png'
+      favicon: './public/favicon.svg'
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser'
