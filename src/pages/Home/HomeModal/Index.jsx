@@ -58,7 +58,9 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
               </StyledSelect>
             </SelectBlock>
           </SelectWrapper>
-          <Result>Result: {usdCourse ? convertCurrency() : ''}</Result>
+          <Result>
+            Result: <span id="converter-result">{usdCourse ? convertCurrency() : ''}</span>
+          </Result>
         </ModalWindow>
       </ModalBackground>
     </PortalCreator>

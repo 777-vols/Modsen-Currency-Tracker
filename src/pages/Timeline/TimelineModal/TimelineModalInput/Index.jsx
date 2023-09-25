@@ -18,11 +18,13 @@ class TimelineModalInput extends Component {
       <ModalInputWrapper>
         <ModalInputHeader>Day: {day}</ModalInputHeader>
         <ModalStyledInput
+          id={`high-input-${day}`}
           value={inputValueHigh}
           onChange={this.handleInputHigh}
           placeholder="High price"
         />
         <ModalStyledInput
+          id={`low-input-${day}`}
           value={inputValueLow}
           onChange={this.handleInputLow}
           placeholder="Low price"

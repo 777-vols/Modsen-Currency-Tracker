@@ -20,6 +20,7 @@ export const TimelineSelect = styled.select`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
   font-size: 30px;
+  border-radius: 5px;
   @media (max-width: 900px) {
     font-size: 25px;
   }
