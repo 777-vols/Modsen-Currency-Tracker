@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
+import Loading from '@components/Loading/Index.jsx';
+
+const Layout = lazy(() => import('@components/Layout/Index.jsx'));
 
 function App() {
+  const theme = useSelector((state) => state.themes.currentTheme);
   return (
-    <div>
-      <h1>Curency tracker</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Suspense fallback={<Loading />}>
+        <Layout />
+      </Suspense>
+    </ThemeProvider>
   );
 }
 

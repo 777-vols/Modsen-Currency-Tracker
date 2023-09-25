@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -14,6 +15,7 @@ module.exports = {
     extensions: ['.jsx', '.js', '.scss'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      '@api': path.resolve(__dirname, 'src/api'),
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@constants': path.resolve(__dirname, 'src/constants'),
@@ -30,8 +32,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Currency-tracker',
       template: './public/index.html',
-      favicon: './public/favicon.png'
-    })
+      favicon: './public/favicon.svg'
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    }),
+    new Dotenv()
   ],
   module: {
     rules: [
