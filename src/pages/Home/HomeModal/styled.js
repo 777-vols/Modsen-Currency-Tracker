@@ -20,8 +20,8 @@ export const ModalWindow = styled.div`
   height: 100%;
   border-radius: 20px;
   position: relative;
-  padding: 20px;
-  margin: 20px;
+  padding: 15px;
+  margin: 15px;
 `;
 export const CloseModalButton = styled.button`
   cursor: pointer;
@@ -51,17 +51,17 @@ export const ModalHeader = styled.h5`
   }
 `;
 
-export const SelectWrapper = styled.div`
+export const ModalInner = styled.div`
   padding: 30px 0 20px 0;
   display: flex;
   justify-content: space-around;
 `;
-export const SelectBlock = styled.div`
+export const StyledBlock = styled.div`
   min-width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px;
+  padding: 10px;
   width: 100%;
 `;
 export const SelectSpan = styled.span`
@@ -70,6 +70,7 @@ export const SelectSpan = styled.span`
   color: ${(props) => props.theme.color};
   font-size: 20px;
   white-space: nowrap;
+  border-radius: 5px;
   @media (max-width: 500px) {
     font-size: 18px;
   }
@@ -79,8 +80,14 @@ export const ModalStyledSpan = styled.span`
   font-size: 23px;
   background: rgb(255, 255, 255);
   width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
   @media (max-width: 500px) {
-    font-size: 20px;
+    height: 41px;
+    font-size: 18px;
   }
 `;
 export const ModalStyledInput = styled.input`
@@ -88,8 +95,11 @@ export const ModalStyledInput = styled.input`
   font-size: 23px;
   background: rgb(255, 255, 255);
   width: 100%;
+  height: 44px;
+  border-radius: 5px;
   @media (max-width: 500px) {
-    font-size: 20px;
+    height: 41px;
+    font-size: 18px;
   }
 `;
 export const Result = styled.span`
@@ -103,10 +113,15 @@ export const Result = styled.span`
   }
 `;
 
-export const StyledSelect = styled.select`
+export const StyledSelect = styled.div`
+  font-size: 20px;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
   width: 100%;
-  text-align: center;
-  font-size: 23px;
-  background: rgb(255, 255, 255);
-  max-height: 200px;
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
 `;

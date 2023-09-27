@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 import PortalCreator from '@helpers/createPortalHelper';
 
@@ -7,13 +8,13 @@ import {
   CloseModalButton,
   ModalBackground,
   ModalHeader,
+  ModalInner,
   ModalStyledInput,
   ModalStyledSpan,
   ModalWindow,
   Result,
-  SelectBlock,
   SelectSpan,
-  SelectWrapper,
+  StyledBlock,
   StyledSelect
 } from './styled';
 
@@ -25,39 +26,46 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
     setSumValue(event.target.value);
   }
 
-  function selectorHandler(event) {
-    setConvertToValue(event.target.value);
+  function selectorHandler(selectedOption) {
+    setConvertToValue(selectedOption.value);
   }
+
+  function handleCloseModal() {
+    closeModalWindow();
+    setConvertToValue('usd');
+  }
+
   const convertCurrency = () =>
     ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
 
   if (!isOpen) return null;
   return (
     <PortalCreator wrapperId="home-modal">
-      <ModalBackground>
+      <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
         <ModalWindow>
-          <CloseModalButton onClick={closeModalWindow}>X</CloseModalButton>
+          <CloseModalButton onClick={handleCloseModal}>X</CloseModalButton>
           <ModalHeader>Currency Converter</ModalHeader>
-          <SelectWrapper>
-            <SelectBlock>
+          <ModalInner>
+            <StyledBlock>
               <SelectSpan>Sum</SelectSpan>
               <ModalStyledInput value={sumValue} onChange={handleInputType} />
-            </SelectBlock>
-            <SelectBlock>
+            </StyledBlock>
+            <StyledBlock>
               <SelectSpan>From</SelectSpan>
               <ModalStyledSpan>{convertFromTo.from}</ModalStyledSpan>
-            </SelectBlock>
-            <SelectBlock>
+            </StyledBlock>
+            <StyledSelect>
               <SelectSpan>To</SelectSpan>
-              <StyledSelect value={convertToValue} onChange={selectorHandler}>
-                {allCurrenciesList.map((currencyName) => (
-                  <option key={currencyName} value={currencyName}>
-                    {currencyName}
-                  </option>
-                ))}
-              </StyledSelect>
-            </SelectBlock>
-          </SelectWrapper>
+              <Select
+                onChange={selectorHandler}
+                styles={{ menuPortal: (base) => ({ ...base, fontSize: '20px' }) }}
+                defaultValue={{ value: convertToValue, label: convertToValue }}
+                options={allCurrenciesList.map((currencyName) => ({
+                  value: currencyName,
+                  label: currencyName
+                }))}></Select>
+            </StyledSelect>
+          </ModalInner>
           <Result>
             Result: <span id="converter-result">{usdCourse ? convertCurrency() : ''}</span>
           </Result>

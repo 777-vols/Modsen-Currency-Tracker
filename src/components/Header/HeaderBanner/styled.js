@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const ContentWrapper = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
-  max-width: 1420px;
   background: linear-gradient(45deg, rgba(18, 18, 18, 1) 10%, rgba(36, 121, 64, 0) 100%);
   filter: drop-shadow(rgba(36, 121, 64, 0.7) 0px 0px 0px);
   padding: 32px 0px 58px 45px;
@@ -39,7 +39,7 @@ export const InfoTopPart = styled.h1`
   font-weight: 600;
   font-size: 76px;
 
-  @media (max-width: 1105px) {
+  @media (max-width: 1150px) {
     line-height: 90px;
     font-size: 57px;
   }
@@ -59,7 +59,7 @@ export const InfoBottomPart = styled.h2`
   display: flex;
   justify-content: right;
 
-  @media (max-width: 1105px) {
+  @media (max-width: 1150px) {
     line-height: 100px;
     font-size: 73px;
   }
@@ -89,7 +89,7 @@ export const ContentSpan = styled.span`
   line-height: 46px;
   text-align: center;
   color: rgb(255, 255, 255);
-  @media (max-width: 1105px) {
+  @media (max-width: 1150px) {
     font-size: 20px;
     line-height: 35px;
   }
@@ -108,7 +108,7 @@ export const ContentImage = styled.img`
   height: 100%;
   width: 100%;
   max-width: 313px;
-  @media (max-width: 1105px) {
+  @media (max-width: 1150px) {
     max-width: 245px;
   }
   @media (max-width: 900px) {

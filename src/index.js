@@ -1,23 +1,25 @@
+/* eslint-disable import/no-import-module-exports */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 
+import store from '@store/index.js';
+
+import ErrorBoundary from './components/ErrorBoundary/Index.jsx';
 import App from './App.jsx';
 import Global from './GlobalStyled.js';
-import { BrowserRouter } from 'react-router-dom';
-import ErrorBoundary from './components/ErrorBoundary/Index.jsx';
-import { Provider } from 'react-redux';
-import store from '@store/index.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <ErrorBoundary>
-    <BrowserRouter>
+    <HashRouter>
       <Global />
       <Provider store={store}>
         <App />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   </ErrorBoundary>
 );
 

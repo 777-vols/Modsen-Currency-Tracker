@@ -14,7 +14,7 @@ import {
   InfoWrapper
 } from './styled';
 
-function HeaderContent() {
+function HeaderBanner() {
   return (
     <ContentWrapper>
       <ContentInner>
@@ -33,4 +33,4 @@ function HeaderContent() {
   );
 }
 
-export default HeaderContent;
+export default HeaderBanner;

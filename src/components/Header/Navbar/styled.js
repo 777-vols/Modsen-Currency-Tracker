@@ -6,7 +6,7 @@ export const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 100px 0 50px;
+  padding: 0 50px;
   @media (max-width: 750px) {
     padding: 0 15px 0 10px;
     height: 50px;

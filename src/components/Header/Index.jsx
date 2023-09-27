@@ -1,19 +1,15 @@
 import React from 'react';
 
-import { Container } from '../../styled';
-
-import HeaderContent from './HeaderContent/Index';
+import HeaderBanner from './HeaderBanner/Index';
 import LastUpadate from './LastUpdate/Index';
 import Navbar from './Navbar/Index';
 
 function Header() {
   return (
-    <header>
-      <Container>
-        <Navbar />
-        <HeaderContent />
-        <LastUpadate />
-      </Container>
+    <header style={{ position: 'relative' }}>
+      <Navbar />
+      <HeaderBanner />
+      <LastUpadate />
     </header>
   );
 }
