@@ -5,7 +5,9 @@ import { AnswerFullname, AnswerShortName, AnswerWrapper } from './styled';
 
 class SerachAnswer extends Component {
   handleClick = () => {
-    this.props.handleClick(this.props.shortName);
+    if (this.props.fullName) {
+      this.props.handleClick(this.props.shortName);
+    }
   };
 
   render() {

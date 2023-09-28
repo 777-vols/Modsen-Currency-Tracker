@@ -13,6 +13,6 @@ export const ModalInputHeader = styled.span`
 `;
 export const ModalStyledInput = styled.input`
   font-size: 13px;
-  color: ${(props) => props.theme.background};
+  color: rgb(3, 3, 4);
   width: 100%;
 `;

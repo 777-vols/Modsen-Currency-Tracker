@@ -16,11 +16,13 @@ export const AnswerWrapper = styled.div`
   }
 `;
 export const AnswerFullname = styled.span`
+  color: rgb(158, 158, 158);
   font-size: 22px;
   @media (max-width: 600px) {
     top: 18px;
   }
 `;
 export const AnswerShortName = styled.span`
+  color: rgb(158, 158, 158);
   font-size: 15px;
 `;

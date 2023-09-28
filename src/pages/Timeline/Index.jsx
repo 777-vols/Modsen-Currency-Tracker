@@ -46,8 +46,10 @@ class Timeline extends Component {
 
   setModalInputsDataLow = (day, value) => {
     if (
+      !Number.isFinite(Number(value)) ||
+      (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
       this.state.modalInputsData[day] === undefined ||
-      +this.state.modalInputsData[day].highPrice < +value
+      Number(this.state.modalInputsData[day].highPrice) < Number(value)
     ) {
       return;
     }
@@ -60,6 +62,11 @@ class Timeline extends Component {
   };
 
   setModalInputsDataHigh = (day, value) => {
+    if (
+      !Number.isFinite(Number(value)) ||
+      (value.length > 1 && Number(value) === 0 && !value.includes('.'))
+    )
+      return;
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
@@ -72,6 +79,13 @@ class Timeline extends Component {
     this.setState((prevState) => ({
       modalIsOpen: !prevState.modalIsOpen
     }));
+  };
+
+  clearAllInputsValues = () => {
+    this.setState({ modalInputsData: {} });
+  };
+
+  createSheduleHandler = () => {
     if (
       Object.values(this.state.modalInputsData).filter((value) => value !== '').length === 30 &&
       this.state.modalIsOpen
@@ -79,7 +93,10 @@ class Timeline extends Component {
       this.notifyAll();
     }
     if (this.state.modalIsOpen) {
-      this.setState((prevState) => ({ sheduleData: { ...prevState.modalInputsData } }));
+      this.setState((prevState) => ({
+        sheduleData: { ...prevState.modalInputsData },
+        modalIsOpen: false
+      }));
     }
   };
 
@@ -132,6 +149,8 @@ class Timeline extends Component {
         <TimelineModal
           isOpen={this.state.modalIsOpen}
           closeModalWindow={this.setModalIsOpen}
+          clearAllInputsValues={this.clearAllInputsValues}
+          createSheduleHandler={this.createSheduleHandler}
           handleInputLow={this.setModalInputsDataLow}
           handleInputHigh={this.setModalInputsDataHigh}
           inputsData={this.state.modalInputsData}

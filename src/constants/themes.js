@@ -1,6 +1,6 @@
 const themes = {
   light: {
-    background: 'rgb(217, 217, 217)',
+    background: 'rgb(236 236 236)',
     color: 'rgb(3, 3, 4)'
   },
   dark: {

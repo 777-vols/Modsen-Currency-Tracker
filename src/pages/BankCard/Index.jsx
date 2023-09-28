@@ -50,7 +50,11 @@ class BankCard extends Component {
           return currency;
         return null;
       });
-      this.setState({ searchAnswers: answers });
+      if (answers.length === 0) {
+        this.setState({ searchAnswers: [{ fullName: '', shortName: 'Nothing found...' }] });
+      } else {
+        this.setState({ searchAnswers: answers });
+      }
     } else {
       this.setState({ searchAnswers: [] });
     }

@@ -32,6 +32,7 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
 
   function handleCloseModal() {
     closeModalWindow();
+    setSumValue('1');
     setConvertToValue('usd');
   }
 

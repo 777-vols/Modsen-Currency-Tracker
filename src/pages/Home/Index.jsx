@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import getCurrenciesList from '@api/apiRequests';
-import CurrencyCard from '@components/СurrencyСard/Index';
 import currencyCardsData from '@constants/currencyCardsData.js';
 import {
   clearLocaleStorage,
@@ -12,6 +11,7 @@ import {
 import { Container } from '../../styled';
 
 import Modal from './HomeModal/Index';
+import CurrencyCard from './СurrencyСard/Index';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
 
 function Home() {

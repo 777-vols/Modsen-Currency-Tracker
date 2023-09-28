@@ -2,11 +2,15 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import PortalCreator from '@helpers/createPortalHelper';
-
-import { CloseModalButton, ModalBackground } from '../../Home/HomeModal/styled';
+import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
 
 import TimelineModalInput from './TimelineModalInput/Index';
-import { TimelineModalInputsWrapper, TimelineModalWindow } from './styled';
+import {
+  ButtonsWrapper,
+  ModalButton,
+  TimelineModalInputsWrapper,
+  TimelineModalWindow
+} from './styled';
 
 class TimelineModal extends PureComponent {
   handleInputLow = (day, value) => {
@@ -38,7 +42,7 @@ class TimelineModal extends PureComponent {
   render() {
     const inputsArray = this.inputsMaper();
 
-    const { isOpen, closeModalWindow } = this.props;
+    const { isOpen, closeModalWindow, clearAllInputsValues, createSheduleHandler } = this.props;
 
     if (!isOpen) return null;
     return (
@@ -49,6 +53,10 @@ class TimelineModal extends PureComponent {
               X
             </CloseModalButton>
             <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
+            <ButtonsWrapper>
+              <ModalButton onClick={clearAllInputsValues}>Clear all values</ModalButton>
+              <ModalButton onClick={createSheduleHandler}>Create shedule</ModalButton>
+            </ButtonsWrapper>
           </TimelineModalWindow>
         </ModalBackground>
       </PortalCreator>
@@ -61,6 +69,8 @@ export default TimelineModal;
 TimelineModal.propTypes = {
   isOpen: PropTypes.bool,
   closeModalWindow: PropTypes.func,
+  clearAllInputsValues: PropTypes.func,
+  createSheduleHandler: PropTypes.func,
   handleInputLow: PropTypes.func,
   handleInputHigh: PropTypes.func,
   inputsData: PropTypes.object

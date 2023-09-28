@@ -80,13 +80,13 @@ export const ModalStyledSpan = styled.span`
   font-size: 23px;
   background: rgb(255, 255, 255);
   width: 100%;
-  height: 44px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   @media (max-width: 500px) {
-    height: 41px;
+    height: 40px;
     font-size: 18px;
   }
 `;
@@ -95,18 +95,21 @@ export const ModalStyledInput = styled.input`
   font-size: 23px;
   background: rgb(255, 255, 255);
   width: 100%;
-  height: 44px;
+  height: 46px;
   border-radius: 5px;
   @media (max-width: 500px) {
-    height: 41px;
+    height: 40px;
     font-size: 18px;
   }
 `;
-export const Result = styled.span`
+export const Result = styled.div`
+  white-space: nowrap;
+  overflow: auto;
   text-align: center;
   color: ${(props) => props.theme.color};
   font-size: 30px;
-  padding: 0px 0px 20px 30px;
+  margin-bottom: 20px;
+  overflow: auto;
   @media (max-width: 500px) {
     margin-left: 25px;
     font-size: 25px;
@@ -114,7 +117,7 @@ export const Result = styled.span`
 `;
 
 export const StyledSelect = styled.div`
-  font-size: 20px;
+  font-size: 23px;
   min-width: 130px;
   display: flex;
   flex-direction: column;
