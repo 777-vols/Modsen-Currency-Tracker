@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import searchImg from '@assets/search-normal.svg';
 import banksList from '@constants/banksList';
 import currencyCardsData from '@constants/currencyCardsData';

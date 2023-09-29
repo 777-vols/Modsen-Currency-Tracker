@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { getLocaleStorageItem, setLocaleStorageItem } from '@helpers/localeStorageHelpers';
 import { toggleTheme } from '@store/slices/ThemeSlice';
 

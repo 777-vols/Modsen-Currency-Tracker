@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 import PortalCreator from '@helpers/createPortalHelper';
+import PropTypes from 'prop-types';
 
 import { NotificationSpan, NotificationWrapper } from './styled';
 

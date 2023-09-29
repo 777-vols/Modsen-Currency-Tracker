@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Map, { Marker } from 'react-map-gl';
-
 import { mapSettings, mapStyles } from '@constants/mapConstants';
+import PropTypes from 'prop-types';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 

@@ -8,7 +8,7 @@ export const TimelineModalWindow = styled.div`
   background: ${(props) => props.theme.background};
   max-width: 1050px;
   width: 100%;
-  max-height: 530px;
+  max-height: 550px;
   height: 100%;
   border-radius: 20px;
   position: relative;
@@ -16,8 +16,46 @@ export const TimelineModalWindow = styled.div`
   margin: 25px;
 `;
 
+export const WarningSpan = styled.span`
+  color: rgb(255, 0, 0);
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  font-size: 13px;
+`;
+export const InfoButton = styled.button`
+  cursor: pointer;
+  color: ${(props) => props.theme.color};
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border-radius: 30px;
+  font-size: 20px;
+  border: 2px solid ${(props) => props.theme.color};
+  position: absolute;
+  right: 15px;
+  top: 60px;
+  transition: 0.2s;
+
+  &:hover {
+    background: rgb(255, 0, 0, 0.5);
+  }
+`;
+export const ModalInfoWrapper = styled.span`
+  padding: 20px;
+  background-color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.background};
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  margin-right: 80px;
+  max-width: 800px;
+`;
+export const ModalInfoSpan = styled.span`
+  font-size: 15px;
+`;
 export const TimelineModalInputsWrapper = styled.div`
-  max-height: 430px;
+  max-height: 450px;
   margin-right: 40px;
   display: flex;
   flex-wrap: wrap;

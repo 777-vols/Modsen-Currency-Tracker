@@ -1,18 +1,32 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-
 import PortalCreator from '@helpers/createPortalHelper';
 import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
+import PropTypes, { bool } from 'prop-types';
 
 import TimelineModalInput from './TimelineModalInput/Index';
 import {
   ButtonsWrapper,
+  InfoButton,
   ModalButton,
+  ModalInfoSpan,
+  ModalInfoWrapper,
   TimelineModalInputsWrapper,
-  TimelineModalWindow
+  TimelineModalWindow,
+  WarningSpan
 } from './styled';
 
 class TimelineModal extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      descriptionIsOpen: false
+    };
+  }
+
+  descriptionIsOpenHandler = () => {
+    this.setState((prevState) => ({ descriptionIsOpen: !prevState.descriptionIsOpen }));
+  };
+
   handleInputLow = (day, value) => {
     this.props.handleInputLow(day, value);
   };
@@ -23,13 +37,13 @@ class TimelineModal extends PureComponent {
 
   inputsMaper = () => {
     const inputsArray = [];
-    for (let i = 1; i <= 30; i += 1) {
+    for (let day = 1; day <= 30; day += 1) {
       inputsArray.push(
         <TimelineModalInput
-          key={i}
-          day={i}
-          inputValueLow={this.props.inputsData[i]?.lowPrice ?? ''}
-          inputValueHigh={this.props.inputsData[i]?.highPrice ?? ''}
+          key={day}
+          day={day}
+          inputValueLow={this.props.inputsData[day]?.lowPrice ?? ''}
+          inputValueHigh={this.props.inputsData[day]?.highPrice ?? ''}
           handleInputLow={this.handleInputLow}
           handleInputHigh={this.handleInputHigh}
           handleInput={this.handleInput}
@@ -42,16 +56,33 @@ class TimelineModal extends PureComponent {
   render() {
     const inputsArray = this.inputsMaper();
 
-    const { isOpen, closeModalWindow, clearAllInputsValues, createSheduleHandler } = this.props;
+    const { warningIsActive, closeModalWindow, clearAllInputsValues, createSheduleHandler } =
+      this.props;
 
-    if (!isOpen) return null;
     return (
       <PortalCreator wrapperId="timeline-modal">
         <ModalBackground>
           <TimelineModalWindow>
+            {warningIsActive && <WarningSpan>Please follow all rules!</WarningSpan>}
             <CloseModalButton id="chart-modal-close" onClick={closeModalWindow}>
               X
             </CloseModalButton>
+            <InfoButton onClick={this.descriptionIsOpenHandler}>?</InfoButton>
+            {this.state.descriptionIsOpen && (
+              <ModalInfoWrapper>
+                <ModalInfoSpan>
+                  *Enter values between 100 and 10000 for 30 days to successfully create a graph.
+                  <br />
+                  *The high price value is filled in first.
+                  <br />
+                  *The highest price must be higher than the lowest.
+                  <br />
+                  *All fields must be completed.
+                  <br />
+                  *To create a schedule, all rules must be followed!!!.
+                </ModalInfoSpan>
+              </ModalInfoWrapper>
+            )}
             <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
             <ButtonsWrapper>
               <ModalButton onClick={clearAllInputsValues}>Clear all values</ModalButton>
@@ -67,7 +98,7 @@ class TimelineModal extends PureComponent {
 export default TimelineModal;
 
 TimelineModal.propTypes = {
-  isOpen: PropTypes.bool,
+  warningIsActive: PropTypes.bool,
   closeModalWindow: PropTypes.func,
   clearAllInputsValues: PropTypes.func,
   createSheduleHandler: PropTypes.func,

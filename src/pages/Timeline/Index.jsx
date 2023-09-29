@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import currencyCardsData from '@constants/currencyCardsData';
 
 import { Container } from '../../styled';
@@ -26,7 +25,8 @@ class Timeline extends Component {
       modalInputsData: {},
       sheduleData: {},
       modalIsOpen: false,
-      listeners: []
+      listeners: [],
+      warningIsActive: false
     };
   }
 
@@ -49,7 +49,10 @@ class Timeline extends Component {
       !Number.isFinite(Number(value)) ||
       (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
       this.state.modalInputsData[day] === undefined ||
-      Number(this.state.modalInputsData[day].highPrice) < Number(value)
+      (Number(this.state.modalInputsData[day].highPrice) <= Number(value) &&
+        Number(this.state.modalInputsData[day].lowPrice) < Number(value)) ||
+      Number(value < 0) ||
+      Number(value > 10000)
     ) {
       return;
     }
@@ -64,7 +67,9 @@ class Timeline extends Component {
   setModalInputsDataHigh = (day, value) => {
     if (
       !Number.isFinite(Number(value)) ||
-      (value.length > 1 && Number(value) === 0 && !value.includes('.'))
+      (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
+      Number(value < 0) ||
+      Number(value > 10000)
     )
       return;
     this.setState((prevState) => ({
@@ -86,17 +91,26 @@ class Timeline extends Component {
   };
 
   createSheduleHandler = () => {
-    if (
-      Object.values(this.state.modalInputsData).filter((value) => value !== '').length === 30 &&
-      this.state.modalIsOpen
-    ) {
+    const correctInputsForDay = Object.values(this.state.modalInputsData).filter((value) => {
+      const dayValuesArray = Object.values(value);
+      if (
+        dayValuesArray[0] !== '' &&
+        dayValuesArray[1] !== '' &&
+        Number(dayValuesArray[1] >= 100)
+      ) {
+        return value;
+      }
+      return null;
+    });
+    if (this.state.modalIsOpen && correctInputsForDay.length === 1) {
       this.notifyAll();
-    }
-    if (this.state.modalIsOpen) {
       this.setState((prevState) => ({
         sheduleData: { ...prevState.modalInputsData },
         modalIsOpen: false
       }));
+    } else {
+      this.setState({ warningIsActive: true });
+      setTimeout(() => this.setState({ warningIsActive: false }), 3000);
     }
   };
 
@@ -146,15 +160,17 @@ class Timeline extends Component {
             </TimelineScheduleWrapper>
           </TimelineWrapper>
         </Container>
-        <TimelineModal
-          isOpen={this.state.modalIsOpen}
-          closeModalWindow={this.setModalIsOpen}
-          clearAllInputsValues={this.clearAllInputsValues}
-          createSheduleHandler={this.createSheduleHandler}
-          handleInputLow={this.setModalInputsDataLow}
-          handleInputHigh={this.setModalInputsDataHigh}
-          inputsData={this.state.modalInputsData}
-        />
+        {this.state.modalIsOpen && (
+          <TimelineModal
+            warningIsActive={this.state.warningIsActive}
+            closeModalWindow={this.setModalIsOpen}
+            clearAllInputsValues={this.clearAllInputsValues}
+            createSheduleHandler={this.createSheduleHandler}
+            handleInputLow={this.setModalInputsDataLow}
+            handleInputHigh={this.setModalInputsDataHigh}
+            inputsData={this.state.modalInputsData}
+          />
+        )}
       </section>
     );
   }

@@ -22,17 +22,15 @@
       "error",
       {
         "groups": [
-          ["^react$", "^next", "^[a-z]"],
-          ["^@"],
-          ["^~"],
+          ["^react", "^@?\\w"],
+          ["^(@|components)(/.*|$)"],
+          ["^\\u0000"],
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-          ["^.+\\.s?css$"],
-          ["^\\u0000"]
+          ["^.+\\.?(css)$"]
         ]
       }
     ],
-    "no-param-reassign": [2, { "props": false }],
     "no-unused-vars": "warn",
     "no-console": "warn",
     "prefer-const": "error",
@@ -47,6 +45,15 @@
     "prettier/prettier": ["error",{
       "endOfLine": "auto"}
     ],
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": [
+      "error",
+      {"devDependencies": true}
+    ],
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": [
+        "state"
+      ]
+    }]
   }
 }

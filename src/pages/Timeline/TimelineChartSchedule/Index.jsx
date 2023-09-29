@@ -1,4 +1,7 @@
 import React, { PureComponent } from 'react';
+import { Bar } from 'react-chartjs-2';
+import barOptions from '@constants/chartBarOptions';
+import parseDataForSchedule from '@helpers/parseDataForShedule';
 import {
   BarElement,
   CategoryScale,
@@ -9,10 +12,6 @@ import {
   Tooltip
 } from 'chart.js';
 import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
-
-import barOptions from '@constants/chartBarOptions';
-import parseDataForSchedule from '@helpers/parseDataForShedule';
 
 import Notification from '../Notification/Index';
 

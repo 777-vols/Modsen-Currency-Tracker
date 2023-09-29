@@ -1,5 +1,4 @@
 import React from 'react';
-
 import circleImg from '@assets/LastUpdateIcons/small.svg';
 import { getLocaleStorageItem } from '@helpers/localeStorageHelpers';
 

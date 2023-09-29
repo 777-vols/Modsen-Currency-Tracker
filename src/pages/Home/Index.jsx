@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-
 import getCurrenciesList from '@api/apiRequests';
 import currencyCardsData from '@constants/currencyCardsData.js';
 import {

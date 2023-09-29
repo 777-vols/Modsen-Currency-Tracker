@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Footer from '@components/Footer/Index.jsx';
 import Header from '@components/Header/Index.jsx';
 

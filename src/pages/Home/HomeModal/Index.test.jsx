@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { allCurrenciesListMock, usdCourseMock } from '@constants/currenciesMock';
 import { render, screen } from '@testing-library/react';
 
