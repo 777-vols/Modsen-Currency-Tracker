@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import PortalCreator from '@helpers/createPortalHelper';
+import PortalCreator from '@components/PortalCreator/PortalCreator';
 import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
-import PropTypes, { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import TimelineModalInput from './TimelineModalInput/Index';
 import {

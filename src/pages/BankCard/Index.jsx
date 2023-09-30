@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import searchImg from '@assets/search-normal.svg';
+import searchImg from '@assets/searchIcon.svg';
 import banksList from '@constants/banksList';
 import currencyCardsData from '@constants/currencyCardsData';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
 import BankCardMap from './BankCardMap/Index';
 import SerachAnswer from './SearchAnswer/Index';

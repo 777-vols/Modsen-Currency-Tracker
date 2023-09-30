@@ -1,11 +1,10 @@
-/* eslint-disable import/no-import-module-exports */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
+import ErrorBoundary from '@components/ErrorBoundary/Index.jsx';
 import store from '@store/index.js';
 
-import ErrorBoundary from './components/ErrorBoundary/Index.jsx';
 import App from './App.jsx';
 import Global from './GlobalStyled.js';
 
@@ -22,6 +21,6 @@ root.render(
   </ErrorBoundary>
 );
 
-if ('development' && module && module.hot) {
-  module.hot.accept();
+if ('development' && import.meta.webpackHot) {
+  import.meta.webpackHot.accept();
 }

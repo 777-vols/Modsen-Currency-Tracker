@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import PortalCreator from '@helpers/createPortalHelper';
-import PropTypes from 'prop-types';
+import PortalCreator from '@components/PortalCreator/PortalCreator';
 
 import { NotificationSpan, NotificationWrapper } from './styled';
 
 class Notification extends Component {
   render() {
-    if (!this.props.isOpen) return null;
     return (
       <PortalCreator wrapperId="timeline-notification">
         <NotificationWrapper id="timeline-notification">
@@ -16,9 +14,5 @@ class Notification extends Component {
     );
   }
 }
-
-Notification.propTypes = {
-  isOpen: PropTypes.bool
-};
 
 export default Notification;

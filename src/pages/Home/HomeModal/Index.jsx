@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import PortalCreator from '@helpers/createPortalHelper';
+import PortalCreator from '@components/PortalCreator/PortalCreator';
 import PropTypes from 'prop-types';
 
 import {
@@ -17,7 +17,7 @@ import {
   StyledSelect
 } from './styled';
 
-function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }) {
+function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }) {
   const [sumValue, setSumValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState('usd');
 
@@ -38,7 +38,6 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
   const convertCurrency = () =>
     ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
 
-  if (!isOpen) return null;
   return (
     <PortalCreator wrapperId="home-modal">
       <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
@@ -75,7 +74,6 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
 }
 
 Modal.propTypes = {
-  isOpen: PropTypes.bool,
   closeModalWindow: PropTypes.func,
   convertFromTo: PropTypes.object,
   allCurrenciesList: PropTypes.array,

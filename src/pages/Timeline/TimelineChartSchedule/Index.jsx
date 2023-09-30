@@ -67,7 +67,7 @@ class TimelineChartSchedule extends PureComponent {
     return (
       <>
         <Bar data={scheduleData} options={barOptions} />
-        <Notification isOpen={this.state.isNotificationActive} />
+        {this.state.isNotificationActive && <Notification />}
       </>
     );
   }

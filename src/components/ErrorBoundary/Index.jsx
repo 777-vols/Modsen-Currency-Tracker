@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Global from '../../GlobalStyled';
+import Global from '@/GlobalStyled';
 
 import { ErrorPage, ErrorPageWrapper } from './styled';
 

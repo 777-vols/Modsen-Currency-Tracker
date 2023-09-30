@@ -22,7 +22,8 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@store': path.resolve(__dirname, 'src/store'),
       '@utils': path.resolve(__dirname, 'src/utils'),
-      '@helpers': path.resolve(__dirname, 'src/helpers')
+      '@helpers': path.resolve(__dirname, 'src/helpers'),
+      '@hooks': path.resolve(__dirname, 'src/hooks')
     }
   },
   plugins: [

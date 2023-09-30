@@ -3,6 +3,8 @@ import Map, { Marker } from 'react-map-gl';
 import { mapSettings, mapStyles } from '@constants/mapConstants';
 import PropTypes from 'prop-types';
 
+import envVariables from '@/constants/envVariables';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 class BankCardMap extends PureComponent {
@@ -14,7 +16,7 @@ class BankCardMap extends PureComponent {
       <Map
         initialViewState={mapSettings}
         mapStyle={mapStyles}
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}>
+        mapboxAccessToken={envVariables.mapboxApiKey}>
         {markers}
       </Map>
     );

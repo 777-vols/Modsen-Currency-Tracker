@@ -3,7 +3,7 @@ import Select from 'react-select';
 import currencyCardsData from '@constants/currencyCardsData';
 import themes from '@constants/themes';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
 import TimelineChartSchedule from './TimelineChartSchedule/Index';
 import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
@@ -135,17 +135,24 @@ class Timeline extends Component {
   );
 
   colourStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: 'transparent', color: 'inherit' }),
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: 'transparent',
+      color: 'inherit',
+      cursor: 'pointer'
+    }),
     option: (styles) => {
       const styleObject = {
         ...styles,
-        color: themes.light.color
+        color: themes.light.color,
+        cursor: 'pointer'
       };
       return styleObject;
     },
     singleValue: (provided) => ({
       ...provided,
-      color: 'inherit'
+      color: 'inherit',
+      cursor: 'pointer'
     })
   };
 

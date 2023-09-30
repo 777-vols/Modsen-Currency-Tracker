@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '@assets/logo.svg';
+import urls from '@constants/urls';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
 import MobileFooterMenu from './MobileFooterMenu/Index';
 import {
@@ -43,10 +44,10 @@ function Footer() {
                 <FooterMenuSpan>General</FooterMenuSpan>
                 <FooterMenuList>
                   <li>
-                    <ListItem>Market</ListItem>
+                    <ListItem to={urls.market}>Market</ListItem>
                   </li>
                   <li>
-                    <ListItem>Service</ListItem>
+                    <ListItem to={urls.market}>Service</ListItem>
                   </li>
                 </FooterMenuList>
               </FooterMenuItem>
@@ -54,10 +55,10 @@ function Footer() {
                 <FooterMenuSpan>Product</FooterMenuSpan>
                 <FooterMenuList>
                   <li>
-                    <ListItem>Sparks</ListItem>
+                    <ListItem to={urls.market}>Sparks</ListItem>
                   </li>
                   <li>
-                    <ListItem>Snaps</ListItem>
+                    <ListItem to={urls.market}>Snaps</ListItem>
                   </li>
                 </FooterMenuList>
               </FooterMenuItem>
@@ -65,10 +66,10 @@ function Footer() {
                 <FooterMenuSpan>Community</FooterMenuSpan>
                 <FooterMenuList>
                   <li>
-                    <ListItem>Ideas</ListItem>
+                    <ListItem to={urls.market}>Ideas</ListItem>
                   </li>
                   <li>
-                    <ListItem>Streams</ListItem>
+                    <ListItem to={urls.market}>Streams</ListItem>
                   </li>
                 </FooterMenuList>
               </FooterMenuItem>

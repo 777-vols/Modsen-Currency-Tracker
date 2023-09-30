@@ -1,7 +1,7 @@
 import React from 'react';
-import * as urls from '@constants/urls';
+import urls from '@constants/urls';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
 import { LinkWrapper, PageNotFoundHeader, PageNotFoundLink } from './styled';
 

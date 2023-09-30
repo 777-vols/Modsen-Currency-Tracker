@@ -1,14 +1,14 @@
-import audImg from '@assets/Currencies/Australian Dollar Icon.svg';
-import btcImg from '@assets/Currencies/Bitcoin Icon.svg';
-import biImg from '@assets/Currencies/Bovespa Icon.svg';
-import cadImg from '@assets/Currencies/Canadian Dollar Icon.svg';
-import usdImg from '@assets/Currencies/Dollar Icon.svg';
-import euroImg from '@assets/Currencies/Euro Icon.svg';
-import ifixImg from '@assets/Currencies/IFIX.svg';
-import gpbImg from '@assets/Currencies/Libra Icon.svg';
-import arsImg from '@assets/Currencies/Peso Argentino Icon.svg';
-import cnyImg from '@assets/Currencies/Won Icon.svg';
-import jpyImg from '@assets/Currencies/Yen Icon.svg';
+import audImg from '@assets/Currencies/australianDollarIcon.svg';
+import btcImg from '@assets/Currencies/bitcoinIcon.svg';
+import biImg from '@assets/Currencies/bovespaIcon.svg';
+import cadImg from '@assets/Currencies/canadianDollarIcon.svg';
+import usdImg from '@assets/Currencies/dollarIcon.svg';
+import euroImg from '@assets/Currencies/euroIcon.svg';
+import ifixImg from '@assets/Currencies/ifixIcon.svg';
+import gpbImg from '@assets/Currencies/libraIcon.svg';
+import arsImg from '@assets/Currencies/pesoArgentinoIcon.svg';
+import cnyImg from '@assets/Currencies/wonIcon.svg';
+import jpyImg from '@assets/Currencies/yenIcon.svg';
 
 const currencyCardsData = {
   quotesCards: {

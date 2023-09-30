@@ -1,9 +1,11 @@
-import * as urls from '@constants/urls';
+import urls from '@constants/urls';
 import BankCard from '@pages/BankCard/Index';
 import Contact from '@pages/Contact/Index';
 import Home from '@pages/Home/Index';
 import PageNotFound from '@pages/PageNotFound/Index';
 import Timeline from '@pages/Timeline/Index';
+
+import MarketPage from '@/pages/MarketPage/Index';
 
 const routesConfig = [
   {
@@ -25,6 +27,10 @@ const routesConfig = [
   {
     path: urls.notFound,
     Component: PageNotFound
+  },
+  {
+    path: urls.market,
+    Component: MarketPage
   }
 ];
 

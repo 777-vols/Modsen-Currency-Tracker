@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FooterWrapper = styled.div`
@@ -92,7 +93,7 @@ export const FooterMenuSpan = styled.span`
   }
 `;
 export const FooterMenuList = styled.ul``;
-export const ListItem = styled.span`
+export const ListItem = styled(NavLink)`
   display: block;
   color: rgb(137, 137, 137);
   font-size: 24px;
@@ -102,6 +103,9 @@ export const ListItem = styled.span`
     display: flex;
     justify-content: center;
   }
+  &:hover {
+    color: ${(props) => props.theme.color};
+  }
 `;
 export const FooterSpan = styled.div`
   padding: 55px 0 40px 0;
@@ -109,6 +113,7 @@ export const FooterSpan = styled.div`
   display: flex;
   justify-content: center;
   font-size: 24px;
+  transition: 0.2s;
   @media (max-width: 1050px) {
     font-size: 15px;
     padding: 36px 0 20px 0;

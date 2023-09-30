@@ -7,7 +7,7 @@ import {
   setLocaleStorageItem
 } from '@helpers/localeStorageHelpers';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
 import Modal from './HomeModal/Index';
 import CurrencyCard from './СurrencyСard/Index';
@@ -109,13 +109,14 @@ function Home() {
           </Quotes>
         </HomeWrapper>
       </Container>
-      <Modal
-        convertFromTo={currentExchangeCurrencies.current}
-        allCurrenciesList={currenciesList}
-        usdCourse={apiCurrenciesData.usd}
-        isOpen={isOpenModal}
-        closeModalWindow={openCloseModal}
-      />
+      {isOpenModal && (
+        <Modal
+          convertFromTo={currentExchangeCurrencies.current}
+          allCurrenciesList={currenciesList}
+          usdCourse={apiCurrenciesData.usd}
+          closeModalWindow={openCloseModal}
+        />
+      )}
     </section>
   );
 }
