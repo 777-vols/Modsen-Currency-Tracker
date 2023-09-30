@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 import currencyCardsData from '@constants/currencyCardsData';
+import themes from '@constants/themes';
 
 import { Container } from '../../styled';
 
@@ -7,11 +9,10 @@ import TimelineChartSchedule from './TimelineChartSchedule/Index';
 import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
 import TimelineModal from './TimelineModal/Index';
 import {
-  SelectOption,
   TimelineModalOpenButton,
+  TimelinePanelWrapper,
   TimelineSchedule,
   TimelineScheduleWrapper,
-  TimelineSelect,
   TimelineSelectWrapper,
   TimelineWrapper
 } from './styled';
@@ -102,7 +103,7 @@ class Timeline extends Component {
       }
       return null;
     });
-    if (this.state.modalIsOpen && correctInputsForDay.length === 1) {
+    if (this.state.modalIsOpen && correctInputsForDay.length === 30) {
       this.notifyAll();
       this.setState((prevState) => ({
         sheduleData: { ...prevState.modalInputsData },
@@ -114,10 +115,10 @@ class Timeline extends Component {
     }
   };
 
-  setTimelineCurrency = (event) => {
+  setTimelineCurrency = (selectedOption) => {
     this.setState({
-      currentTimelineCurrency: event.target.value,
-      timelineCurrencyCard: currencyCardsData.quotesCards[event.target.value],
+      currentTimelineCurrency: selectedOption.value,
+      timelineCurrencyCard: currencyCardsData.quotesCards[selectedOption.value],
       modalInputsData: {}
     });
   };
@@ -125,26 +126,47 @@ class Timeline extends Component {
   selectOptionsList = Object.keys(currencyCardsData.quotesCards).reduce(
     (accum, element) => [
       ...accum,
-      <SelectOption key={element} value={element}>
-        {currencyCardsData.quotesCards[element].name}
-      </SelectOption>
+      {
+        value: element,
+        label: currencyCardsData.quotesCards[element].name
+      }
     ],
     []
   );
+
+  colourStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: 'transparent', color: 'inherit' }),
+    option: (styles) => {
+      const styleObject = {
+        ...styles,
+        color: themes.light.color
+      };
+      return styleObject;
+    },
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'inherit'
+    })
+  };
 
   render() {
     return (
       <section>
         <Container>
           <TimelineWrapper>
-            <TimelineSelectWrapper>
-              <TimelineSelect id="timeline-select" onChange={this.setTimelineCurrency}>
-                {this.selectOptionsList}
-              </TimelineSelect>
+            <TimelinePanelWrapper>
+              <TimelineSelectWrapper>
+                <Select
+                  id="timeline-select"
+                  styles={this.colourStyles}
+                  onChange={this.setTimelineCurrency}
+                  defaultValue={this.selectOptionsList[0]}
+                  options={this.selectOptionsList}></Select>
+              </TimelineSelectWrapper>
               <TimelineModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
                 Enter your values
               </TimelineModalOpenButton>
-            </TimelineSelectWrapper>
+            </TimelinePanelWrapper>
             <TimelineScheduleWrapper>
               <TimeLineCurrencyCard
                 currencyShortName={this.state.currentTimelineCurrency}

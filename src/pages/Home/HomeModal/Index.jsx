@@ -58,7 +58,6 @@ function Modal({ isOpen, closeModalWindow, convertFromTo, allCurrenciesList, usd
               <SelectSpan>To</SelectSpan>
               <Select
                 onChange={selectorHandler}
-                styles={{ menuPortal: (base) => ({ ...base, fontSize: '20px' }) }}
                 defaultValue={{ value: convertToValue, label: convertToValue }}
                 options={allCurrenciesList.map((currencyName) => ({
                   value: currencyName,

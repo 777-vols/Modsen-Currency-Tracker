@@ -5,22 +5,19 @@ export const TimelineWrapper = styled.div`
   max-width: 1206px;
   width: 100%;
 `;
-export const TimelineSelectWrapper = styled.div`
+export const TimelinePanelWrapper = styled.div`
+  color: ${(props) => props.theme.color};
   display: flex;
   align-items: center;
   @media (max-width: 600px) {
     flex-direction: column;
   }
 `;
-export const TimelineSelect = styled.select`
-  cursor: pointer;
-  max-width: 300px;
+export const TimelineSelectWrapper = styled.div`
+  max-width: 330px;
   width: 100%;
   height: 51px;
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color};
   font-size: 30px;
-  border-radius: 5px;
   @media (max-width: 900px) {
     font-size: 25px;
   }
@@ -28,6 +25,19 @@ export const TimelineSelect = styled.select`
     max-width: 250px;
     font-size: 18px;
     margin-bottom: 20px;
+  }
+`;
+export const SelectOption = styled.option`
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
+  font-size: 20px;
+  max-width: 300px;
+  @media (max-width: 900px) {
+    font-size: 17px;
+  }
+  @media (max-width: 600px) {
+    max-width: 250px;
+    font-size: 14px;
   }
 `;
 export const TimelineModalOpenButton = styled.button`
@@ -45,17 +55,6 @@ export const TimelineModalOpenButton = styled.button`
     border: 1px solid rgb(22, 218, 12);
     color: rgb(22, 218, 12);
   }
-  @media (max-width: 900px) {
-    font-size: 17px;
-  }
-  @media (max-width: 600px) {
-    font-size: 14px;
-  }
-`;
-export const SelectOption = styled.option`
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color};
-  font-size: 20px;
   @media (max-width: 900px) {
     font-size: 17px;
   }
