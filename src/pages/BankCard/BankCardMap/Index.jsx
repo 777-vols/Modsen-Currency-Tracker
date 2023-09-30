@@ -9,7 +9,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 class BankCardMap extends PureComponent {
   render() {
-    const markers = this.props.banksCoords.map((bank, index) => (
+    const { banksCoords } = this.props;
+    const markers = banksCoords.map((bank, index) => (
       <Marker key={index} longitude={bank.longitude} latitude={bank.latitude} />
     ));
     return (

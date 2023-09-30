@@ -16,6 +16,7 @@ class ErrorBoundary extends Component {
   }
 
   render() {
+    const { children } = this.props;
     if (this.state.hasError) {
       return (
         <ErrorPageWrapper>
@@ -24,7 +25,7 @@ class ErrorBoundary extends Component {
         </ErrorPageWrapper>
       );
     }
-    return this.props.children;
+    return children;
   }
 }
 

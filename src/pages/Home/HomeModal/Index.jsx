@@ -47,7 +47,11 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
           <ModalInner>
             <StyledBlock>
               <SelectSpan>Sum</SelectSpan>
-              <ModalStyledInput value={sumValue} onChange={handleInputType} />
+              <ModalStyledInput
+                data-cy="homeModal-input"
+                value={sumValue}
+                onChange={handleInputType}
+              />
             </StyledBlock>
             <StyledBlock>
               <SelectSpan>From</SelectSpan>
@@ -56,6 +60,7 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
             <StyledSelect>
               <SelectSpan>To</SelectSpan>
               <Select
+                id="homeModal-select"
                 onChange={selectorHandler}
                 defaultValue={{ value: convertToValue, label: convertToValue }}
                 options={allCurrenciesList.map((currencyName) => ({

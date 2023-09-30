@@ -50,7 +50,7 @@ function Navbar() {
         </LogoLink>
 
         <StyledNav open={burgerMenuIsOpen}>
-          <MenuList id="menuList">{navbarItems}</MenuList>
+          <MenuList data-cy="navList">{navbarItems}</MenuList>
         </StyledNav>
         <ButtonsWrapper>
           <BurgerMenuButton

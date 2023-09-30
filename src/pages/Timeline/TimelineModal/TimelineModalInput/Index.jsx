@@ -5,11 +5,13 @@ import { ModalInputHeader, ModalInputWrapper, ModalStyledInput } from './styled'
 
 class TimelineModalInput extends Component {
   handleInputLow = (event) => {
-    this.props.handleInputLow(this.props.day, event.target.value);
+    const { handleInputLow, day } = this.props;
+    handleInputLow(day, event.target.value);
   };
 
   handleInputHigh = (event) => {
-    this.props.handleInputHigh(this.props.day, event.target.value);
+    const { handleInputHigh, day } = this.props;
+    handleInputHigh(day, event.target.value);
   };
 
   render() {

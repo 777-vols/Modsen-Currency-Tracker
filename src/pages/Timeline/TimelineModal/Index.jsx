@@ -28,22 +28,25 @@ class TimelineModal extends PureComponent {
   };
 
   handleInputLow = (day, value) => {
-    this.props.handleInputLow(day, value);
+    const { handleInputLow } = this.props;
+    handleInputLow(day, value);
   };
 
   handleInputHigh = (day, value) => {
-    this.props.handleInputHigh(day, value);
+    const { handleInputHigh } = this.props;
+    handleInputHigh(day, value);
   };
 
   inputsMaper = () => {
+    const { inputsData } = this.props;
     const inputsArray = [];
     for (let day = 1; day <= 30; day += 1) {
       inputsArray.push(
         <TimelineModalInput
           key={day}
           day={day}
-          inputValueLow={this.props.inputsData[day]?.lowPrice ?? ''}
-          inputValueHigh={this.props.inputsData[day]?.highPrice ?? ''}
+          inputValueLow={inputsData[day]?.lowPrice ?? ''}
+          inputValueHigh={inputsData[day]?.highPrice ?? ''}
           handleInputLow={this.handleInputLow}
           handleInputHigh={this.handleInputHigh}
           handleInput={this.handleInput}
@@ -85,8 +88,12 @@ class TimelineModal extends PureComponent {
             )}
             <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
             <ButtonsWrapper>
-              <ModalButton onClick={clearAllInputsValues}>Clear all values</ModalButton>
-              <ModalButton onClick={createSheduleHandler}>Create shedule</ModalButton>
+              <ModalButton id="clearAllValues" onClick={clearAllInputsValues}>
+                Clear all values
+              </ModalButton>
+              <ModalButton id="createSchedule" onClick={createSheduleHandler}>
+                Create shedule
+              </ModalButton>
             </ButtonsWrapper>
           </TimelineModalWindow>
         </ModalBackground>

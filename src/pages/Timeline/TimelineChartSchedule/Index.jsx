@@ -35,7 +35,8 @@ class TimelineChartSchedule extends PureComponent {
   };
 
   componentDidMount() {
-    this.unsubscribe = this.props.subscribe(this.activateNotification);
+    const { subscribe } = this.props;
+    this.unsubscribe = subscribe(this.activateNotification);
   }
 
   componentWillUnmount() {
@@ -43,8 +44,9 @@ class TimelineChartSchedule extends PureComponent {
   }
 
   render() {
+    const { modalData } = this.props;
     const filtredData = Object.fromEntries(
-      Object.entries(this.props.modalData).filter((el) => {
+      Object.entries(modalData).filter((el) => {
         if (el[1].highPrice !== undefined && el[1].lowPrice !== undefined) {
           return el;
         }
