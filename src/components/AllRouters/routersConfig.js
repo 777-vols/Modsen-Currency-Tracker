@@ -21,7 +21,7 @@ const routesConfig = [
     Component: BankCard
   },
   {
-    path: urls.contact,
+    path: urls.contacts,
     Component: Contact
   },
   {

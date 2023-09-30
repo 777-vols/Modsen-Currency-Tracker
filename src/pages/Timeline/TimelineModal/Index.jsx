@@ -61,7 +61,7 @@ class TimelineModal extends PureComponent {
 
     return (
       <PortalCreator wrapperId="timeline-modal">
-        <ModalBackground>
+        <ModalBackground onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
           <TimelineModalWindow>
             {warningIsActive && <WarningSpan>Please follow all rules!</WarningSpan>}
             <CloseModalButton id="chart-modal-close" onClick={closeModalWindow}>

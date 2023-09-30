@@ -3,7 +3,7 @@ const urls = {
   home: '/',
   timeline: '/timeline',
   bankCard: '/bankCard',
-  contact: '/contacts',
+  contacts: '/contacts',
   market: '/market',
   notFound: '/*'
 };
