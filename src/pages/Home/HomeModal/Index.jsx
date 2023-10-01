@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
 import PropTypes from 'prop-types';
@@ -38,6 +38,8 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
   const convertCurrency = () =>
     ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
 
+  const memoizedConvertCurrency = useMemo(() => convertCurrency(), [sumValue]);
+
   return (
     <PortalCreator wrapperId="home-modal">
       <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
@@ -70,7 +72,7 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
             </StyledSelect>
           </ModalInner>
           <Result>
-            Result: <span id="converter-result">{usdCourse ? convertCurrency() : ''}</span>
+            Result: <span id="converter-result">{usdCourse ? memoizedConvertCurrency : ''}</span>
           </Result>
         </ModalWindow>
       </ModalBackground>

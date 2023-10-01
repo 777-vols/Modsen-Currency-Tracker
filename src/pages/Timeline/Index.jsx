@@ -17,12 +17,14 @@ import TimelineChartSchedule from './TimelineChartSchedule';
 import TimeLineCurrencyCard from './TimelineCurrrencyCard';
 import TimelineModal from './TimelineModal';
 
+const { quotesCards } = constCurrencyCardsData;
+
 class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTimelineCurrency: 'USD',
-      timelineCurrencyCard: constCurrencyCardsData.quotesCards.USD,
+      timelineCurrencyCard: quotesCards.USD,
       modalInputsData: {},
       sheduleData: {},
       modalIsOpen: false,
@@ -118,17 +120,17 @@ class Timeline extends Component {
   setTimelineCurrency = (selectedOption) => {
     this.setState({
       currentTimelineCurrency: selectedOption.value,
-      timelineCurrencyCard: constCurrencyCardsData.quotesCards[selectedOption.value],
+      timelineCurrencyCard: quotesCards[selectedOption.value],
       modalInputsData: {}
     });
   };
 
-  selectOptionsList = Object.keys(constCurrencyCardsData.quotesCards).reduce(
+  selectOptionsList = Object.keys(quotesCards).reduce(
     (accum, element) => [
       ...accum,
       {
         value: element,
-        label: constCurrencyCardsData.quotesCards[element].name
+        label: quotesCards[element].name
       }
     ],
     []

@@ -13,16 +13,16 @@ import Modal from './HomeModal';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
 import CurrencyCard from './СurrencyСard';
 
-function Home() {
-  const { quotesCards, stocksCards } = constCurrencyCardsData;
+const { quotesCards, stocksCards } = constCurrencyCardsData;
 
+function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});
   const [currenciesList, setCurrenciesList] = useState([]);
   const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
   useEffect(() => {
-    const limit = 24 * 3600 * 1000;
+    const updateTimePeriod = 24 * 3600 * 1000;
     const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
     const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
     if (localStorageInitTime === null || localStorageInitData == null) {
@@ -33,7 +33,7 @@ function Home() {
         setApiCurrenciesData(res.data);
         setCurrenciesList(Object.keys(res.data.usd));
       });
-    } else if (Number(new Date() - localStorageInitTime > limit)) {
+    } else if (Number(new Date() - localStorageInitTime > updateTimePeriod)) {
       getCurrenciesList().then((res) => {
         clearLocaleStorage();
         setLocaleStorageItem('localStorageInitTime', Number(new Date()));

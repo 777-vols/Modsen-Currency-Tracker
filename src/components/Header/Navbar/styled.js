@@ -7,9 +7,11 @@ export const NavbarWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${(props) => props.theme.padding.twentyFive}px ${(props) => props.theme.padding.fifty}px;
-  @media (${(props) => props.theme.media.mediumM}) {
-    padding-top: ${(props) => props.theme.padding.fifteen}px;
-    padding-bottom: ${(props) => props.theme.padding.ten}px;
+  @media (${(props) => props.theme.media.mediumS}) {
+    padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.zero}px;
+    height: 70px;
+  }
+  @media (${(props) => props.theme.media.smallM}) {
     height: 50px;
   }
 `;

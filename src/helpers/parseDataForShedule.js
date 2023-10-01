@@ -1,15 +1,18 @@
+import styledColors from '@constants/styles/colors';
+
 export default function parseDataForSchedule(dataValues) {
   const colors = [];
-  for (let i = 0; i < dataValues.length; i += 1) {
-    if (i === 0) {
-      colors.push('green');
-      i += 1;
+  for (let counter = 0; counter < dataValues.length; counter += 1) {
+    if (counter === 0) {
+      colors.push(styledColors.darkGreen);
+      counter += 1;
     }
     if (dataValues.length === 1) {
-      return ['green'];
+      return [styledColors.darkGreen];
     }
-    if (+dataValues[i - 1].highPrice > +dataValues[i].highPrice) colors.push('red');
-    else colors.push('green');
+    if (Number(dataValues[counter - 1].highPrice) > Number(dataValues[counter].highPrice))
+      colors.push(styledColors.red);
+    else colors.push(styledColors.darkGreen);
   }
   return colors;
 }

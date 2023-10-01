@@ -6,6 +6,7 @@ const styledColors = {
   barLabelColor: 'rgb(16, 50, 188)',
   barGridColor: 'rgb(255, 255, 255)',
   greenColor: 'rgb(22, 218, 12)',
+  darkGreen: 'rgb(22, 218, 12)',
   darkGreyColor: 'rgb(39, 39, 39)',
   greyColor: 'rgb(71, 71, 71)',
   inputBgGrey: 'rgb(27, 32, 40)',

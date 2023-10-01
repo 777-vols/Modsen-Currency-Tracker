@@ -9,6 +9,7 @@ export const TimelinePanelWrapper = styled.div`
   color: ${(props) => props.theme.color};
   display: flex;
   align-items: center;
+  margin-bottom: ${(props) => props.theme.padding.twentyFive}px;
   @media (${(props) => props.theme.media.smallM}) {
     flex-direction: column;
   }

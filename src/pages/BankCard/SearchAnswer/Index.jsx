@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { AnswerFullname, AnswerShortName, AnswerWrapper } from './styled';
 
-class SerachAnswer extends Component {
+class SearchAnswer extends Component {
   handleClick = () => {
     const { fullName, shortName, handleClick } = this.props;
     if (fullName) {
@@ -21,10 +21,10 @@ class SerachAnswer extends Component {
     );
   }
 }
-SerachAnswer.propTypes = {
+SearchAnswer.propTypes = {
   shortName: PropTypes.string,
   fullName: PropTypes.string,
   handleClick: PropTypes.func
 };
 
-export default SerachAnswer;
+export default SearchAnswer;

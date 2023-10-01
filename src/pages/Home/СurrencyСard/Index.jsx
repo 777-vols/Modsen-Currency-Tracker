@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -25,13 +25,21 @@ function CurrencyCard({
     }
   }
   const convertCurrency = () => (1 / usdData[currencyShortName]).toFixed(4);
+
+  const memoizedConvertCurrency = useMemo(() => {
+    if (usdData) {
+      return convertCurrency();
+    }
+    return '0.15%';
+  }, [usdData]);
+
   return (
     <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
       <CardInner>
         <CurrencyImage src={currencyImg} />
         <CurrencyStats>
           <CurrencyName>{currencyFullName}</CurrencyName>
-          <CurrencyRate>{usdData ? `$ ${convertCurrency()}` : '0.15%'}</CurrencyRate>
+          <CurrencyRate>{usdData ? memoizedConvertCurrency : '0.15%'}</CurrencyRate>
         </CurrencyStats>
       </CardInner>
     </CardWrapper>

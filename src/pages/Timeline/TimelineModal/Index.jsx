@@ -37,16 +37,18 @@ class TimelineModal extends PureComponent {
     handleInputHigh(day, value);
   };
 
-  inputsMaper = () => {
+  inputsMapper = () => {
     const { inputsData } = this.props;
     const inputsArray = [];
-    for (let day = 1; day <= 30; day += 1) {
+    for (let dayNumber = 1; dayNumber <= 30; dayNumber += 1) {
+      const inputValueLowIfExist = inputsData[dayNumber]?.lowPrice;
+      const inputValueHighIfExist = inputsData[dayNumber]?.highPrice;
       inputsArray.push(
         <TimelineModalInput
-          key={day}
-          day={day}
-          inputValueLow={inputsData[day]?.lowPrice ?? ''}
-          inputValueHigh={inputsData[day]?.highPrice ?? ''}
+          key={dayNumber}
+          day={dayNumber}
+          inputValueLow={inputValueLowIfExist ?? ''}
+          inputValueHigh={inputValueHighIfExist ?? ''}
           handleInputLow={this.handleInputLow}
           handleInputHigh={this.handleInputHigh}
           handleInput={this.handleInput}
@@ -57,7 +59,7 @@ class TimelineModal extends PureComponent {
   };
 
   render() {
-    const inputsArray = this.inputsMaper();
+    const inputsArray = this.inputsMapper();
 
     const { warningIsActive, closeModalWindow, clearAllInputsValues, createSheduleHandler } =
       this.props;

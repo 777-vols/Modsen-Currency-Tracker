@@ -6,7 +6,7 @@ import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import { Container } from '@/styled';
 
 import BankCardMap from './BankCardMap';
-import SerachAnswer from './SearchAnswer';
+import SearchAnswer from './SearchAnswer';
 import {
   BankCardHeader,
   BankCardInput,
@@ -70,8 +70,8 @@ class BankCard extends Component {
 
   render() {
     const { searchAnswers, searchValue, banksCoords } = this.state;
-    const serchAnswersComponents = searchAnswers.map((answer, index) => (
-      <SerachAnswer
+    const searchAnswersComponents = searchAnswers.map((answer, index) => (
+      <SearchAnswer
         key={index}
         shortName={answer.shortName}
         fullName={answer.fullName}
@@ -90,7 +90,7 @@ class BankCard extends Component {
                 placeholder="Currency search..."
               />
               <SearchInputImage src={searchImg} />
-              <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
+              <InputAnswersWrapper>{searchAnswersComponents}</InputAnswersWrapper>
             </BankCardInputWrapper>
             <BankCardMapWrapper>
               <BankCardMap banksCoords={banksCoords} />
