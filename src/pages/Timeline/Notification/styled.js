@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const NotificationWrapper = styled.div`
-  font-family: 'Poppins', sans-serif;
-  padding: 20px 40px;
+  font-family: ${(props) => props.theme.fontFamily};
+  padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.fourty}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,15 +14,15 @@ export const NotificationWrapper = styled.div`
   border-radius: 10px;
   color: ${(props) => props.theme.background};
   background-color: ${(props) => props.theme.color};
-  @media (max-width: 900px) {
-    padding: 15px 20px;
+  @media (${(props) => props.theme.media.mediumL}) {
+    padding: ${(props) => props.theme.padding.fifteen}px ${(props) => props.theme.padding.twenty}px;
     max-width: 500px;
   }
 `;
 export const NotificationSpan = styled.span`
-  font-size: 20px;
-  font-weight: 700;
-  @media (max-width: 900px) {
-    font-size: 15px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
+  font-weight: ${(props) => props.theme.fontWeight.medium};
+  @media (${(props) => props.theme.media.mediumL}) {
+    font-size: ${(props) => props.theme.fontSize.smallM};
   }
 `;

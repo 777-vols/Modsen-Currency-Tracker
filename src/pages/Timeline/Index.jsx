@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData';
-import themes from '@constants/themes';
+import * as allThemes from '@constants/themes';
 
 import { Container } from '@/styled';
 
@@ -144,7 +144,7 @@ class Timeline extends Component {
     option: (styles) => {
       const styleObject = {
         ...styles,
-        color: themes.light.color,
+        color: allThemes.lightTheme.color,
         cursor: 'pointer'
       };
       return styleObject;

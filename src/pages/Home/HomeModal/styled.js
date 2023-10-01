@@ -9,10 +9,10 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(85, 85, 85, 0.7);
+  background: ${(props) => props.theme.colors.homeModalBg};
 `;
 export const ModalWindow = styled.div`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily};
   background: ${(props) => props.theme.background};
   max-width: 500px;
   width: 100%;
@@ -20,13 +20,13 @@ export const ModalWindow = styled.div`
   height: 100%;
   border-radius: 20px;
   position: relative;
-  padding: 15px;
-  margin: 15px;
+  padding: ${(props) => props.theme.padding.fifteen}px;
+  margin: ${(props) => props.theme.padding.fifteen}px;
 `;
 export const CloseModalButton = styled.button`
   cursor: pointer;
   color: ${(props) => props.theme.color};
-  font-size: 23px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
   border-radius: 5px;
   width: 35px;
   height: 35px;
@@ -37,22 +37,23 @@ export const CloseModalButton = styled.button`
   right: 15px;
   transition: 0.3s;
   &:hover {
-    background-color: rgb(255, 0, 0, 0.5);
+    background-color: ${(props) => props.theme.colors.lightRed};
   }
 `;
 
 export const ModalHeader = styled.h5`
   color: ${(props) => props.theme.color};
-  font-size: 30px;
+  font-size: ${(props) => props.theme.fontSize.mediumL};
   display: flex;
   justify-content: center;
-  @media (max-width: 500px) {
-    font-size: 20px;
+  @media (${(props) => props.theme.media.smallS}) {
+    font-size: ${(props) => props.theme.fontSize.mediumS};
   }
 `;
 
 export const ModalInner = styled.div`
-  padding: 30px 0 20px 0;
+  padding-top: ${(props) => props.theme.padding.thirty}px;
+  padding-bottom: ${(props) => props.theme.padding.twenty}px;
   display: flex;
   justify-content: space-around;
 `;
@@ -61,45 +62,45 @@ export const StyledBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  padding: ${(props) => props.theme.padding.ten}px;
   width: 100%;
 `;
 export const SelectSpan = styled.span`
-  margin: 0 auto;
-  margin-bottom: 10px;
+  margin: ${(props) => props.theme.padding.zero}px auto;
+  margin-bottom: ${(props) => props.theme.padding.ten}px;
   color: ${(props) => props.theme.color};
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
   white-space: nowrap;
   border-radius: 5px;
-  @media (max-width: 500px) {
-    font-size: 18px;
+  @media (${(props) => props.theme.media.smallS}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
 export const ModalStyledSpan = styled.span`
   text-align: center;
-  font-size: 23px;
-  background: rgb(255, 255, 255);
+  font-size: ${(props) => props.theme.fontSize.mediumS};
+  background: ${(props) => props.theme.colors.darkFontColor};
   width: 100%;
   height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     height: 40px;
-    font-size: 18px;
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
 export const ModalStyledInput = styled.input`
   text-align: center;
-  font-size: 23px;
-  background: rgb(255, 255, 255);
+  font-size: ${(props) => props.theme.fontSize.mediumS};
+  background: ${(props) => props.theme.colors.darkFontColor};
   width: 100%;
   height: 46px;
   border-radius: 5px;
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     height: 40px;
-    font-size: 18px;
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
 export const Result = styled.div`
@@ -107,24 +108,24 @@ export const Result = styled.div`
   overflow: auto;
   text-align: center;
   color: ${(props) => props.theme.color};
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: ${(props) => props.theme.fontSize.mediumL};
+  margin-bottom: ${(props) => props.theme.padding.twenty}px;
   overflow: auto;
-  @media (max-width: 500px) {
-    margin-left: 25px;
-    font-size: 25px;
+  @media (${(props) => props.theme.media.smallS}) {
+    margin-left: ${(props) => props.theme.padding.twentyFive}px;
+    font-size: ${(props) => props.theme.fontSize.mediumM};
   }
 `;
 
 export const StyledSelect = styled.div`
-  font-size: 23px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
   min-width: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5px;
+  padding: ${(props) => props.theme.padding.five}px;
   width: 100%;
-  @media (max-width: 500px) {
-    font-size: 18px;
+  @media (${(props) => props.theme.media.smallS}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;

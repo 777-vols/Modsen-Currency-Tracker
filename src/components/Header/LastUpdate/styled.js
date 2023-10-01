@@ -1,28 +1,28 @@
 import styled from 'styled-components';
 
 export const LastUpadateWrapper = styled.div`
-  padding: 56px 0;
+  padding: ${(props) => props.theme.padding.fiftyFive}px ${(props) => props.theme.padding.zero}px;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 900px) {
-    padding: 30px 0;
+  @media (${(props) => props.theme.media.mediumL}) {
+    padding: ${(props) => props.theme.padding.thirty}px ${(props) => props.theme.padding.zero}px;
   }
-  @media (max-width: 500px) {
-    padding: 20px 0;
+  @media (${(props) => props.theme.media.smallS}) {
+    padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.zero}px;
   }
 `;
 export const LastUpadateSpan = styled.span`
-  margin-left: 18px;
-  font-size: 33px;
+  margin-left: ${(props) => props.theme.padding.eighteen}px;
+  font-size: ${(props) => props.theme.fontSize.mediumXL};
   display: flex;
   align-items: center;
-  @media (max-width: 900px) {
-    font-size: 17px;
+  @media (${(props) => props.theme.media.mediumL}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
-  @media (max-width: 500px) {
-    margin-left: 10px;
-    font-size: 12px;
+  @media (${(props) => props.theme.media.smallS}) {
+    margin-left: ${(props) => props.theme.padding.ten}px;
+    font-size: ${(props) => props.theme.fontSize.smallS};
     line-height: 23px;
   }
 `;

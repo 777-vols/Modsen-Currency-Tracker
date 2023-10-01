@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Contacts = styled.ul`
-  margin-top: 50px;
+  margin-top: ${(props) => props.theme.padding.fifty}px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,12 +10,12 @@ export const Contacts = styled.ul`
 export const ContactItem = styled.li`
   display: flex;
   justify-content: center;
-  margin: 10px 0;
+  margin: ${(props) => props.theme.padding.ten}px ${(props) => props.theme.padding.zero}px;
 `;
 export const ContactSpan = styled.span`
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
 
-  @media (max-width: 600px) {
-    font-size: 15px;
+  @media (${(props) => props.theme.media.smallM}) {
+    font-size: ${(props) => props.theme.fontSize.smallM};
   }
 `;

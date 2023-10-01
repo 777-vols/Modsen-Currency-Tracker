@@ -1,5 +1,6 @@
 import React from 'react';
 import { BallTriangle } from 'react-loader-spinner';
+import styledColors from '@constants/styles/colors';
 
 import { LoadingWrapper } from './styled';
 
@@ -10,7 +11,7 @@ function Loading() {
         height={100}
         width={100}
         radius={5}
-        color="rgb(77, 255, 0)"
+        color={styledColors.greenColor}
         ariaLabel="ball-triangle-loading"
         wrapperClass={{}}
         wrapperStyle=""

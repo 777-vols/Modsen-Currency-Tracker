@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {
   CardInner,
   CardWrapper,
-  CarrencyImage,
-  CarrencyName,
+  CurrencyImage,
+  CurrencyName,
   CurrencyRate,
   CurrencyStats
 } from './styled';
@@ -28,9 +28,9 @@ function CurrencyCard({
   return (
     <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
       <CardInner>
-        <CarrencyImage src={currencyImg} />
+        <CurrencyImage src={currencyImg} />
         <CurrencyStats>
-          <CarrencyName>{currencyFullName}</CarrencyName>
+          <CurrencyName>{currencyFullName}</CurrencyName>
           <CurrencyRate>{usdData ? `$ ${convertCurrency()}` : '0.15%'}</CurrencyRate>
         </CurrencyStats>
       </CardInner>

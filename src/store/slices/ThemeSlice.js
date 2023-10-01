@@ -1,4 +1,4 @@
-import allThemes from '@constants/themes';
+import * as allThemes from '@constants/themes';
 import { getLocaleStorageItem } from '@helpers/localeStorageHelpers';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -8,13 +8,13 @@ const themeSlice = createSlice({
   name: 'themes',
   initialState: {
     dark: !theme,
-    currentTheme: !theme ? allThemes.dark : allThemes.light
+    currentTheme: !theme ? allThemes.darkTheme : allThemes.lightTheme
   },
   reducers: {
     toggleTheme(state) {
       state.dark = !state.dark;
-      if (state.dark) state.currentTheme = allThemes.dark;
-      else state.currentTheme = allThemes.light;
+      if (state.dark) state.currentTheme = allThemes.darkTheme;
+      else state.currentTheme = allThemes.lightTheme;
     }
   }
 });

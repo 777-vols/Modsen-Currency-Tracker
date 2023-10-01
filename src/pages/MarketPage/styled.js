@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 const MarketPageHeader = styled.h1`
-  margin-top: 30px;
-  font-size: 35px;
+  margin-top: ${(props) => props.theme.padding.thirty}px;
+  font-size: ${(props) => props.theme.fontSize.mediumXL};
   display: flex;
   justify-content: center;
   color: ${(props) => props.theme.color};
-  @media (max-width: 900px) {
-    font-size: 28px;
+  @media (${(props) => props.theme.media.mediumL}) {
+    font-size: ${(props) => props.theme.fontSize.mediumM};
   }
-  @media (max-width: 600px) {
-    font-size: 18px;
+  @media (${(props) => props.theme.media.smallM}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
 

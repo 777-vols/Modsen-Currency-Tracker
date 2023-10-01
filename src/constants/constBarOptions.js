@@ -1,3 +1,5 @@
+import styledColors from './styles/colors';
+
 const constBarOptions = {
   plugins: {
     title: {
@@ -6,7 +8,7 @@ const constBarOptions = {
     legend: {
       display: false,
       labels: {
-        color: 'rgb(16, 50, 188)'
+        color: styledColors.barLabelColor
       }
     }
   },
@@ -20,7 +22,7 @@ const constBarOptions = {
       stacked: false,
       position: 'right',
       grid: {
-        color: 'rgb(255, 255, 255)'
+        color: styledColors.barGridColor
       }
     }
   }

@@ -6,9 +6,10 @@ export const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 50px;
-  @media (max-width: 750px) {
-    padding: 0 15px 0 10px;
+  padding: ${(props) => props.theme.padding.twentyFive}px ${(props) => props.theme.padding.fifty}px;
+  @media (${(props) => props.theme.media.mediumM}) {
+    padding-top: ${(props) => props.theme.padding.fifteen}px;
+    padding-bottom: ${(props) => props.theme.padding.ten}px;
     height: 50px;
   }
 `;
@@ -20,13 +21,14 @@ export const ButtonsWrapper = styled.div`
 export const BurgerMenuButton = styled.button`
   display: none;
   float: left;
-  margin-right: 30px;
+  margin-right: ${(props) => props.theme.padding.thirty}px;
   outline: 0;
   border: 0;
-  padding: 5px 5px 0 5px;
+  padding: ${(props) => props.theme.padding.five}px ${(props) => props.theme.padding.five}px
+    ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.five}px;
   background: none;
 
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     display: block;
   }
 
@@ -55,18 +57,18 @@ export const StyledBar = styled.span`
   display: block;
   width: 25px;
   height: 3px;
-  margin-bottom: 5px;
+  margin-bottom: ${(props) => props.theme.padding.five}px;
   background-color: ${(props) => props.theme.color};
 `;
 
 export const StyledNav = styled.nav`
   max-width: 697px;
   width: 100%;
-  padding: 0 20px;
-  @media (max-width: 700px) {
-    padding: 0 10px;
+  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.twenty}px;
+  @media (${(props) => props.theme.media.mediumS}) {
+    padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.ten}px;
   }
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     position: absolute;
     border: 2px solid ${(props) => props.theme.color};
     top: 49px;
@@ -75,7 +77,8 @@ export const StyledNav = styled.nav`
     width: 180px;
     height: 300px;
     max-width: 100%;
-    padding: 20px 30px 20px 20px;
+    padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.thirty}px
+      ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.twenty}px;
     background-color: ${(props) => props.theme.background};
     transform: translateX(-100%);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -90,25 +93,25 @@ export const StyledNav = styled.nav`
 export const MenuList = styled.ul`
   display: flex;
   justify-content: space-between;
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     flex-direction: column;
   }
 `;
 export const LinkWrapper = styled.li`
-  padding: 0 10px;
-  @media (max-width: 700px) {
-    padding: 0 5px;
+  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.ten}px;
+  @media (${(props) => props.theme.media.mediumS}) {
+    padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.five}px;
   }
 `;
 export const LogoLink = styled(NavLink)`
-  padding: 0 10px;
+  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.ten}px;
   cursor: pointer;
 `;
 export const Logo = styled.img`
   width: 40px;
   height: 41px;
 
-  @media (max-width: 700px) {
+  @media (${(props) => props.theme.media.mediumS}) {
     width: 20px;
     height: 20px;
   }
@@ -116,7 +119,7 @@ export const Logo = styled.img`
 export const MenuLink = styled(NavLink)`
   text-decoration: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
   opacity: 0.7;
   color: ${(props) => props.theme.color};
   transition: 0.2s;
@@ -132,7 +135,7 @@ export const MenuLink = styled(NavLink)`
     color: ${(props) => props.theme.color};
 
     &::after {
-      margin-top: 1px;
+      margin-top: ${(props) => props.theme.padding.one}px;
       content: '';
       display: block;
       width: 100%;
@@ -141,12 +144,12 @@ export const MenuLink = styled(NavLink)`
     }
   }
 
-  @media (max-width: 700px) {
-    font-size: 15px;
+  @media (${(props) => props.theme.media.mediumS}) {
+    font-size: ${(props) => props.theme.fontSize.smallM};
   }
-  @media (max-width: 500px) {
-    font-size: 18px;
+  @media (${(props) => props.theme.media.smallS}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
     display: block;
-    margin-top: 10px;
+    margin-top: ${(props) => props.theme.padding.ten}px;
   }
 `;

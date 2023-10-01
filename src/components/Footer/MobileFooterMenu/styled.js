@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MobileMenuWrapper = styled.div`
-  margin: 0 auto;
+  margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 355px;
   width: 100%;
   @media (min-width: 500px) {
@@ -24,7 +24,7 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuListItem = styled.li`
-  padding: 15px;
+  padding: ${(props) => props.theme.padding.fifteen}px;
 `;
 export const MenuListSpan = styled.span``;
 

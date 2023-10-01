@@ -22,7 +22,7 @@ export const StyledLabel = styled.label`
     transition: 0.2s;
   }
 
-  @media (max-width: 750px) {
+  @media (${(props) => props.theme.media.mediumM}) {
     min-width: 28px;
     height: 15px;
     border: 1px solid ${(props) => props.theme.color};

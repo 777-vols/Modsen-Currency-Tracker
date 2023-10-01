@@ -5,7 +5,7 @@ export const ErrorPageWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-color: rgb(255 229 229);
+  background-color: ${(props) => props.theme.colors.lightPink};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,20 +19,12 @@ export const ErrorPage = styled.div`
   display: flex;
   justify-content: center;
   background-image: url(../../../error.svg);
-  @media (max-width: 700px) {
+  @media (${(props) => props.theme.media.mediumS}) {
     width: 500px;
     height: 500px;
   }
-  @media (max-width: 500px) {
-    width: 400px;
-    height: 400px;
-  }
-  @media (max-width: 400px) {
+  @media (${(props) => props.theme.media.smallS}) {
     width: 300px;
     height: 300px;
-  }
-  @media (max-width: 300px) {
-    width: 200px;
-    height: 200px;
   }
 `;

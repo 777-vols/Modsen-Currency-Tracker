@@ -7,22 +7,22 @@ export const AnswerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(27, 32, 40);
-  padding: 10px;
-  margin: 0 auto;
+  background-color: ${(props) => props.theme.colors.inputBgGrey};
+  padding: ${(props) => props.theme.padding.ten}px;
+  margin: ${(props) => props.theme.padding.zero}px auto;
   transition: 0.3s;
   &:hover {
-    background-color: rgb(17, 22, 40);
+    background-color: ${(props) => props.theme.colors.greyColor};
   }
 `;
 export const AnswerFullname = styled.span`
-  color: rgb(158, 158, 158);
-  font-size: 22px;
-  @media (max-width: 600px) {
+  color: ${(props) => props.theme.colors.darkFontColor};
+  font-size: ${(props) => props.theme.fontSize.mediumS};
+  @media (${(props) => props.theme.media.smallM}) {
     top: 18px;
   }
 `;
 export const AnswerShortName = styled.span`
-  color: rgb(158, 158, 158);
-  font-size: 15px;
+  color: ${(props) => props.theme.colors.darkFontColor};
+  font-size: ${(props) => props.theme.fontSize.smallM};
 `;
