@@ -1,11 +1,11 @@
 import urls from '@constants/urls';
-import BankCard from '@pages/BankCard/Index';
-import Contact from '@pages/Contact/Index';
-import Home from '@pages/Home/Index';
-import PageNotFound from '@pages/PageNotFound/Index';
-import Timeline from '@pages/Timeline/Index';
+import BankCard from '@pages/BankCard';
+import Contact from '@pages/Contact';
+import Home from '@pages/Home';
+import PageNotFound from '@pages/PageNotFound';
+import Timeline from '@pages/Timeline';
 
-import MarketPage from '@/pages/MarketPage/Index';
+import MarketPage from '@/pages/MarketPage';
 
 const routesConfig = [
   {

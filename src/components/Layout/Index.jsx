@@ -1,7 +1,7 @@
 import React from 'react';
-import AllRouters from '@components/AllRouters/Index';
-import Footer from '@components/Footer/Index.jsx';
-import Header from '@components/Header/Index.jsx';
+import AllRouters from '@components/AllRouters';
+import Footer from '@components/Footer';
+import Header from '@components/Header';
 
 import AppWrapper from './styled';
 

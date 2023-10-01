@@ -1,6 +1,6 @@
-import envVariables from '@constants/envVariables';
+import constEnvVariables from '@constants/constEnvVariables';
 import axios from 'axios';
 
 export default function getCurrenciesList() {
-  return axios.get(envVariables.currencyUrl);
+  return axios.get(constEnvVariables.currencyUrl);
 }

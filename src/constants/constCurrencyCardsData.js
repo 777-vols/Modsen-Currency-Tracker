@@ -10,7 +10,7 @@ import arsImg from '@assets/Currencies/pesoArgentinoIcon.svg';
 import cnyImg from '@assets/Currencies/wonIcon.svg';
 import jpyImg from '@assets/Currencies/yenIcon.svg';
 
-const currencyCardsData = {
+const constCurrencyCardsData = {
   quotesCards: {
     USD: { id: 1, name: 'Dólar comercial', sign: '$', img: usdImg },
     ARS: { id: 2, name: 'Peso Argentino', sign: 'P$', img: arsImg },
@@ -28,4 +28,4 @@ const currencyCardsData = {
   }
 };
 
-export default currencyCardsData;
+export default constCurrencyCardsData;

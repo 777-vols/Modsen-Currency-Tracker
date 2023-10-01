@@ -4,7 +4,7 @@ import urls from '@constants/urls';
 
 import { Container } from '@/styled';
 
-import MobileFooterMenu from './MobileFooterMenu/Index';
+import MobileFooterMenu from './MobileFooterMenu';
 import {
   FooterInfo,
   FooterInfoBody,

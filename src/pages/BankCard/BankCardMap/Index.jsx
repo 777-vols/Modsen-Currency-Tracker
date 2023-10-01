@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import Map, { Marker } from 'react-map-gl';
-import { mapSettings, mapStyles } from '@constants/mapConstants';
+import { constMapSettings, constMapStyles } from '@constants/mapConstants';
 import PropTypes from 'prop-types';
 
-import envVariables from '@/constants/envVariables';
+import constEnvVariables from '@/constants/constEnvVariables';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -15,9 +15,9 @@ class BankCardMap extends PureComponent {
     ));
     return (
       <Map
-        initialViewState={mapSettings}
-        mapStyle={mapStyles}
-        mapboxAccessToken={envVariables.mapboxApiKey}>
+        initialViewState={constMapSettings}
+        mapStyle={constMapStyles}
+        mapboxAccessToken={constEnvVariables.mapboxApiKey}>
         {markers}
       </Map>
     );

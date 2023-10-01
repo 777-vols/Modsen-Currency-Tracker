@@ -1,8 +1,8 @@
 import React from 'react';
 
-import HeaderBanner from './HeaderBanner/Index';
-import LastUpadate from './LastUpdate/Index';
-import Navbar from './Navbar/Index';
+import HeaderBanner from './HeaderBanner';
+import LastUpadate from './LastUpdate';
+import Navbar from './Navbar';
 
 function Header() {
   return (

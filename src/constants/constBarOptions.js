@@ -1,4 +1,4 @@
-const barOptions = {
+const constBarOptions = {
   plugins: {
     title: {
       display: true
@@ -26,4 +26,4 @@ const barOptions = {
   }
 };
 
-export default barOptions;
+export default constBarOptions;

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import currencyCardsData from '@constants/currencyCardsData';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import themes from '@constants/themes';
 
 import { Container } from '@/styled';
 
-import TimelineChartSchedule from './TimelineChartSchedule/Index';
-import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
-import TimelineModal from './TimelineModal/Index';
 import {
   TimelineModalOpenButton,
   TimelinePanelWrapper,
@@ -16,13 +13,16 @@ import {
   TimelineSelectWrapper,
   TimelineWrapper
 } from './styled';
+import TimelineChartSchedule from './TimelineChartSchedule';
+import TimeLineCurrencyCard from './TimelineCurrrencyCard';
+import TimelineModal from './TimelineModal';
 
 class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTimelineCurrency: 'USD',
-      timelineCurrencyCard: currencyCardsData.quotesCards.USD,
+      timelineCurrencyCard: constCurrencyCardsData.quotesCards.USD,
       modalInputsData: {},
       sheduleData: {},
       modalIsOpen: false,
@@ -118,17 +118,17 @@ class Timeline extends Component {
   setTimelineCurrency = (selectedOption) => {
     this.setState({
       currentTimelineCurrency: selectedOption.value,
-      timelineCurrencyCard: currencyCardsData.quotesCards[selectedOption.value],
+      timelineCurrencyCard: constCurrencyCardsData.quotesCards[selectedOption.value],
       modalInputsData: {}
     });
   };
 
-  selectOptionsList = Object.keys(currencyCardsData.quotesCards).reduce(
+  selectOptionsList = Object.keys(constCurrencyCardsData.quotesCards).reduce(
     (accum, element) => [
       ...accum,
       {
         value: element,
-        label: currencyCardsData.quotesCards[element].name
+        label: constCurrencyCardsData.quotesCards[element].name
       }
     ],
     []

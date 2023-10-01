@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 
-import Home from './Index';
+import Home from './index';
 
 describe('rendering HomePage', () => {
   test('check text', async () => {

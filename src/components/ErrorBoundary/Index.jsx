@@ -16,8 +16,9 @@ class ErrorBoundary extends Component {
   }
 
   render() {
+    const { hasError } = this.state;
     const { children } = this.props;
-    if (this.state.hasError) {
+    if (hasError) {
       return (
         <ErrorPageWrapper>
           <Global />

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Bar } from 'react-chartjs-2';
-import barOptions from '@constants/chartBarOptions';
+import barOptions from '@constants/constBarOptions';
 import parseDataForSchedule from '@helpers/parseDataForShedule';
 import {
   BarElement,
@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 import PropTypes from 'prop-types';
 
-import Notification from '../Notification/Index';
+import Notification from '../Notification';
 
 ChartJS.register(BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
@@ -44,7 +44,9 @@ class TimelineChartSchedule extends PureComponent {
   }
 
   render() {
+    const { isNotificationActive } = this.state;
     const { modalData } = this.props;
+
     const filtredData = Object.fromEntries(
       Object.entries(modalData).filter((el) => {
         if (el[1].highPrice !== undefined && el[1].lowPrice !== undefined) {
@@ -69,7 +71,7 @@ class TimelineChartSchedule extends PureComponent {
     return (
       <>
         <Bar data={scheduleData} options={barOptions} />
-        {this.state.isNotificationActive && <Notification />}
+        {isNotificationActive && <Notification />}
       </>
     );
   }

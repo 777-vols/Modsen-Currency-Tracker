@@ -1,4 +1,4 @@
-export const usdCourseMock = {
+export const contsUsdCourseMock = {
   '00': 13.52247567,
   '1inch': 3.8035236,
   aave: 0.015346947,
@@ -538,7 +538,7 @@ export const usdCourseMock = {
   zwl: 5001.19231957
 };
 
-export const allCurrenciesListMock = [
+export const constAllCurrenciesListMock = [
   '00',
   '1inch',
   'aave',

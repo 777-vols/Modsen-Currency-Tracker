@@ -1,8 +1,8 @@
 import React from 'react';
-import { allCurrenciesListMock, usdCourseMock } from '@constants/currenciesMock';
+import { constAllCurrenciesListMock, contsUsdCourseMock } from '@constants/constCurrenciesMock';
 import { render, screen } from '@testing-library/react';
 
-import Modal from './Index';
+import Modal from './index';
 
 describe('Modal Currency Card rendering', () => {
   test('Should check the items', () => {
@@ -11,8 +11,8 @@ describe('Modal Currency Card rendering', () => {
         isOpen={true}
         closeModalWindow={() => {}}
         convertFromTo={{ from: 'usd', to: 'usd' }}
-        allCurrenciesList={allCurrenciesListMock}
-        usdCourse={usdCourseMock}
+        allCurrenciesList={constAllCurrenciesListMock}
+        usdCourse={contsUsdCourseMock}
       />
     );
 

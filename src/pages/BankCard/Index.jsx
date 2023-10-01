@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import searchImg from '@assets/searchIcon.svg';
-import banksList from '@constants/banksList';
-import currencyCardsData from '@constants/currencyCardsData';
+import constBanksList from '@constants/constBanksList';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 
 import { Container } from '@/styled';
 
-import BankCardMap from './BankCardMap/Index';
-import SerachAnswer from './SearchAnswer/Index';
+import BankCardMap from './BankCardMap';
+import SerachAnswer from './SearchAnswer';
 import {
   BankCardHeader,
   BankCardInput,
@@ -30,7 +30,7 @@ class BankCard extends Component {
   }
 
   componentDidMount() {
-    const currenciesList = Object.entries(currencyCardsData.quotesCards).map((card) => ({
+    const currenciesList = Object.entries(constCurrencyCardsData.quotesCards).map((card) => ({
       shortName: card[0],
       fullName: card[1].name
     }));
@@ -38,9 +38,10 @@ class BankCard extends Component {
   }
 
   elasticSearchHandle = (event) => {
+    const { currencies } = this.state;
     this.setState({ searchValue: event.target.value });
     if (event.target.value !== '') {
-      const answers = Object.values(this.state.currencies).filter((currency) => {
+      const answers = Object.values(currencies).filter((currency) => {
         const inputValue = event.target.value.toLowerCase();
         if (
           currency.shortName.toLowerCase().includes(inputValue) ||
@@ -61,12 +62,15 @@ class BankCard extends Component {
 
   handleCurrencySelection = (shortName) => {
     this.setState({ searchAnswers: [], searchValue: shortName });
-    const banks = banksList.filter((bank) => bank.currencies.includes(shortName.toLowerCase()));
+    const banks = constBanksList.filter((bank) =>
+      bank.currencies.includes(shortName.toLowerCase())
+    );
     this.setState({ banksCoords: banks });
   };
 
   render() {
-    const serchAnswersComponents = this.state.searchAnswers.map((answer, index) => (
+    const { searchAnswers, searchValue, banksCoords } = this.state;
+    const serchAnswersComponents = searchAnswers.map((answer, index) => (
       <SerachAnswer
         key={index}
         shortName={answer.shortName}
@@ -81,7 +85,7 @@ class BankCard extends Component {
             <BankCardHeader>Search currency in the bank</BankCardHeader>
             <BankCardInputWrapper>
               <BankCardInput
-                value={this.state.searchValue}
+                value={searchValue}
                 onChange={this.elasticSearchHandle}
                 placeholder="Currency search..."
               />
@@ -89,7 +93,7 @@ class BankCard extends Component {
               <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
             </BankCardInputWrapper>
             <BankCardMapWrapper>
-              <BankCardMap banksCoords={this.state.banksCoords} />
+              <BankCardMap banksCoords={banksCoords} />
             </BankCardMapWrapper>
           </BankCardWrapper>
         </Container>

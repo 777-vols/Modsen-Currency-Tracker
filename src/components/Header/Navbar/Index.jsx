@@ -5,7 +5,7 @@ import useOnClickOutside from '@hooks/useOnCickOutside';
 
 import { Container } from '@/styled';
 
-import Checkbox from './Checkbox/Index';
+import Checkbox from './Checkbox';
 import navbarConfig from './config';
 import {
   BurgerMenuButton,

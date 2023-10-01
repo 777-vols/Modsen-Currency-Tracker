@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PortalCreator from '@components/PortalCreator/PortalCreator';
+import PortalCreator from '@components/PortalCreator';
 
 import { NotificationSpan, NotificationWrapper } from './styled';
 

@@ -1,4 +1,4 @@
-const banksList = [
+const constBanksList = [
   {
     longitude: 27.4510457131,
     latitude: 53.8633428435,
@@ -66,4 +66,4 @@ const banksList = [
   }
 ];
 
-export default banksList;
+export default constBanksList;

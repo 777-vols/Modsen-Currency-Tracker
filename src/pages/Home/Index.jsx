@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import getCurrenciesList from '@api/apiRequests';
-import currencyCardsData from '@constants/currencyCardsData.js';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData.js';
 import {
   clearLocaleStorage,
   getLocaleStorageItem,
@@ -9,12 +9,12 @@ import {
 
 import { Container } from '@/styled';
 
-import Modal from './HomeModal/Index';
-import CurrencyCard from './СurrencyСard/Index';
+import Modal from './HomeModal';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
+import CurrencyCard from './СurrencyСard';
 
 function Home() {
-  const { quotesCards, stocksCards } = currencyCardsData;
+  const { quotesCards, stocksCards } = constCurrencyCardsData;
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});

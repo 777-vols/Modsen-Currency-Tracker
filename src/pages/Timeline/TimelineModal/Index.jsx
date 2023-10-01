@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
-import PortalCreator from '@components/PortalCreator/PortalCreator';
+import PortalCreator from '@components/PortalCreator';
 import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
 import PropTypes from 'prop-types';
 
-import TimelineModalInput from './TimelineModalInput/Index';
 import {
   ButtonsWrapper,
   InfoButton,
@@ -14,6 +13,7 @@ import {
   TimelineModalWindow,
   WarningSpan
 } from './styled';
+import TimelineModalInput from './TimelineModalInput';
 
 class TimelineModal extends PureComponent {
   constructor(props) {
@@ -62,6 +62,8 @@ class TimelineModal extends PureComponent {
     const { warningIsActive, closeModalWindow, clearAllInputsValues, createSheduleHandler } =
       this.props;
 
+    const { descriptionIsOpen } = this.state;
+
     return (
       <PortalCreator wrapperId="timeline-modal">
         <ModalBackground onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
@@ -71,7 +73,7 @@ class TimelineModal extends PureComponent {
               X
             </CloseModalButton>
             <InfoButton onClick={this.descriptionIsOpenHandler}>?</InfoButton>
-            {this.state.descriptionIsOpen && (
+            {descriptionIsOpen && (
               <ModalInfoWrapper>
                 <ModalInfoSpan>
                   *Enter values between 100 and 10000 for 30 days to successfully create a graph.

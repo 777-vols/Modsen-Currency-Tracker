@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import PortalCreator from '@components/PortalCreator/PortalCreator';
+import PortalCreator from '@components/PortalCreator';
 import PropTypes from 'prop-types';
 
 import {
