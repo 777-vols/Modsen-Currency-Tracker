@@ -66,7 +66,7 @@ export const FooterInfoBody = styled.div`
     display: none;
   }
 `;
-export const FooterMenu = styled.div`
+export const FooterMenu = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;

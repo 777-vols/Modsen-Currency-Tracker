@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import logo from '@assets/logo.svg';
 import urls from '@constants/urls';
 import useOnClickOutside from '@hooks/useOnCickOutside';
@@ -6,7 +6,7 @@ import useOnClickOutside from '@hooks/useOnCickOutside';
 import { Container } from '@/styled';
 
 import Checkbox from './Checkbox';
-import navbarConfig from './config';
+import config from './config';
 import {
   BurgerMenuButton,
   ButtonsWrapper,
@@ -35,13 +35,18 @@ function Navbar() {
   });
 
   const { baseUrl } = urls;
-  const navbarItems = navbarConfig.map(({ name, url }) => (
-    <LinkWrapper key={name}>
-      <MenuLink data-cy={`nav_${name}`} to={url}>
-        {name}
-      </MenuLink>
-    </LinkWrapper>
-  ));
+
+  const navbarItems = useMemo(
+    () =>
+      config.map(({ name, url }) => (
+        <LinkWrapper key={name}>
+          <MenuLink data-cy={`nav_${name}`} to={url}>
+            {name}
+          </MenuLink>
+        </LinkWrapper>
+      )),
+    [config]
+  );
   return (
     <Container>
       <NavbarWrapper ref={navRef}>

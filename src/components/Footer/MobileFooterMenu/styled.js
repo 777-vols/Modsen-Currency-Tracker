@@ -1,6 +1,7 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const MobileMenuWrapper = styled.div`
+export const MobileMenuWrapper = styled.nav`
   margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 355px;
   width: 100%;
@@ -24,9 +25,11 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuListItem = styled.li`
-  padding: ${(props) => props.theme.padding.fifteen}px;
+  padding: ${(props) => props.theme.padding.ten}px;
 `;
-export const MenuListSpan = styled.span``;
+export const ListItem = styled(NavLink)`
+  color: ${(props) => props.theme.color};
+`;
 
 export const MenuButton = styled.button`
   color: ${(props) => props.theme.color};

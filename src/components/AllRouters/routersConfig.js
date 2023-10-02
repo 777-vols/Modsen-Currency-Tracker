@@ -1,6 +1,6 @@
 import urls from '@constants/urls';
 import BankCard from '@pages/BankCard';
-import Contact from '@pages/Contact';
+import Contacts from '@pages/Contacts';
 import Home from '@pages/Home';
 import PageNotFound from '@pages/PageNotFound';
 import Timeline from '@pages/Timeline';
@@ -22,7 +22,7 @@ const routesConfig = [
   },
   {
     path: urls.contacts,
-    Component: Contact
+    Component: Contacts
   },
   {
     path: urls.notFound,

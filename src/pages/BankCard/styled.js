@@ -15,6 +15,7 @@ export const BankCardHeader = styled.h3`
   justify-content: center;
   margin-bottom: ${(props) => props.theme.padding.twentyFive}px;
   font-size: ${(props) => props.theme.fontSize.mediumXL};
+  font-weight: ${(props) => props.theme.fontWeight.small};
   @media (${(props) => props.theme.media.mediumL}) {
     font-size: ${(props) => props.theme.fontSize.mediumM};
   }

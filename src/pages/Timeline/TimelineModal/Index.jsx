@@ -3,6 +3,7 @@ import PortalCreator from '@components/PortalCreator';
 import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
 import PropTypes from 'prop-types';
 
+import config from './config';
 import {
   ButtonsWrapper,
   InfoButton,
@@ -14,6 +15,8 @@ import {
   WarningSpan
 } from './styled';
 import TimelineModalInput from './TimelineModalInput';
+
+const { modaInfoRules, warning, clearButton, createButton } = config;
 
 class TimelineModal extends PureComponent {
   constructor(props) {
@@ -58,6 +61,13 @@ class TimelineModal extends PureComponent {
     return inputsArray;
   };
 
+  modalRules = modaInfoRules.map(({ id, content }) => (
+    <React.Fragment key={id}>
+      {content}
+      <br />
+    </React.Fragment>
+  ));
+
   render() {
     const inputsArray = this.inputsMapper();
 
@@ -70,33 +80,24 @@ class TimelineModal extends PureComponent {
       <PortalCreator wrapperId="timeline-modal">
         <ModalBackground onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
           <TimelineModalWindow>
-            {warningIsActive && <WarningSpan>Please follow all rules!</WarningSpan>}
+            {warningIsActive && <WarningSpan>{warning}</WarningSpan>}
             <CloseModalButton id="chart-modal-close" onClick={closeModalWindow}>
               X
             </CloseModalButton>
             <InfoButton onClick={this.descriptionIsOpenHandler}>?</InfoButton>
             {descriptionIsOpen && (
-              <ModalInfoWrapper>
-                <ModalInfoSpan>
-                  *Enter values between 100 and 10000 for 30 days to successfully create a graph.
-                  <br />
-                  *The high price value is filled in first.
-                  <br />
-                  *The highest price must be higher than the lowest.
-                  <br />
-                  *All fields must be completed.
-                  <br />
-                  *To create a schedule, all rules must be followed!!!.
-                </ModalInfoSpan>
+              <ModalInfoWrapper
+                onClick={(e) => e.currentTarget === e.target && this.descriptionIsOpenHandler()}>
+                <ModalInfoSpan>{this.modalRules}</ModalInfoSpan>
               </ModalInfoWrapper>
             )}
             <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
             <ButtonsWrapper>
               <ModalButton id="clearAllValues" onClick={clearAllInputsValues}>
-                Clear all values
+                {clearButton}
               </ModalButton>
               <ModalButton id="createSchedule" onClick={createSheduleHandler}>
-                Create shedule
+                {createButton}
               </ModalButton>
             </ButtonsWrapper>
           </TimelineModalWindow>

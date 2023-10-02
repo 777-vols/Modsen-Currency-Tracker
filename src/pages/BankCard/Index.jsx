@@ -6,6 +6,7 @@ import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import { Container } from '@/styled';
 
 import BankCardMap from './BankCardMap';
+import config from './config';
 import SearchAnswer from './SearchAnswer';
 import {
   BankCardHeader,
@@ -16,6 +17,8 @@ import {
   InputAnswersWrapper,
   SearchInputImage
 } from './styled';
+
+const { header, placeholderValue, notFound } = config;
 
 class BankCard extends Component {
   constructor(props) {
@@ -51,7 +54,7 @@ class BankCard extends Component {
         return null;
       });
       if (answers.length === 0) {
-        this.setState({ searchAnswers: [{ fullName: '', shortName: 'Nothing found...' }] });
+        this.setState({ searchAnswers: [{ fullName: '', shortName: notFound }] });
       } else {
         this.setState({ searchAnswers: answers });
       }
@@ -82,12 +85,12 @@ class BankCard extends Component {
       <section>
         <Container>
           <BankCardWrapper>
-            <BankCardHeader>Search currency in the bank</BankCardHeader>
+            <BankCardHeader>{header}</BankCardHeader>
             <BankCardInputWrapper>
               <BankCardInput
                 value={searchValue}
                 onChange={this.elasticSearchHandle}
-                placeholder="Currency search..."
+                placeholder={placeholderValue}
               />
               <SearchInputImage src={searchImg} />
               <InputAnswersWrapper>{searchAnswersComponents}</InputAnswersWrapper>

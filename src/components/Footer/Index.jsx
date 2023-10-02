@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import logo from '@assets/logo.svg';
 import urls from '@constants/urls';
 
 import { Container } from '@/styled';
 
+import config from './config';
 import MobileFooterMenu from './MobileFooterMenu';
 import {
   FooterInfo,
@@ -21,7 +22,27 @@ import {
   ListItem
 } from './styled';
 
+const { market } = urls;
+const [{ content: infoName }, { content: infoBody }, { content: footerSpan }, configMenuItems] =
+  config;
+
 function Footer() {
+  const menuItems = useMemo(
+    () =>
+      configMenuItems.map(({ header, items }) => (
+        <FooterMenuItem key={header}>
+          <FooterMenuSpan>{header}</FooterMenuSpan>
+          <FooterMenuList>
+            {items.map(({ id, itemContent }) => (
+              <li key={id}>
+                <ListItem to={market}>{itemContent}</ListItem>
+              </li>
+            ))}
+          </FooterMenuList>
+        </FooterMenuItem>
+      )),
+    [config]
+  );
   return (
     <footer>
       <Container>
@@ -30,52 +51,14 @@ function Footer() {
             <FooterInfo>
               <FooterInfoHead>
                 <FooterInfoLogo src={logo} />
-                <FooterInfoName>Modsen Currency Tracker</FooterInfoName>
+                <FooterInfoName>{infoName}</FooterInfoName>
               </FooterInfoHead>
-              <FooterInfoBody>
-                Since then, the company has grown organically to. Starsup is the world&apos;s
-                largest trading platform, with $12 billion worth of currency trading and 500,000
-                tickets sold daily to tens of thousands of traders worldwide.
-              </FooterInfoBody>
+              <FooterInfoBody>{infoBody}</FooterInfoBody>
             </FooterInfo>
             <MobileFooterMenu />
-            <FooterMenu>
-              <FooterMenuItem>
-                <FooterMenuSpan>General</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem to={urls.market}>Market</ListItem>
-                  </li>
-                  <li>
-                    <ListItem to={urls.market}>Service</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-              <FooterMenuItem>
-                <FooterMenuSpan>Product</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem to={urls.market}>Sparks</ListItem>
-                  </li>
-                  <li>
-                    <ListItem to={urls.market}>Snaps</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-              <FooterMenuItem>
-                <FooterMenuSpan>Community</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem to={urls.market}>Ideas</ListItem>
-                  </li>
-                  <li>
-                    <ListItem to={urls.market}>Streams</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-            </FooterMenu>
+            <FooterMenu>{menuItems}</FooterMenu>
           </FooterInner>
-          <FooterSpan>Startsup © 2023-2024, All Rights Reserved</FooterSpan>
+          <FooterSpan>{footerSpan}</FooterSpan>
         </FooterWrapper>
       </Container>
     </footer>

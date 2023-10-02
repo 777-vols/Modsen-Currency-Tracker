@@ -3,6 +3,7 @@ import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
 import PropTypes from 'prop-types';
 
+import config from './config';
 import {
   CloseModalButton,
   ModalBackground,
@@ -16,6 +17,8 @@ import {
   StyledBlock,
   StyledSelect
 } from './styled';
+
+const { header, from, to, sum, result } = config;
 
 function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }) {
   const [sumValue, setSumValue] = useState(1);
@@ -45,10 +48,10 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
       <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
         <ModalWindow>
           <CloseModalButton onClick={handleCloseModal}>X</CloseModalButton>
-          <ModalHeader>Currency Converter</ModalHeader>
+          <ModalHeader>{header}</ModalHeader>
           <ModalInner>
             <StyledBlock>
-              <SelectSpan>Sum</SelectSpan>
+              <SelectSpan>{sum}</SelectSpan>
               <ModalStyledInput
                 data-cy="homeModal-input"
                 value={sumValue}
@@ -56,11 +59,11 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
               />
             </StyledBlock>
             <StyledBlock>
-              <SelectSpan>From</SelectSpan>
+              <SelectSpan>{from}</SelectSpan>
               <ModalStyledSpan>{convertFromTo.from}</ModalStyledSpan>
             </StyledBlock>
             <StyledSelect>
-              <SelectSpan>To</SelectSpan>
+              <SelectSpan>{to}</SelectSpan>
               <Select
                 id="homeModal-select"
                 onChange={selectorHandler}
@@ -72,7 +75,7 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
             </StyledSelect>
           </ModalInner>
           <Result>
-            Result: <span id="converter-result">{usdCourse ? memoizedConvertCurrency : ''}</span>
+            {result} <span id="converter-result">{usdCourse ? memoizedConvertCurrency : ''}</span>
           </Result>
         </ModalWindow>
       </ModalBackground>

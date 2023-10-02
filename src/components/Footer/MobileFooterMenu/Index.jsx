@@ -1,78 +1,48 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import arrow from '@assets/arrow.svg';
+import config from '@components/Footer/config';
+import urls from '@constants/urls';
+import mobileFooterButtonClick from '@helpers/mobileFooterButtonClick';
 
 import {
+  ListItem,
   MenuButton,
   MenuItemArrow,
   MenuList,
   MenuListItem,
-  MenuListSpan,
   MobileMenuItem,
   MobileMenuWrapper
 } from './styled';
 
+const { market } = urls;
+const [, , , configMenuItems] = config;
+
 function MobileFooterMenu() {
   function menuButtonClick(event) {
-    const arrowImg = event.currentTarget.children[0];
-    const list = event.currentTarget.nextSibling;
-    if (list.style.display === 'block') {
-      list.style.display = 'none';
-      arrowImg.style.transform = 'rotate(360deg)';
-    } else {
-      list.style.display = 'block';
-      arrowImg.style.transform = 'rotate(180deg)';
-    }
+    mobileFooterButtonClick(event);
   }
-  return (
-    <nav>
-      <MobileMenuWrapper>
-        <MobileMenuItem>
-          <MenuButton onClick={menuButtonClick}>
-            General
-            <MenuItemArrow src={arrow} />
-          </MenuButton>
-          <MenuList>
-            <MenuListItem>
-              <MenuListSpan>Market</MenuListSpan>
-            </MenuListItem>
-            <MenuListItem>
-              <MenuListSpan>Service</MenuListSpan>
-            </MenuListItem>
-          </MenuList>
-        </MobileMenuItem>
 
-        <MobileMenuItem>
+  const menuItems = useMemo(
+    () =>
+      configMenuItems.map(({ header, items }) => (
+        <MobileMenuItem key={header}>
           <MenuButton onClick={menuButtonClick}>
-            Product
+            {header}
             <MenuItemArrow src={arrow} />
           </MenuButton>
           <MenuList>
-            <MenuListItem>
-              <MenuListSpan>Sparks</MenuListSpan>
-            </MenuListItem>
-            <MenuListItem>
-              <MenuListSpan>Snaps</MenuListSpan>
-            </MenuListItem>
+            {items.map(({ id, itemContent }) => (
+              <MenuListItem key={id}>
+                <ListItem to={market}>{itemContent}</ListItem>
+              </MenuListItem>
+            ))}
           </MenuList>
         </MobileMenuItem>
-
-        <MobileMenuItem>
-          <MenuButton onClick={menuButtonClick}>
-            Community
-            <MenuItemArrow src={arrow} />
-          </MenuButton>
-          <MenuList>
-            <MenuListItem>
-              <MenuListSpan>Ideas</MenuListSpan>
-            </MenuListItem>
-            <MenuListItem>
-              <MenuListSpan>Streams</MenuListSpan>
-            </MenuListItem>
-          </MenuList>
-        </MobileMenuItem>
-      </MobileMenuWrapper>
-    </nav>
+      )),
+    [config]
   );
+
+  return <MobileMenuWrapper>{menuItems}</MobileMenuWrapper>;
 }
 
 export default MobileFooterMenu;

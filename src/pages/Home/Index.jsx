@@ -9,11 +9,13 @@ import {
 
 import { Container } from '@/styled';
 
+import config from './config';
 import Modal from './HomeModal';
 import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
 import CurrencyCard from './СurrencyСard';
 
 const { quotesCards, stocksCards } = constCurrencyCardsData;
+const [{ content: stocksContent }, { content: quotesContent }] = config;
 
 function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -94,17 +96,16 @@ function Home() {
       ),
     [stocksCards]
   );
-
   return (
     <section>
       <Container>
         <HomeWrapper>
           <Stocks>
-            <StyledSpan>Stocks</StyledSpan>
+            <StyledSpan>{stocksContent}</StyledSpan>
             <CardsWrapper>{stocksCardsList}</CardsWrapper>
           </Stocks>
           <Quotes>
-            <StyledSpan>Quotes</StyledSpan>
+            <StyledSpan>{quotesContent}</StyledSpan>
             <CardsWrapper>{quotesCardsList}</CardsWrapper>
           </Quotes>
         </HomeWrapper>

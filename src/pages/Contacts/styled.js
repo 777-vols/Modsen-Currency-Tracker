@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Contacts = styled.ul`
+export const ContactsWrapper = styled.ul`
   margin-top: ${(props) => props.theme.padding.fifty}px;
   display: flex;
   flex-direction: column;

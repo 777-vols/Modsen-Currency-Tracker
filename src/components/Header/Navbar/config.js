@@ -1,7 +1,7 @@
 import urls from '@constants/urls';
 
 const { home, timeline, bankCard, contacts } = urls;
-const navbarConfig = [
+const config = [
   {
     name: 'Home',
     url: home
@@ -20,4 +20,4 @@ const navbarConfig = [
   }
 ];
 
-export default navbarConfig;
+export default config;

@@ -1,6 +1,7 @@
 import React from 'react';
 import contentImg from '@assets/contentImage.svg';
 
+import config from './config';
 import {
   ContentImage,
   ContentInfo,
@@ -13,17 +14,19 @@ import {
   InfoWrapper
 } from './styled';
 
+const [{ content: topPart }, { content: bottomPart }, { content: spanContent }] = config;
+
 function HeaderBanner() {
   return (
     <ContentWrapper>
       <ContentInner>
         <ContentInfo>
           <InfoWrapper>
-            <InfoTopPart>Modsen Currency</InfoTopPart>
-            <InfoBottomPart>Tracker</InfoBottomPart>
+            <InfoTopPart>{topPart}</InfoTopPart>
+            <InfoBottomPart>{bottomPart}</InfoBottomPart>
           </InfoWrapper>
           <ContentSpanWrapper>
-            <ContentSpan>Quotes for the dollar and other international currencies.</ContentSpan>
+            <ContentSpan>{spanContent}</ContentSpan>
           </ContentSpanWrapper>
         </ContentInfo>
         <ContentImage src={contentImg} alt="Header content image" />

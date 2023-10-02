@@ -5,6 +5,7 @@ import * as allThemes from '@constants/themes';
 
 import { Container } from '@/styled';
 
+import config from './config';
 import {
   TimelineModalOpenButton,
   TimelinePanelWrapper,
@@ -17,6 +18,7 @@ import TimelineChartSchedule from './TimelineChartSchedule';
 import TimeLineCurrencyCard from './TimelineCurrrencyCard';
 import TimelineModal from './TimelineModal';
 
+const { buttonValue } = config;
 const { quotesCards } = constCurrencyCardsData;
 
 class Timeline extends Component {
@@ -173,7 +175,7 @@ class Timeline extends Component {
                   options={this.selectOptionsList}></Select>
               </TimelineSelectWrapper>
               <TimelineModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
-                Enter your values
+                {buttonValue}
               </TimelineModalOpenButton>
             </TimelinePanelWrapper>
             <TimelineScheduleWrapper>

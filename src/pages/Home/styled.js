@@ -18,7 +18,6 @@ export const CardsWrapper = styled.div`
   }
 `;
 
-export const Stocks = styled.div``;
 export const StyledSpan = styled.h3`
   max-width: 520px;
   width: 100%;
@@ -39,8 +38,9 @@ export const StyledSpan = styled.h3`
   }
 `;
 
+export const Stocks = styled.div``;
 export const Quotes = styled.div`
-  margin-top: ${(props) => props.theme.padding.eightySix}px;
+  margin-top: ${(props) => props.theme.margin.eightySix}px;
   @media (${(props) => props.theme.media.smallL}) {
     margin-top: ${(props) => props.theme.padding.thirtyTwo}px;
   }
