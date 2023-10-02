@@ -8,9 +8,9 @@ import { ContactItem, ContactSpan, ContactsWrapper } from './styled';
 function Contacts() {
   const contactsItems = useMemo(
     () =>
-      config.map((contactItem) => (
-        <ContactItem key={contactItem.id}>
-          <ContactSpan>{contactItem.content}</ContactSpan>
+      config.map(({ id, content }) => (
+        <ContactItem key={id}>
+          <ContactSpan>{content}</ContactSpan>
         </ContactItem>
       )),
     [config]

@@ -26,10 +26,12 @@ class TimelineChartSchedule extends PureComponent {
   }
 
   activateNotification = () => {
-    this.setState((prevState) => ({ isNotificationActive: !prevState.isNotificationActive }));
+    this.setState(({ isNotificationActive }) => ({ isNotificationActive: !isNotificationActive }));
     setTimeout(
       () =>
-        this.setState((prevState) => ({ isNotificationActive: !prevState.isNotificationActive })),
+        this.setState(({ isNotificationActive }) => ({
+          isNotificationActive: !isNotificationActive
+        })),
       5000
     );
   };

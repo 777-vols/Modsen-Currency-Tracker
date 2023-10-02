@@ -27,7 +27,7 @@ class TimelineModal extends PureComponent {
   }
 
   descriptionIsOpenHandler = () => {
-    this.setState((prevState) => ({ descriptionIsOpen: !prevState.descriptionIsOpen }));
+    this.setState(({ descriptionIsOpen }) => ({ descriptionIsOpen: !descriptionIsOpen }));
   };
 
   handleInputLow = (day, value) => {
@@ -40,13 +40,13 @@ class TimelineModal extends PureComponent {
     handleInputHigh(day, value);
   };
 
-  inputsMapper = () => {
+  getACoupleofInputsForEveryDay = () => {
     const { inputsData } = this.props;
-    const inputsArray = [];
+    const timelineModalInputComponents = [];
     for (let dayNumber = 1; dayNumber <= 30; dayNumber += 1) {
       const inputValueLowIfExist = inputsData[dayNumber]?.lowPrice;
       const inputValueHighIfExist = inputsData[dayNumber]?.highPrice;
-      inputsArray.push(
+      timelineModalInputComponents.push(
         <TimelineModalInput
           key={dayNumber}
           day={dayNumber}
@@ -58,7 +58,7 @@ class TimelineModal extends PureComponent {
         />
       );
     }
-    return inputsArray;
+    return timelineModalInputComponents;
   };
 
   modalRules = modaInfoRules.map(({ id, content }) => (
@@ -69,7 +69,7 @@ class TimelineModal extends PureComponent {
   ));
 
   render() {
-    const inputsArray = this.inputsMapper();
+    const inputsArray = this.getACoupleofInputsForEveryDay();
 
     const { warningIsActive, closeModalWindow, clearAllInputsValues, createSheduleHandler } =
       this.props;

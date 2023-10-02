@@ -1,11 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import getCurrenciesList from '@api/apiRequests';
+import React, { useMemo, useRef, useState } from 'react';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData.js';
-import {
-  clearLocaleStorage,
-  getLocaleStorageItem,
-  setLocaleStorageItem
-} from '@helpers/localeStorageHelpers';
+import useLocaleStorage from '@hooks/useLocaleStorage';
 
 import { Container } from '@/styled';
 
@@ -20,35 +15,9 @@ const [{ content: stocksContent }, { content: quotesContent }] = config;
 function Home() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});
-  const [currenciesList, setCurrenciesList] = useState([]);
   const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
-  useEffect(() => {
-    const updateTimePeriod = 24 * 3600 * 1000;
-    const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
-    const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
-    if (localStorageInitTime === null || localStorageInitData == null) {
-      getCurrenciesList().then((res) => {
-        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
-        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
-
-        setApiCurrenciesData(res.data);
-        setCurrenciesList(Object.keys(res.data.usd));
-      });
-    } else if (Number(new Date() - localStorageInitTime > updateTimePeriod)) {
-      getCurrenciesList().then((res) => {
-        clearLocaleStorage();
-        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
-        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
-      });
-    }
-
-    if (getLocaleStorageItem('localStorageCurrencyData')) {
-      const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
-      setApiCurrenciesData(data);
-      setCurrenciesList(Object.keys(data.usd));
-    }
-  }, []);
+  useLocaleStorage(setApiCurrenciesData);
 
   function openCloseModal() {
     setIsOpenModal(!isOpenModal);
@@ -113,7 +82,6 @@ function Home() {
       {isOpenModal && (
         <Modal
           convertFromTo={currentExchangeCurrencies.current}
-          allCurrenciesList={currenciesList}
           usdCourse={apiCurrenciesData.usd}
           closeModalWindow={openCloseModal}
         />

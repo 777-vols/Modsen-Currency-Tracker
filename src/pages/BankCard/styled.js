@@ -66,7 +66,7 @@ export const SearchInputImage = styled.img`
     height: 15px;
   }
 `;
-export const InputAnswersWrapper = styled.div`
+export const SearchResultWrapper = styled.div`
   top: 66px;
   position: absolute;
   z-index: 999;

@@ -36,26 +36,28 @@ class Timeline extends Component {
   }
 
   subscribe = (listener) => {
-    this.setState((prevState) => ({ listeners: [...prevState.listeners, listener] }));
+    this.setState(({ listeners }) => ({ listeners: [...listeners, listener] }));
 
     return () => {
-      this.setState((prevState) => ({
-        listeners: [...prevState.listeners.filter((element) => element !== listener)]
+      this.setState(({ listeners }) => ({
+        listeners: [...listeners.filter((element) => element !== listener)]
       }));
     };
   };
 
   notifyAll = () => {
-    this.state.listeners.forEach((listener) => listener());
+    const { listeners } = this.state;
+    listeners.forEach((listener) => listener());
   };
 
   setModalInputsDataLow = (day, value) => {
+    const { modalInputsData } = this.state;
     if (
       !Number.isFinite(Number(value)) ||
       (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
-      this.state.modalInputsData[day] === undefined ||
-      (Number(this.state.modalInputsData[day].highPrice) <= Number(value) &&
-        Number(this.state.modalInputsData[day].lowPrice) < Number(value)) ||
+      modalInputsData[day] === undefined ||
+      (Number(modalInputsData[day].highPrice) <= Number(value) &&
+        Number(modalInputsData[day].lowPrice) < Number(value)) ||
       Number(value < 0) ||
       Number(value > 10000)
     ) {
@@ -64,12 +66,13 @@ class Timeline extends Component {
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...this.state.modalInputsData[day], lowPrice: value }
+        [day]: { ...modalInputsData[day], lowPrice: value }
       }
     }));
   };
 
   setModalInputsDataHigh = (day, value) => {
+    const { modalInputsData } = this.state;
     if (
       !Number.isFinite(Number(value)) ||
       (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
@@ -80,14 +83,14 @@ class Timeline extends Component {
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...this.state.modalInputsData[day], highPrice: value }
+        [day]: { ...modalInputsData[day], highPrice: value }
       }
     }));
   };
 
   setModalIsOpen = () => {
-    this.setState((prevState) => ({
-      modalIsOpen: !prevState.modalIsOpen
+    this.setState(({ modalIsOpen }) => ({
+      modalIsOpen: !modalIsOpen
     }));
   };
 
@@ -96,7 +99,8 @@ class Timeline extends Component {
   };
 
   createSheduleHandler = () => {
-    const correctInputsForDay = Object.values(this.state.modalInputsData).filter((value) => {
+    const { modalIsOpen, modalInputsData } = this.state;
+    const correctInputsForDay = Object.values(modalInputsData).filter((value) => {
       const dayValuesArray = Object.values(value);
       if (
         dayValuesArray[0] !== '' &&
@@ -107,7 +111,7 @@ class Timeline extends Component {
       }
       return null;
     });
-    if (this.state.modalIsOpen && correctInputsForDay.length === 30) {
+    if (modalIsOpen && correctInputsForDay.length === 30) {
       this.notifyAll();
       this.setState((prevState) => ({
         sheduleData: { ...prevState.modalInputsData },
@@ -161,6 +165,9 @@ class Timeline extends Component {
   };
 
   render() {
+    const { currentTimelineCurrency, sheduleData, warningIsActive, modalIsOpen, modalInputsData } =
+      this.state;
+    const { name: currencyFullName, img: currencyImg } = this.state.timelineCurrencyCard;
     return (
       <section>
         <Container>
@@ -180,28 +187,25 @@ class Timeline extends Component {
             </TimelinePanelWrapper>
             <TimelineScheduleWrapper>
               <TimeLineCurrencyCard
-                currencyShortName={this.state.currentTimelineCurrency}
-                currencyFullName={this.state.timelineCurrencyCard.name}
-                currencyImg={this.state.timelineCurrencyCard.img}
+                currencyShortName={currentTimelineCurrency}
+                currencyFullName={currencyFullName}
+                currencyImg={currencyImg}
               />
               <TimelineSchedule>
-                <TimelineChartSchedule
-                  subscribe={this.subscribe}
-                  modalData={this.state.sheduleData}
-                />
+                <TimelineChartSchedule subscribe={this.subscribe} modalData={sheduleData} />
               </TimelineSchedule>
             </TimelineScheduleWrapper>
           </TimelineWrapper>
         </Container>
-        {this.state.modalIsOpen && (
+        {modalIsOpen && (
           <TimelineModal
-            warningIsActive={this.state.warningIsActive}
+            warningIsActive={warningIsActive}
             closeModalWindow={this.setModalIsOpen}
             clearAllInputsValues={this.clearAllInputsValues}
             createSheduleHandler={this.createSheduleHandler}
             handleInputLow={this.setModalInputsDataLow}
             handleInputHigh={this.setModalInputsDataHigh}
-            inputsData={this.state.modalInputsData}
+            inputsData={modalInputsData}
           />
         )}
       </section>

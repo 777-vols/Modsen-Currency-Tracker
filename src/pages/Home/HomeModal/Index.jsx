@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
+import { constAllCurrenciesListMock } from '@constants/constCurrenciesMock';
 import PropTypes from 'prop-types';
 
 import config from './config';
@@ -20,9 +21,10 @@ import {
 
 const { header, from, to, sum, result } = config;
 
-function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }) {
+function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
   const [sumValue, setSumValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState('usd');
+  const { from: convertFrom } = convertFromTo;
 
   function handleInputType(event) {
     setSumValue(event.target.value);
@@ -39,10 +41,9 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
   }
 
   const convertCurrency = () =>
-    ((1 / usdCourse[convertFromTo.from]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
+    ((1 / usdCourse[convertFrom]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
 
-  const memoizedConvertCurrency = useMemo(() => convertCurrency(), [sumValue]);
-
+  const memoizedConvertCurrency = useMemo(() => convertCurrency(), [sumValue, convertToValue]);
   return (
     <PortalCreator wrapperId="home-modal">
       <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
@@ -60,7 +61,7 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
             </StyledBlock>
             <StyledBlock>
               <SelectSpan>{from}</SelectSpan>
-              <ModalStyledSpan>{convertFromTo.from}</ModalStyledSpan>
+              <ModalStyledSpan>{convertFrom}</ModalStyledSpan>
             </StyledBlock>
             <StyledSelect>
               <SelectSpan>{to}</SelectSpan>
@@ -68,7 +69,7 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
                 id="homeModal-select"
                 onChange={selectorHandler}
                 defaultValue={{ value: convertToValue, label: convertToValue }}
-                options={allCurrenciesList.map((currencyName) => ({
+                options={constAllCurrenciesListMock.map((currencyName) => ({
                   value: currencyName,
                   label: currencyName
                 }))}></Select>
@@ -86,7 +87,6 @@ function Modal({ closeModalWindow, convertFromTo, allCurrenciesList, usdCourse }
 Modal.propTypes = {
   closeModalWindow: PropTypes.func,
   convertFromTo: PropTypes.object,
-  allCurrenciesList: PropTypes.array,
   usdCourse: PropTypes.object
 };
 

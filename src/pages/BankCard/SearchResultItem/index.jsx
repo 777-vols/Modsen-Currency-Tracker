@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { AnswerFullname, AnswerShortName, AnswerWrapper } from './styled';
+import { SearchResultFullname, SearchResultShortName, SearchResultWrapper } from './styled';
 
-class SearchAnswer extends Component {
+class SearchResultItem extends Component {
   handleClick = () => {
     const { fullName, shortName, handleClick } = this.props;
     if (fullName) {
@@ -14,17 +14,17 @@ class SearchAnswer extends Component {
   render() {
     const { fullName, shortName } = this.props;
     return (
-      <AnswerWrapper onClick={this.handleClick}>
-        <AnswerFullname>{fullName}</AnswerFullname>
-        <AnswerShortName>{shortName}</AnswerShortName>
-      </AnswerWrapper>
+      <SearchResultWrapper onClick={this.handleClick}>
+        <SearchResultFullname>{fullName}</SearchResultFullname>
+        <SearchResultShortName>{shortName}</SearchResultShortName>
+      </SearchResultWrapper>
     );
   }
 }
-SearchAnswer.propTypes = {
+SearchResultItem.propTypes = {
   shortName: PropTypes.string,
   fullName: PropTypes.string,
   handleClick: PropTypes.func
 };
 
-export default SearchAnswer;
+export default SearchResultItem;

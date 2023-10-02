@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
+import ErrorBoundary from '@components/ErrorBoundary';
 import Loading from '@components/Loading';
 import { ThemeProvider } from 'styled-components';
 
@@ -9,9 +10,11 @@ function App() {
   const theme = useSelector((state) => state.themes.currentTheme);
   return (
     <ThemeProvider theme={theme}>
-      <Suspense fallback={<Loading />}>
-        <Layout />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<Loading />}>
+          <Layout />
+        </Suspense>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

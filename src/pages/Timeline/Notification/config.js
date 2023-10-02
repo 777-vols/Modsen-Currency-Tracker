@@ -1,5 +1,5 @@
 const config = {
-  notification: 'Enter your values'
+  notification: 'The 30-day schedule has been successfully completed'
 };
 
 export default config;

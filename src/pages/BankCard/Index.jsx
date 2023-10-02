@@ -7,15 +7,15 @@ import { Container } from '@/styled';
 
 import BankCardMap from './BankCardMap';
 import config from './config';
-import SearchAnswer from './SearchAnswer';
+import SearchResultItem from './SearchResultItem';
 import {
   BankCardHeader,
   BankCardInput,
   BankCardInputWrapper,
   BankCardMapWrapper,
   BankCardWrapper,
-  InputAnswersWrapper,
-  SearchInputImage
+  SearchInputImage,
+  SearchResultWrapper
 } from './styled';
 
 const { header, placeholderValue, notFound } = config;
@@ -26,7 +26,7 @@ class BankCard extends Component {
     this.state = {
       currentCyrrency: {},
       currencies: [],
-      searchAnswers: [],
+      searchResultElements: [],
       searchValue: '',
       banksCoords: []
     };
@@ -44,7 +44,7 @@ class BankCard extends Component {
     const { currencies } = this.state;
     this.setState({ searchValue: event.target.value });
     if (event.target.value !== '') {
-      const answers = Object.values(currencies).filter((currency) => {
+      const searchResults = Object.values(currencies).filter((currency) => {
         const inputValue = event.target.value.toLowerCase();
         if (
           currency.shortName.toLowerCase().includes(inputValue) ||
@@ -53,18 +53,18 @@ class BankCard extends Component {
           return currency;
         return null;
       });
-      if (answers.length === 0) {
-        this.setState({ searchAnswers: [{ fullName: '', shortName: notFound }] });
+      if (searchResults.length === 0) {
+        this.setState({ searchResultElements: [{ fullName: '', shortName: notFound }] });
       } else {
-        this.setState({ searchAnswers: answers });
+        this.setState({ searchResultElements: searchResults });
       }
     } else {
-      this.setState({ searchAnswers: [] });
+      this.setState({ searchResultElements: [] });
     }
   };
 
   handleCurrencySelection = (shortName) => {
-    this.setState({ searchAnswers: [], searchValue: shortName });
+    this.setState({ searchResultElements: [], searchValue: shortName });
     const banks = constBanksList.filter((bank) =>
       bank.currencies.includes(shortName.toLowerCase())
     );
@@ -72,12 +72,12 @@ class BankCard extends Component {
   };
 
   render() {
-    const { searchAnswers, searchValue, banksCoords } = this.state;
-    const searchAnswersComponents = searchAnswers.map((answer, index) => (
-      <SearchAnswer
-        key={index}
-        shortName={answer.shortName}
-        fullName={answer.fullName}
+    const { searchResultElements, searchValue, banksCoords } = this.state;
+    const searchResultComponets = searchResultElements.map(({ shortName, fullName }) => (
+      <SearchResultItem
+        key={shortName}
+        shortName={shortName}
+        fullName={fullName}
         handleClick={this.handleCurrencySelection}
       />
     ));
@@ -93,7 +93,7 @@ class BankCard extends Component {
                 placeholder={placeholderValue}
               />
               <SearchInputImage src={searchImg} />
-              <InputAnswersWrapper>{searchAnswersComponents}</InputAnswersWrapper>
+              <SearchResultWrapper>{searchResultComponets}</SearchResultWrapper>
             </BankCardInputWrapper>
             <BankCardMapWrapper>
               <BankCardMap banksCoords={banksCoords} />

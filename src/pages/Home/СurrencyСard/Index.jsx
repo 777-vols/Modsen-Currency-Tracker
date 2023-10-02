@@ -39,7 +39,7 @@ function CurrencyCard({
         <CurrencyImage src={currencyImg} />
         <CurrencyStats>
           <CurrencyName>{currencyFullName}</CurrencyName>
-          <CurrencyRate>{usdData ? memoizedConvertCurrency : '0.15%'}</CurrencyRate>
+          <CurrencyRate>{usdData ? `$ ${memoizedConvertCurrency}` : '0.15%'}</CurrencyRate>
         </CurrencyStats>
       </CardInner>
     </CardWrapper>
