@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import * as allThemes from '@constants/themes';
+import {
+  isHighInputValueIncorrect,
+  isLowPriceInputValueIncorrect
+} from '@helpers/isPriceInputValueIncorrectHelper';
+import observer from '@observer/observer';
 
 import { Container } from '@/styled';
 
@@ -30,60 +35,32 @@ class Timeline extends Component {
       modalInputsData: {},
       sheduleData: {},
       modalIsOpen: false,
-      listeners: [],
       warningIsActive: false
     };
   }
 
-  subscribe = (listener) => {
-    this.setState(({ listeners }) => ({ listeners: [...listeners, listener] }));
-
-    return () => {
-      this.setState(({ listeners }) => ({
-        listeners: [...listeners.filter((element) => element !== listener)]
-      }));
-    };
-  };
-
-  notifyAll = () => {
-    const { listeners } = this.state;
-    listeners.forEach((listener) => listener());
-  };
-
-  setModalInputsDataLow = (day, value) => {
+  setModalInputsDataLow = (inputDay, inputValue) => {
     const { modalInputsData } = this.state;
-    if (
-      !Number.isFinite(Number(value)) ||
-      (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
-      modalInputsData[day] === undefined ||
-      (Number(modalInputsData[day].highPrice) <= Number(value) &&
-        Number(modalInputsData[day].lowPrice) < Number(value)) ||
-      Number(value < 0) ||
-      Number(value > 10000)
-    ) {
+    if (isLowPriceInputValueIncorrect(inputValue, modalInputsData, inputDay)) {
       return;
     }
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...modalInputsData[day], lowPrice: value }
+        [inputDay]: { ...modalInputsData[inputDay], lowPrice: inputValue }
       }
     }));
   };
 
-  setModalInputsDataHigh = (day, value) => {
+  setModalInputsDataHigh = (inputDay, inputValue) => {
     const { modalInputsData } = this.state;
-    if (
-      !Number.isFinite(Number(value)) ||
-      (value.length > 1 && Number(value) === 0 && !value.includes('.')) ||
-      Number(value < 0) ||
-      Number(value > 10000)
-    )
+    if (isHighInputValueIncorrect(inputValue)) {
       return;
+    }
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...modalInputsData[day], highPrice: value }
+        [inputDay]: { ...modalInputsData[inputDay], highPrice: inputValue }
       }
     }));
   };
@@ -111,8 +88,7 @@ class Timeline extends Component {
       }
       return null;
     });
-    if (modalIsOpen && correctInputsForDay.length === 30) {
-      this.notifyAll();
+    if (modalIsOpen && observer.checkNumberOfFilledDays(correctInputsForDay)) {
       this.setState((prevState) => ({
         sheduleData: { ...prevState.modalInputsData },
         modalIsOpen: false
@@ -192,7 +168,7 @@ class Timeline extends Component {
                 currencyImg={currencyImg}
               />
               <TimelineSchedule>
-                <TimelineChartSchedule subscribe={this.subscribe} modalData={sheduleData} />
+                <TimelineChartSchedule modalData={sheduleData} />
               </TimelineSchedule>
             </TimelineScheduleWrapper>
           </TimelineWrapper>

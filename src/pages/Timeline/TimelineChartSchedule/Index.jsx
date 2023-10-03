@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Bar } from 'react-chartjs-2';
 import barOptions from '@constants/constBarOptions';
 import parseDataForSchedule from '@helpers/parseDataForShedule';
+import observer from '@observer/observer';
 import {
   BarElement,
   CategoryScale,
@@ -37,8 +38,7 @@ class TimelineChartSchedule extends PureComponent {
   };
 
   componentDidMount() {
-    const { subscribe } = this.props;
-    this.unsubscribe = subscribe(this.activateNotification);
+    this.unsubscribe = observer.subscribe(this.activateNotification);
   }
 
   componentWillUnmount() {
@@ -80,8 +80,7 @@ class TimelineChartSchedule extends PureComponent {
 }
 
 TimelineChartSchedule.propTypes = {
-  modalData: PropTypes.object,
-  subscribe: PropTypes.func
+  modalData: PropTypes.object
 };
 
 export default TimelineChartSchedule;

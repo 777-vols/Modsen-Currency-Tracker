@@ -23,7 +23,8 @@ module.exports = {
       '@store': path.resolve(__dirname, 'src/store'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@helpers': path.resolve(__dirname, 'src/helpers'),
-      '@hooks': path.resolve(__dirname, 'src/hooks')
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@observer': path.resolve(__dirname, 'src/observer')
     }
   },
   plugins: [
