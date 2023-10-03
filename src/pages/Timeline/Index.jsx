@@ -151,13 +151,13 @@ class Timeline extends Component {
             <PanelWrapper>
               <SelectWrapper>
                 <Select
-                  id="timeline-select"
+                  data-cy="timeline-select"
                   styles={this.colourStyles}
                   onChange={this.setTimelineCurrency}
                   defaultValue={this.selectOptionsList[0]}
                   options={this.selectOptionsList}></Select>
               </SelectWrapper>
-              <ModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
+              <ModalOpenButton data-cy="enter-values" onClick={this.setModalIsOpen}>
                 {buttonValue}
               </ModalOpenButton>
             </PanelWrapper>

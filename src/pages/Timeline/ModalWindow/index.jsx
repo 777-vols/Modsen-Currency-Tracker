@@ -93,10 +93,10 @@ class TimelineModal extends PureComponent {
             )}
             <InputsWrapper>{inputsArray}</InputsWrapper>
             <ButtonsWrapper>
-              <ModalButton id="clearAllValues" onClick={clearAllInputsValues}>
+              <ModalButton data-cy="clearAllValues" onClick={clearAllInputsValues}>
                 {clearButton}
               </ModalButton>
-              <ModalButton id="createSchedule" onClick={createSheduleHandler}>
+              <ModalButton data-cy="createSchedule" onClick={createSheduleHandler}>
                 {createButton}
               </ModalButton>
             </ButtonsWrapper>

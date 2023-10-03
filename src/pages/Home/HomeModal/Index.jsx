@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
 import { constAllCurrenciesListMock } from '@constants/constCurrenciesMock';
@@ -26,24 +26,23 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
   const [convertToValue, setConvertToValue] = useState('usd');
   const { from: convertFrom } = convertFromTo;
 
-  function handleInputType(event) {
-    setSumValue(event.target.value);
-  }
+  const handleInputType = useCallback((event) => setSumValue(event.target.value), []);
 
-  function selectorHandler(selectedOption) {
-    setConvertToValue(selectedOption.value);
-  }
+  const selectorHandler = useCallback(
+    (selectedOption) => setConvertToValue(selectedOption.value),
+    []
+  );
 
-  function handleCloseModal() {
+  const handleCloseModal = useCallback(() => {
     closeModalWindow();
     setSumValue('1');
     setConvertToValue('usd');
-  }
+  }, [closeModalWindow]);
 
-  const convertCurrency = () =>
-    ((1 / usdCourse[convertFrom]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4);
-
-  const memoizedConvertCurrency = useMemo(() => convertCurrency(), [sumValue, convertToValue]);
+  const convertCurrency = useMemo(
+    () => ((1 / usdCourse[convertFrom]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4),
+    [convertFrom, convertToValue, sumValue, usdCourse]
+  );
   return (
     <PortalCreator wrapperId="home-modal">
       <Background onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
@@ -72,7 +71,7 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
             </StyledSelect>
           </InnerBlock>
           <Result>
-            {result} <span id="converter-result">{usdCourse ? memoizedConvertCurrency : ''}</span>
+            {result} <span data-cy="converter-result">{usdCourse ? convertCurrency : ''}</span>
           </Result>
         </Window>
       </Background>
@@ -86,4 +85,4 @@ Modal.propTypes = {
   usdCourse: PropTypes.object
 };
 
-export default Modal;
+export default memo(Modal);

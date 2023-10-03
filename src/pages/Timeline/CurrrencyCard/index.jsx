@@ -10,7 +10,7 @@ class TimeLineCurrencyCard extends PureComponent {
       <Wrapper>
         <Image src={currencyImg} />
         <Stats>
-          <FullName id="currency-card-name">{currencyFullName}</FullName>
+          <FullName data-cy="currency-card-name">{currencyFullName}</FullName>
           <ShortName>{currencyShortName}</ShortName>
         </Stats>
       </Wrapper>

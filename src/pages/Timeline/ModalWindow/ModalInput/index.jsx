@@ -20,13 +20,13 @@ class TimelineModalInput extends Component {
       <Wrapper>
         <Header>Day: {day}</Header>
         <Input
-          id={`high-input-${day}`}
+          data-cy={`high-input-${day}`}
           value={inputValueHigh}
           onChange={this.handleInputHigh}
           placeholder="High price"
         />
         <Input
-          id={`low-input-${day}`}
+          data-cy={`low-input-${day}`}
           value={inputValueLow}
           onChange={this.handleInputLow}
           placeholder="Low price"

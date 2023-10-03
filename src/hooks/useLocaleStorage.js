@@ -27,7 +27,7 @@ function useLocaleStorage(setApiCurrenciesData) {
       const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
       setApiCurrenciesData(data);
     }
-  }, []);
+  }, [setApiCurrenciesData]);
 }
 
 export default useLocaleStorage;

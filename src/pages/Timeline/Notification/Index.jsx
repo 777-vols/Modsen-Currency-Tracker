@@ -10,7 +10,7 @@ class Notification extends Component {
   render() {
     return (
       <PortalCreator wrapperId="timeline-notification">
-        <Wrapper id="timeline-notification">
+        <Wrapper data-cy="timeline-notification">
           <Content>{notification}</Content>
         </Wrapper>
       </PortalCreator>

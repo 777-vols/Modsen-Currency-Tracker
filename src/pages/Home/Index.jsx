@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData.js';
 import useLocaleStorage from '@hooks/useLocaleStorage';
 
@@ -17,16 +17,16 @@ function Home() {
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});
   const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
-  useLocaleStorage(setApiCurrenciesData);
+  const setDataHandler = useCallback((data) => setApiCurrenciesData(data), []);
 
-  function openCloseModal() {
-    setIsOpenModal(!isOpenModal);
-  }
+  useLocaleStorage(setDataHandler);
 
-  function exchangeCurrenciesHandler(newFrom, newTo = 'usd') {
+  const openCloseModal = useCallback(() => setIsOpenModal(!isOpenModal), [isOpenModal]);
+
+  const exchangeCurrenciesHandler = useCallback((newFrom, newTo = 'usd') => {
     currentExchangeCurrencies.current.from = newFrom;
     currentExchangeCurrencies.current.to = newTo;
-  }
+  }, []);
 
   const quotesCardsList = useMemo(
     () =>
@@ -45,7 +45,7 @@ function Home() {
         ],
         []
       ),
-    [apiCurrenciesData]
+    [apiCurrenciesData, exchangeCurrenciesHandler, openCloseModal]
   );
 
   const stocksCardsList = useMemo(
@@ -59,11 +59,12 @@ function Home() {
             currencyFullName={stocksCards[element].name}
             currencyImg={stocksCards[element].img}
             openModalWindow={null}
+            usdData={apiCurrenciesData.usd}
           />
         ],
         []
       ),
-    [stocksCards]
+    [apiCurrenciesData]
   );
   return (
     <section>

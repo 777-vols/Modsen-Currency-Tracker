@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Image, InnerBlock, Name, Rate, Stats, Wrapper } from './styled';
@@ -11,32 +11,33 @@ function CurrencyCard({
   usdData,
   exchangeCurrenciesHandler
 }) {
-  function cardClickHandler() {
+  const cardClickHandler = useCallback(() => {
     if (openModalWindow) {
       openModalWindow();
       exchangeCurrenciesHandler(currencyShortName);
     }
-  }
-  const convertCurrency = () => (1 / usdData[currencyShortName]).toFixed(4);
+  }, [currencyShortName, openModalWindow, exchangeCurrenciesHandler]);
 
-  const memoizedConvertCurrency = useMemo(() => {
+  const convertCurrency = useMemo(() => {
     if (usdData) {
-      return convertCurrency();
+      return (1 / usdData[currencyShortName]).toFixed(4);
     }
-    return '0.15%';
-  }, [usdData]);
+    return null;
+  }, [currencyShortName, usdData]);
 
-  return (
-    <Wrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
-      <InnerBlock>
-        <Image src={currencyImg} />
-        <Stats>
-          <Name>{currencyFullName}</Name>
-          <Rate>{usdData ? `$ ${memoizedConvertCurrency}` : '0.15%'}</Rate>
-        </Stats>
-      </InnerBlock>
-    </Wrapper>
-  );
+  if (usdData) {
+    return (
+      <Wrapper onClick={cardClickHandler} data-cy={`card-${currencyShortName}`}>
+        <InnerBlock>
+          <Image src={currencyImg} />
+          <Stats>
+            <Name>{currencyFullName}</Name>
+            <Rate>{usdData && exchangeCurrenciesHandler ? `$ ${convertCurrency}` : '0.15%'}</Rate>
+          </Stats>
+        </InnerBlock>
+      </Wrapper>
+    );
+  }
 }
 
 CurrencyCard.propTypes = {
@@ -49,4 +50,4 @@ CurrencyCard.propTypes = {
   exchangeCurrenciesHandler: PropTypes.func
 };
 
-export default CurrencyCard;
+export default memo(CurrencyCard);
