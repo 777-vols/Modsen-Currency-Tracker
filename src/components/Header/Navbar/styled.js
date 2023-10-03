@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-export const NavbarWrapper = styled.div`
+export const Wrapper = styled.div`
   height: 103px;
   display: flex;
   align-items: center;

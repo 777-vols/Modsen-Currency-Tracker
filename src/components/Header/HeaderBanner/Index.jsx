@@ -3,35 +3,35 @@ import contentImg from '@assets/contentImage.svg';
 
 import config from './config';
 import {
+  BottomPartWrapper,
+  Content,
   ContentImage,
-  ContentInfo,
-  ContentInner,
-  ContentSpan,
-  ContentSpanWrapper,
-  ContentWrapper,
-  InfoBottomPart,
-  InfoTopPart,
-  InfoWrapper
+  HeaderBottomPart,
+  HeaderTopPart,
+  Panel,
+  StyledSpan,
+  TopPartWrapper,
+  Wrapper
 } from './styled';
 
 const [{ content: topPart }, { content: bottomPart }, { content: spanContent }] = config;
 
 function HeaderBanner() {
   return (
-    <ContentWrapper>
-      <ContentInner>
-        <ContentInfo>
-          <InfoWrapper>
-            <InfoTopPart>{topPart}</InfoTopPart>
-            <InfoBottomPart>{bottomPart}</InfoBottomPart>
-          </InfoWrapper>
-          <ContentSpanWrapper>
-            <ContentSpan>{spanContent}</ContentSpan>
-          </ContentSpanWrapper>
-        </ContentInfo>
+    <Wrapper>
+      <Content>
+        <Panel>
+          <TopPartWrapper>
+            <HeaderTopPart>{topPart}</HeaderTopPart>
+            <HeaderBottomPart>{bottomPart}</HeaderBottomPart>
+          </TopPartWrapper>
+          <BottomPartWrapper>
+            <StyledSpan>{spanContent}</StyledSpan>
+          </BottomPartWrapper>
+        </Panel>
         <ContentImage src={contentImg} alt="Header content image" />
-      </ContentInner>
-    </ContentWrapper>
+      </Content>
+    </Wrapper>
   );
 }
 

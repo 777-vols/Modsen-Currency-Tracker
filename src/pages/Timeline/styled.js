@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const TimelineWrapper = styled.div`
+export const Wrapper = styled.div`
   margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 1206px;
   width: 100%;
 `;
-export const TimelinePanelWrapper = styled.div`
+export const PanelWrapper = styled.div`
   color: ${(props) => props.theme.color};
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@ export const TimelinePanelWrapper = styled.div`
     flex-direction: column;
   }
 `;
-export const TimelineSelectWrapper = styled.div`
+export const SelectWrapper = styled.div`
   max-width: 330px;
   width: 100%;
   font-size: ${(props) => props.theme.fontSize.mediumL};
@@ -31,7 +31,7 @@ export const TimelineSelectWrapper = styled.div`
   }
 `;
 
-export const TimelineModalOpenButton = styled.button`
+export const ModalOpenButton = styled.button`
   cursor: pointer;
   background-color: transparent;
   color: ${(props) => props.theme.color};
@@ -55,13 +55,13 @@ export const TimelineModalOpenButton = styled.button`
   }
 `;
 
-export const TimelineScheduleWrapper = styled.div`
+export const ScheduleWrapper = styled.div`
   margin-top: ${(props) => props.theme.padding.hundredTwentyThree}px;
   @media (${(props) => props.theme.media.mediumL}) {
     margin-top: ${(props) => props.theme.padding.sixty}px;
   }
 `;
-export const TimelineSchedule = styled.div`
+export const Schedule = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;

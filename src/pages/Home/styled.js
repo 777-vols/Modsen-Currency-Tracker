@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeWrapper = styled.div`
+export const Wrapper = styled.div`
   margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 1224px;
   width: 100%;

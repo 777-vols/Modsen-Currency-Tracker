@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotificationWrapper = styled.div`
+export const Wrapper = styled.div`
   font-family: ${(props) => props.theme.fontFamily};
   padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.fourty}px;
   display: flex;
@@ -19,7 +19,7 @@ export const NotificationWrapper = styled.div`
     max-width: 500px;
   }
 `;
-export const NotificationSpan = styled.span`
+export const Content = styled.span`
   font-size: ${(props) => props.theme.fontSize.mediumS};
   font-weight: ${(props) => props.theme.fontWeight.medium};
   @media (${(props) => props.theme.media.mediumL}) {

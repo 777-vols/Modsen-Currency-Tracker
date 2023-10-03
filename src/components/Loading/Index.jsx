@@ -2,11 +2,11 @@ import React from 'react';
 import { BallTriangle } from 'react-loader-spinner';
 import styledColors from '@constants/styles/colors';
 
-import { LoadingWrapper } from './styled';
+import { Wrapper } from './styled';
 
 function Loading() {
   return (
-    <LoadingWrapper>
+    <Wrapper>
       <BallTriangle
         height={100}
         width={100}
@@ -17,7 +17,7 @@ function Loading() {
         wrapperStyle=""
         visible={true}
       />
-    </LoadingWrapper>
+    </Wrapper>
   );
 }
 

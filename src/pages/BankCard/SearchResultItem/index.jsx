@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { SearchResultFullname, SearchResultShortName, SearchResultWrapper } from './styled';
+import { Fullname, ShortName, Wrapper } from './styled';
 
 class SearchResultItem extends Component {
   handleClick = () => {
@@ -14,13 +14,14 @@ class SearchResultItem extends Component {
   render() {
     const { fullName, shortName } = this.props;
     return (
-      <SearchResultWrapper onClick={this.handleClick}>
-        <SearchResultFullname>{fullName}</SearchResultFullname>
-        <SearchResultShortName>{shortName}</SearchResultShortName>
-      </SearchResultWrapper>
+      <Wrapper onClick={this.handleClick}>
+        <Fullname>{fullName}</Fullname>
+        <ShortName>{shortName}</ShortName>
+      </Wrapper>
     );
   }
 }
+
 SearchResultItem.propTypes = {
   shortName: PropTypes.string,
   fullName: PropTypes.string,

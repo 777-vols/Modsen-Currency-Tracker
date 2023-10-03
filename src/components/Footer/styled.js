@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const FooterWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 1256px;
   width: 100%;
   margin: ${(props) => props.theme.padding.zero}px auto;
@@ -11,13 +11,13 @@ export const FooterWrapper = styled.div`
     padding-top: ${(props) => props.theme.padding.oneHundredFifty}px;
   }
 `;
-export const FooterInner = styled.div`
+export const Inner = styled.div`
   display: flex;
   @media (${(props) => props.theme.media.largeS}) {
     flex-direction: column;
   }
 `;
-export const FooterInfo = styled.div`
+export const Info = styled.div`
   max-width: 485px;
   width: 100%;
   margin-top: ${(props) => props.theme.padding.twenty}px;
@@ -27,14 +27,14 @@ export const FooterInfo = styled.div`
     justify-content: center;
   }
 `;
-export const FooterInfoHead = styled.div`
+export const InfoHead = styled.div`
   display: flex;
   align-items: flex-end;
   @media (${(props) => props.theme.media.largeS}) {
     margin-bottom: ${(props) => props.theme.padding.thirty}px;
   }
 `;
-export const FooterInfoLogo = styled.img`
+export const InfoLogo = styled.img`
   width: 40px;
   height: 46px;
   @media (${(props) => props.theme.media.mediumL}) {
@@ -42,7 +42,7 @@ export const FooterInfoLogo = styled.img`
     height: 34px;
   }
 `;
-export const FooterInfoName = styled.span`
+export const InfoName = styled.span`
   background: ${(props) => props.theme.colors.textGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -55,7 +55,7 @@ export const FooterInfoName = styled.span`
     font-size: ${(props) => props.theme.fontSize.mediumS};
   }
 `;
-export const FooterInfoBody = styled.div`
+export const InfoBody = styled.div`
   font-size: ${(props) => props.theme.fontSize.mediumM};
   line-height: 36px;
   width: 482px;
@@ -66,7 +66,7 @@ export const FooterInfoBody = styled.div`
     display: none;
   }
 `;
-export const FooterMenu = styled.nav`
+export const Menu = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -78,11 +78,11 @@ export const FooterMenu = styled.nav`
     display: none;
   }
 `;
-export const FooterMenuItem = styled.div`
+export const MenuItem = styled.div`
   padding: ${(props) => props.theme.padding.ten}px;
   width: 100%;
 `;
-export const FooterMenuSpan = styled.span`
+export const MenuSpan = styled.span`
   font-size: ${(props) => props.theme.fontSize.mediumM};
   margin-bottom: ${(props) => props.theme.padding.thirtyTwo}px;
   display: block;
@@ -92,7 +92,7 @@ export const FooterMenuSpan = styled.span`
     justify-content: center;
   }
 `;
-export const FooterMenuList = styled.ul``;
+export const MenuList = styled.ul``;
 export const ListItem = styled(NavLink)`
   display: block;
   color: ${(props) => props.theme.colors.lightGreyColor};
@@ -107,7 +107,7 @@ export const ListItem = styled(NavLink)`
     color: ${(props) => props.theme.color};
   }
 `;
-export const FooterSpan = styled.div`
+export const StyledSpan = styled.div`
   padding-top: ${(props) => props.theme.padding.fiftyFive}px;
   padding-bottom: ${(props) => props.theme.padding.fourty}px;
   color: ${(props) => props.theme.colors.lightGreyColor};

@@ -1,20 +1,20 @@
 import React, { PureComponent } from 'react';
 import PortalCreator from '@components/PortalCreator';
-import { CloseModalButton, ModalBackground } from '@pages/Home/HomeModal/styled';
+import { Background, CloseButton } from '@pages/Home/HomeModal/styled';
 import PropTypes from 'prop-types';
 
 import config from './config';
+import TimelineModalInput from './ModalInput';
 import {
   ButtonsWrapper,
   InfoButton,
+  InfoSpan,
+  InfoWrapper,
+  InputsWrapper,
   ModalButton,
-  ModalInfoSpan,
-  ModalInfoWrapper,
-  TimelineModalInputsWrapper,
-  TimelineModalWindow,
-  WarningSpan
+  WarningSpan,
+  Window
 } from './styled';
-import TimelineModalInput from './TimelineModalInput';
 
 const { modaInfoRules, warning, clearButton, createButton } = config;
 
@@ -78,20 +78,20 @@ class TimelineModal extends PureComponent {
 
     return (
       <PortalCreator wrapperId="timeline-modal">
-        <ModalBackground onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
-          <TimelineModalWindow>
+        <Background onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
+          <Window>
             {warningIsActive && <WarningSpan>{warning}</WarningSpan>}
-            <CloseModalButton id="chart-modal-close" onClick={closeModalWindow}>
+            <CloseButton id="chart-modal-close" onClick={closeModalWindow}>
               X
-            </CloseModalButton>
+            </CloseButton>
             <InfoButton onClick={this.descriptionIsOpenHandler}>?</InfoButton>
             {descriptionIsOpen && (
-              <ModalInfoWrapper
+              <InfoWrapper
                 onClick={(e) => e.currentTarget === e.target && this.descriptionIsOpenHandler()}>
-                <ModalInfoSpan>{this.modalRules}</ModalInfoSpan>
-              </ModalInfoWrapper>
+                <InfoSpan>{this.modalRules}</InfoSpan>
+              </InfoWrapper>
             )}
-            <TimelineModalInputsWrapper>{inputsArray}</TimelineModalInputsWrapper>
+            <InputsWrapper>{inputsArray}</InputsWrapper>
             <ButtonsWrapper>
               <ModalButton id="clearAllValues" onClick={clearAllInputsValues}>
                 {clearButton}
@@ -100,8 +100,8 @@ class TimelineModal extends PureComponent {
                 {createButton}
               </ModalButton>
             </ButtonsWrapper>
-          </TimelineModalWindow>
-        </ModalBackground>
+          </Window>
+        </Background>
       </PortalCreator>
     );
   }

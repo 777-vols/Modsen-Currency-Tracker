@@ -1,4 +1,4 @@
-function mobileFooterButtonClick(event) {
+function mobileFooterButtonClickHelper(event) {
   const arrowImg = event.currentTarget.children[0];
   const list = event.currentTarget.nextSibling;
   if (list.style.display === 'block') {
@@ -10,4 +10,4 @@ function mobileFooterButtonClick(event) {
   }
 }
 
-export default mobileFooterButtonClick;
+export default mobileFooterButtonClickHelper;

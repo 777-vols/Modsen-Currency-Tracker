@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ModalInputHeader, ModalInputWrapper, ModalStyledInput } from './styled';
+import { Header, Input, Wrapper } from './styled';
 
 class TimelineModalInput extends Component {
   handleInputLow = (event) => {
@@ -17,21 +17,21 @@ class TimelineModalInput extends Component {
   render() {
     const { day, inputValueHigh, inputValueLow } = this.props;
     return (
-      <ModalInputWrapper>
-        <ModalInputHeader>Day: {day}</ModalInputHeader>
-        <ModalStyledInput
+      <Wrapper>
+        <Header>Day: {day}</Header>
+        <Input
           id={`high-input-${day}`}
           value={inputValueHigh}
           onChange={this.handleInputHigh}
           placeholder="High price"
         />
-        <ModalStyledInput
+        <Input
           id={`low-input-${day}`}
           value={inputValueLow}
           onChange={this.handleInputLow}
           placeholder="Low price"
         />
-      </ModalInputWrapper>
+      </Wrapper>
     );
   }
 }

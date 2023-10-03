@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContentWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -16,14 +16,14 @@ export const ContentWrapper = styled.div`
     padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.five}px;
   }
 `;
-export const ContentInner = styled.div`
+export const Content = styled.div`
   display: flex;
   max-width: 1065px;
   width: 100%;
   justify-content: center;
 `;
-export const ContentInfo = styled.div``;
-export const InfoWrapper = styled.div`
+export const Panel = styled.div``;
+export const TopPartWrapper = styled.div`
   background: ${(props) => props.theme.colors.textGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -33,7 +33,7 @@ export const InfoWrapper = styled.div`
     margin: ${(props) => props.theme.padding.zero}px auto;
   }
 `;
-export const InfoTopPart = styled.h1`
+export const HeaderTopPart = styled.h1`
   line-height: 105px;
   font-weight: ${(props) => props.theme.fontWeight.medium};
   font-size: ${(props) => props.theme.fontSize.largeL};
@@ -51,7 +51,7 @@ export const InfoTopPart = styled.h1`
     font-size: ${(props) => props.theme.fontSize.mediumXL};
   }
 `;
-export const InfoBottomPart = styled.h2`
+export const HeaderBottomPart = styled.h2`
   font-size: ${(props) => props.theme.fontSize.largeXL};
   line-height: 120px;
   font-weight: ${(props) => props.theme.fontWeight.medium};
@@ -72,7 +72,7 @@ export const InfoBottomPart = styled.h2`
     font-size: ${(props) => props.theme.fontSize.mediumXL};
   }
 `;
-export const ContentSpanWrapper = styled.div`
+export const BottomPartWrapper = styled.div`
   margin-top: ${(props) => props.theme.padding.eight}px;
   display: flex;
   justify-content: right;
@@ -80,7 +80,7 @@ export const ContentSpanWrapper = styled.div`
     justify-content: center;
   }
 `;
-export const ContentSpan = styled.span`
+export const StyledSpan = styled.span`
   width: 100%;
   max-width: 397px;
   font-size: ${(props) => props.theme.fontSize.mediumM};

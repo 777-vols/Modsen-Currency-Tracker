@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Global from '@/GlobalStyled';
 
-import { ErrorPage, ErrorPageWrapper } from './styled';
+import { Content, Wrapper } from './styled';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -20,10 +20,10 @@ class ErrorBoundary extends Component {
     const { children } = this.props;
     if (hasError) {
       return (
-        <ErrorPageWrapper>
+        <Wrapper>
           <Global />
-          <ErrorPage />
-        </ErrorPageWrapper>
+          <Content />
+        </Wrapper>
       );
     }
     return children;

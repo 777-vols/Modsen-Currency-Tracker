@@ -3,18 +3,18 @@ import circleImg from '@assets/LastUpdateIcons/small.svg';
 import currentDateHelper from '@helpers/currentDateHelper';
 
 import config from './config';
-import { CircleAnimation, LastUpadateSpan, LastUpadateWrapper } from './styled';
+import { CircleAnimation, StyledSpan, Wrapper } from './styled';
 
 const [{ content: spanContent }] = config;
 
 function LastUpadate() {
   return (
-    <LastUpadateWrapper>
+    <Wrapper>
       <CircleAnimation src={circleImg} />
-      <LastUpadateSpan>
+      <StyledSpan>
         {spanContent} {currentDateHelper()}
-      </LastUpadateSpan>
-    </LastUpadateWrapper>
+      </StyledSpan>
+    </Wrapper>
   );
 }
 

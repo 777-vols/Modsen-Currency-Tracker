@@ -1,19 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { CardImage, CardName, CardShortName, CardStats, CardWrapper } from './styled';
+import { FullName, Image, ShortName, Stats, Wrapper } from './styled';
 
 class TimeLineCurrencyCard extends PureComponent {
   render() {
     const { currencyShortName, currencyFullName, currencyImg } = this.props;
     return (
-      <CardWrapper>
-        <CardImage src={currencyImg} />
-        <CardStats>
-          <CardName id="currency-card-name">{currencyFullName}</CardName>
-          <CardShortName>{currencyShortName}</CardShortName>
-        </CardStats>
-      </CardWrapper>
+      <Wrapper>
+        <Image src={currencyImg} />
+        <Stats>
+          <FullName id="currency-card-name">{currencyFullName}</FullName>
+          <ShortName>{currencyShortName}</ShortName>
+        </Stats>
+      </Wrapper>
     );
   }
 }

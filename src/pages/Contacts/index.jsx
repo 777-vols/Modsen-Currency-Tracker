@@ -3,22 +3,22 @@ import React, { useMemo } from 'react';
 import { Container } from '@/styled';
 
 import config from './config';
-import { ContactItem, ContactSpan, ContactsWrapper } from './styled';
+import { Item, StyledSpan, Wrapper } from './styled';
 
 function Contacts() {
   const contactsItems = useMemo(
     () =>
       config.map(({ id, content }) => (
-        <ContactItem key={id}>
-          <ContactSpan>{content}</ContactSpan>
-        </ContactItem>
+        <Item key={id}>
+          <StyledSpan>{content}</StyledSpan>
+        </Item>
       )),
     [config]
   );
   return (
     <section>
       <Container>
-        <ContactsWrapper>{contactsItems}</ContactsWrapper>
+        <Wrapper>{contactsItems}</Wrapper>
       </Container>
     </section>
   );

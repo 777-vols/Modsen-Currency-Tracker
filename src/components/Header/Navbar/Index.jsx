@@ -15,9 +15,9 @@ import {
   LogoLink,
   MenuLink,
   MenuList,
-  NavbarWrapper,
   StyledBar,
-  StyledNav
+  StyledNav,
+  Wrapper
 } from './styled';
 
 function Navbar() {
@@ -49,7 +49,7 @@ function Navbar() {
   );
   return (
     <Container>
-      <NavbarWrapper ref={navRef}>
+      <Wrapper ref={navRef}>
         <LogoLink data-cy="nav_logo" to={baseUrl}>
           <Logo src={logo} alt="logo" />
         </LogoLink>
@@ -67,7 +67,7 @@ function Navbar() {
           </BurgerMenuButton>
           <Checkbox />
         </ButtonsWrapper>
-      </NavbarWrapper>
+      </Wrapper>
     </Container>
   );
 }

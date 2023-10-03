@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Bar } from 'react-chartjs-2';
 import barOptions from '@constants/constBarOptions';
-import parseDataForSchedule from '@helpers/parseDataForShedule';
+import parseDataForScheduleHelper from '@helpers/parseDataForScheduleHelper';
 import observer from '@observer/observer';
+import Notification from '@pages/Timeline/Notification';
 import {
   BarElement,
   CategoryScale,
@@ -13,8 +14,6 @@ import {
   Tooltip
 } from 'chart.js';
 import PropTypes from 'prop-types';
-
-import Notification from '../Notification';
 
 ChartJS.register(BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
@@ -64,7 +63,7 @@ class TimelineChartSchedule extends PureComponent {
         {
           label: 'High & Low price',
           data: [...Object.values(filtredData).map((element) => Object.values(element))],
-          backgroundColor: parseDataForSchedule(Object.values(filtredData)),
+          backgroundColor: parseDataForScheduleHelper(Object.values(filtredData)),
           barPercentage: 0.7
         }
       ]

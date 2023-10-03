@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalBackground = styled.div`
+export const Background = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@ export const ModalBackground = styled.div`
   align-items: center;
   background: ${(props) => props.theme.colors.homeModalBg};
 `;
-export const ModalWindow = styled.div`
+export const Window = styled.div`
   font-family: ${(props) => props.theme.fontFamily};
   background: ${(props) => props.theme.background};
   max-width: 500px;
@@ -23,7 +23,7 @@ export const ModalWindow = styled.div`
   padding: ${(props) => props.theme.padding.fifteen}px;
   margin: ${(props) => props.theme.padding.fifteen}px;
 `;
-export const CloseModalButton = styled.button`
+export const CloseButton = styled.button`
   cursor: pointer;
   color: ${(props) => props.theme.color};
   font-size: ${(props) => props.theme.fontSize.mediumS};
@@ -41,7 +41,7 @@ export const CloseModalButton = styled.button`
   }
 `;
 
-export const ModalHeader = styled.h5`
+export const Header = styled.h5`
   color: ${(props) => props.theme.color};
   font-size: ${(props) => props.theme.fontSize.mediumL};
   display: flex;
@@ -51,13 +51,13 @@ export const ModalHeader = styled.h5`
   }
 `;
 
-export const ModalInner = styled.div`
+export const InnerBlock = styled.div`
   padding-top: ${(props) => props.theme.padding.thirty}px;
   padding-bottom: ${(props) => props.theme.padding.twenty}px;
   display: flex;
   justify-content: space-around;
 `;
-export const StyledBlock = styled.div`
+export const Panel = styled.div`
   min-width: 60px;
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@ export const SelectSpan = styled.span`
     font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
-export const ModalStyledSpan = styled.span`
+export const StyledSpan = styled.span`
   text-align: center;
   font-size: ${(props) => props.theme.fontSize.mediumS};
   background: ${(props) => props.theme.colors.darkFontColor};
@@ -91,7 +91,7 @@ export const ModalStyledSpan = styled.span`
     font-size: ${(props) => props.theme.fontSize.smallL};
   }
 `;
-export const ModalStyledInput = styled.input`
+export const StyledInput = styled.input`
   text-align: center;
   font-size: ${(props) => props.theme.fontSize.mediumS};
   background: ${(props) => props.theme.colors.darkFontColor};

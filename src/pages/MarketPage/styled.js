@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MarketPageHeader = styled.h1`
+const Header = styled.h1`
   margin-top: ${(props) => props.theme.padding.thirty}px;
   font-size: ${(props) => props.theme.fontSize.mediumXL};
   display: flex;
@@ -14,4 +14,4 @@ const MarketPageHeader = styled.h1`
   }
 `;
 
-export default MarketPageHeader;
+export default Header;

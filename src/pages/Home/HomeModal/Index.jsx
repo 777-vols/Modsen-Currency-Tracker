@@ -6,17 +6,17 @@ import PropTypes from 'prop-types';
 
 import config from './config';
 import {
-  CloseModalButton,
-  ModalBackground,
-  ModalHeader,
-  ModalInner,
-  ModalStyledInput,
-  ModalStyledSpan,
-  ModalWindow,
+  Background,
+  CloseButton,
+  Header,
+  InnerBlock,
+  Panel,
   Result,
   SelectSpan,
-  StyledBlock,
-  StyledSelect
+  StyledInput,
+  StyledSelect,
+  StyledSpan,
+  Window
 } from './styled';
 
 const { header, from, to, sum, result } = config;
@@ -46,23 +46,19 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
   const memoizedConvertCurrency = useMemo(() => convertCurrency(), [sumValue, convertToValue]);
   return (
     <PortalCreator wrapperId="home-modal">
-      <ModalBackground onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
-        <ModalWindow>
-          <CloseModalButton onClick={handleCloseModal}>X</CloseModalButton>
-          <ModalHeader>{header}</ModalHeader>
-          <ModalInner>
-            <StyledBlock>
+      <Background onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
+        <Window>
+          <CloseButton onClick={handleCloseModal}>X</CloseButton>
+          <Header>{header}</Header>
+          <InnerBlock>
+            <Panel>
               <SelectSpan>{sum}</SelectSpan>
-              <ModalStyledInput
-                data-cy="homeModal-input"
-                value={sumValue}
-                onChange={handleInputType}
-              />
-            </StyledBlock>
-            <StyledBlock>
+              <StyledInput data-cy="homeModal-input" value={sumValue} onChange={handleInputType} />
+            </Panel>
+            <Panel>
               <SelectSpan>{from}</SelectSpan>
-              <ModalStyledSpan>{convertFrom}</ModalStyledSpan>
-            </StyledBlock>
+              <StyledSpan>{convertFrom}</StyledSpan>
+            </Panel>
             <StyledSelect>
               <SelectSpan>{to}</SelectSpan>
               <Select
@@ -74,12 +70,12 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
                   label: currencyName
                 }))}></Select>
             </StyledSelect>
-          </ModalInner>
+          </InnerBlock>
           <Result>
             {result} <span id="converter-result">{usdCourse ? memoizedConvertCurrency : ''}</span>
           </Result>
-        </ModalWindow>
-      </ModalBackground>
+        </Window>
+      </Background>
     </PortalCreator>
   );
 }

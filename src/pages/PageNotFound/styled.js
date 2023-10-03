@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const PageNotFoundHeader = styled.h1`
+export const Header = styled.h1`
   margin-top: ${(props) => props.theme.padding.thirty}px;
   font-size: ${(props) => props.theme.fontSize.mediumXL};
   display: flex;
@@ -20,7 +20,7 @@ export const LinkWrapper = styled.div`
   justify-content: center;
   height: 30px;
 `;
-export const PageNotFoundLink = styled(NavLink)`
+export const Link = styled(NavLink)`
   color: ${(props) => props.theme.color};
   font-size: ${(props) => props.theme.fontSize.mediumS};
   opacity: 0.8;

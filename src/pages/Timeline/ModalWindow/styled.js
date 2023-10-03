@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TimelineModalWindow = styled.div`
+export const Window = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -41,7 +41,7 @@ export const InfoButton = styled.button`
     background: ${(props) => props.theme.colors.lightRed};
   }
 `;
-export const ModalInfoWrapper = styled.span`
+export const InfoWrapper = styled.span`
   padding: ${(props) => props.theme.padding.twenty}px;
   background-color: ${(props) => props.theme.color};
   color: ${(props) => props.theme.background};
@@ -51,10 +51,10 @@ export const ModalInfoWrapper = styled.span`
   margin-right: ${(props) => props.theme.padding.eighty}px;
   max-width: 800px;
 `;
-export const ModalInfoSpan = styled.span`
+export const InfoSpan = styled.span`
   font-size: ${(props) => props.theme.fontSize.smallM};
 `;
-export const TimelineModalInputsWrapper = styled.div`
+export const InputsWrapper = styled.div`
   max-height: 450px;
   margin-right: ${(props) => props.theme.padding.fourty}px;
   display: flex;

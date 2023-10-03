@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchResultWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 450px;
   width: 100%;
   cursor: pointer;
@@ -15,14 +15,14 @@ export const SearchResultWrapper = styled.div`
     background-color: ${(props) => props.theme.colors.greyColor};
   }
 `;
-export const SearchResultShortName = styled.span`
+export const ShortName = styled.span`
   color: ${(props) => props.theme.colors.darkFontColor};
   font-size: ${(props) => props.theme.fontSize.mediumS};
   @media (${(props) => props.theme.media.smallM}) {
     top: 18px;
   }
 `;
-export const SearchResultFullname = styled.span`
+export const Fullname = styled.span`
   color: ${(props) => props.theme.colors.darkFontColor};
   font-size: ${(props) => props.theme.fontSize.smallM};
 `;

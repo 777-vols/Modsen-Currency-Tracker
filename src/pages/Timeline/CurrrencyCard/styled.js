@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 500px;
   width: 100%;
   display: flex;
@@ -9,24 +9,24 @@ export const CardWrapper = styled.div`
     margin: ${(props) => props.theme.padding.zero}px auto;
   }
 `;
-export const CardImage = styled.img`
+export const Image = styled.img`
   @media (${(props) => props.theme.media.mediumL}) {
     width: 50px;
     height: 50px;
   }
 `;
-export const CardStats = styled.div`
+export const Stats = styled.div`
   margin-left: ${(props) => props.theme.padding.twentyFive}px;
   display: flex;
   flex-direction: column;
 `;
-export const CardName = styled.span`
+export const FullName = styled.span`
   font-size: ${(props) => props.theme.fontSize.mediumXL};
   @media (${(props) => props.theme.media.mediumL}) {
     font-size: ${(props) => props.theme.fontSize.mediumM};
   }
 `;
-export const CardShortName = styled.span`
+export const ShortName = styled.span`
   font-size: ${(props) => props.theme.fontSize.smallM};
   @media (${(props) => props.theme.media.mediumL}) {
     font-size: ${(props) => props.theme.fontSize.smallS};

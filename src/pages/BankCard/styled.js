@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BankCardWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -9,8 +9,7 @@ export const BankCardWrapper = styled.div`
   margin: ${(props) => props.theme.padding.zero}px auto;
   margin-top: ${(props) => props.theme.padding.fifty}px;
 `;
-export const BankCardHeaderWrapper = styled.div``;
-export const BankCardHeader = styled.h3`
+export const Header = styled.h3`
   display: flex;
   justify-content: center;
   margin-bottom: ${(props) => props.theme.padding.twentyFive}px;
@@ -23,7 +22,7 @@ export const BankCardHeader = styled.h3`
     font-size: ${(props) => props.theme.fontSize.mediumS};
   }
 `;
-export const BankCardInputWrapper = styled.div`
+export const InputWrapper = styled.div`
   margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 450px;
   position: relative;
@@ -34,7 +33,7 @@ export const BankCardInputWrapper = styled.div`
     max-width: 250px;
   }
 `;
-export const BankCardInput = styled.input`
+export const Input = styled.input`
   color: ${(props) => props.theme.colors.darkFontColor};
   font-size: ${(props) => props.theme.fontSize.smallL};
   background-color: ${(props) => props.theme.colors.inputBgGrey};
@@ -78,7 +77,7 @@ export const SearchResultWrapper = styled.div`
     top: 40px;
   }
 `;
-export const BankCardMapWrapper = styled.div`
+export const MapWrapper = styled.div`
   margin-top: ${(props) => props.theme.padding.hundred}px;
   height: 460px;
 `;

@@ -10,18 +10,18 @@ import observer from '@observer/observer';
 
 import { Container } from '@/styled';
 
+import TimelineChartSchedule from './ChartSchedule';
 import config from './config';
+import TimeLineCurrencyCard from './CurrrencyCard';
+import TimelineModal from './ModalWindow';
 import {
-  TimelineModalOpenButton,
-  TimelinePanelWrapper,
-  TimelineSchedule,
-  TimelineScheduleWrapper,
-  TimelineSelectWrapper,
-  TimelineWrapper
+  ModalOpenButton,
+  PanelWrapper,
+  Schedule,
+  ScheduleWrapper,
+  SelectWrapper,
+  Wrapper
 } from './styled';
-import TimelineChartSchedule from './TimelineChartSchedule';
-import TimeLineCurrencyCard from './TimelineCurrrencyCard';
-import TimelineModal from './TimelineModal';
 
 const { buttonValue } = config;
 const { quotesCards } = constCurrencyCardsData;
@@ -147,31 +147,31 @@ class Timeline extends Component {
     return (
       <section>
         <Container>
-          <TimelineWrapper>
-            <TimelinePanelWrapper>
-              <TimelineSelectWrapper>
+          <Wrapper>
+            <PanelWrapper>
+              <SelectWrapper>
                 <Select
                   id="timeline-select"
                   styles={this.colourStyles}
                   onChange={this.setTimelineCurrency}
                   defaultValue={this.selectOptionsList[0]}
                   options={this.selectOptionsList}></Select>
-              </TimelineSelectWrapper>
-              <TimelineModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
+              </SelectWrapper>
+              <ModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
                 {buttonValue}
-              </TimelineModalOpenButton>
-            </TimelinePanelWrapper>
-            <TimelineScheduleWrapper>
+              </ModalOpenButton>
+            </PanelWrapper>
+            <ScheduleWrapper>
               <TimeLineCurrencyCard
                 currencyShortName={currentTimelineCurrency}
                 currencyFullName={currencyFullName}
                 currencyImg={currencyImg}
               />
-              <TimelineSchedule>
+              <Schedule>
                 <TimelineChartSchedule modalData={sheduleData} />
-              </TimelineSchedule>
-            </TimelineScheduleWrapper>
-          </TimelineWrapper>
+              </Schedule>
+            </ScheduleWrapper>
+          </Wrapper>
         </Container>
         {modalIsOpen && (
           <TimelineModal

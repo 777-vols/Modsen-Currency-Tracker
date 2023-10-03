@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LastUpadateWrapper = styled.div`
+export const Wrapper = styled.div`
   padding: ${(props) => props.theme.padding.fiftyFive}px ${(props) => props.theme.padding.zero}px;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@ export const LastUpadateWrapper = styled.div`
     padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.zero}px;
   }
 `;
-export const LastUpadateSpan = styled.span`
+export const StyledSpan = styled.span`
   margin-left: ${(props) => props.theme.padding.eighteen}px;
   font-size: ${(props) => props.theme.fontSize.mediumXL};
   display: flex;

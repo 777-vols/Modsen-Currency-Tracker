@@ -1,14 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  CardInner,
-  CardWrapper,
-  CurrencyImage,
-  CurrencyName,
-  CurrencyRate,
-  CurrencyStats
-} from './styled';
+import { Image, InnerBlock, Name, Rate, Stats, Wrapper } from './styled';
 
 function CurrencyCard({
   currencyShortName,
@@ -34,15 +27,15 @@ function CurrencyCard({
   }, [usdData]);
 
   return (
-    <CardWrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
-      <CardInner>
-        <CurrencyImage src={currencyImg} />
-        <CurrencyStats>
-          <CurrencyName>{currencyFullName}</CurrencyName>
-          <CurrencyRate>{usdData ? `$ ${memoizedConvertCurrency}` : '0.15%'}</CurrencyRate>
-        </CurrencyStats>
-      </CardInner>
-    </CardWrapper>
+    <Wrapper onClick={cardClickHandler} id={`card-${currencyShortName}`}>
+      <InnerBlock>
+        <Image src={currencyImg} />
+        <Stats>
+          <Name>{currencyFullName}</Name>
+          <Rate>{usdData ? `$ ${memoizedConvertCurrency}` : '0.15%'}</Rate>
+        </Stats>
+      </InnerBlock>
+    </Wrapper>
   );
 }
 

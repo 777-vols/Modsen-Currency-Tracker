@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardWrapper = styled.div`
+export const Wrapper = styled.div`
   cursor: pointer;
   max-width: 520px;
   width: 100%;
@@ -31,7 +31,7 @@ export const CardWrapper = styled.div`
     margin-top: ${(props) => props.theme.padding.twenty}px;
   }
 `;
-export const CardInner = styled.div`
+export const InnerBlock = styled.div`
   margin-left: ${(props) => props.theme.padding.thirtyTwo}px;
   display: flex;
   align-items: center;
@@ -39,7 +39,7 @@ export const CardInner = styled.div`
     margin-left: ${(props) => props.theme.padding.twenty}px;
   }
 `;
-export const CurrencyStats = styled.div`
+export const Stats = styled.div`
   margin-left: ${(props) => props.theme.padding.thirty}px;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ export const CurrencyStats = styled.div`
     margin-left: ${(props) => props.theme.padding.twenty}px;
   }
 `;
-export const CurrencyImage = styled.img`
+export const Image = styled.img`
   @media (${(props) => props.theme.media.largeM}) {
     height: 60px;
     width: 60px;
@@ -61,7 +61,7 @@ export const CurrencyImage = styled.img`
     width: 30px;
   }
 `;
-export const CurrencyName = styled.span`
+export const Name = styled.span`
   margin-top: ${(props) => props.theme.padding.five}px;
   font-size: ${(props) => props.theme.fontSize.mediumXL};
   font-weight: ${(props) => props.theme.fontWeight.small};
@@ -76,7 +76,7 @@ export const CurrencyName = styled.span`
     font-size: ${(props) => props.theme.fontSize.smallS};
   }
 `;
-export const CurrencyRate = styled.span`
+export const Rate = styled.span`
   font-size: ${(props) => props.theme.fontSize.mediumL};
   color: ${(props) => props.theme.colors.currencyRateColor};
   font-weight: ${(props) => props.theme.fontWeight.small};

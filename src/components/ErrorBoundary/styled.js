@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ErrorPageWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 100vw;
   width: 100%;
   min-height: 100vh;
@@ -11,7 +11,7 @@ export const ErrorPageWrapper = styled.div`
   align-items: center;
 `;
 
-export const ErrorPage = styled.div`
+export const Content = styled.div`
   min-height: 250px;
   min-width: 250px;
   width: 700px;

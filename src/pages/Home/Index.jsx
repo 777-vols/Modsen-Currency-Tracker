@@ -6,7 +6,7 @@ import { Container } from '@/styled';
 
 import config from './config';
 import Modal from './HomeModal';
-import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
+import { CardsWrapper, Quotes, Stocks, StyledSpan, Wrapper } from './styled';
 import CurrencyCard from './СurrencyСard';
 
 const { quotesCards, stocksCards } = constCurrencyCardsData;
@@ -68,7 +68,7 @@ function Home() {
   return (
     <section>
       <Container>
-        <HomeWrapper>
+        <Wrapper>
           <Stocks>
             <StyledSpan>{stocksContent}</StyledSpan>
             <CardsWrapper>{stocksCardsList}</CardsWrapper>
@@ -77,7 +77,7 @@ function Home() {
             <StyledSpan>{quotesContent}</StyledSpan>
             <CardsWrapper>{quotesCardsList}</CardsWrapper>
           </Quotes>
-        </HomeWrapper>
+        </Wrapper>
       </Container>
       {isOpenModal && (
         <Modal

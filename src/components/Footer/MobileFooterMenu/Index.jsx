@@ -2,47 +2,39 @@ import React, { useMemo } from 'react';
 import arrow from '@assets/arrow.svg';
 import config from '@components/Footer/config';
 import urls from '@constants/urls';
-import mobileFooterButtonClick from '@helpers/mobileFooterButtonClick';
+import mobileFooterButtonClickHelper from '@helpers/mobileFooterButtonClickHelper';
 
-import {
-  ListItem,
-  MenuButton,
-  MenuItemArrow,
-  MenuList,
-  MenuListItem,
-  MobileMenuItem,
-  MobileMenuWrapper
-} from './styled';
+import { ArrowImg, Button, Link, ListItem, MenuItem, MenuList, Wrapper } from './styled';
 
 const { market } = urls;
 const [, , , configMenuItems] = config;
 
 function MobileFooterMenu() {
   function menuButtonClick(event) {
-    mobileFooterButtonClick(event);
+    mobileFooterButtonClickHelper(event);
   }
 
   const menuItems = useMemo(
     () =>
       configMenuItems.map(({ header, items }) => (
-        <MobileMenuItem key={header}>
-          <MenuButton onClick={menuButtonClick}>
+        <MenuItem key={header}>
+          <Button onClick={menuButtonClick}>
             {header}
-            <MenuItemArrow src={arrow} />
-          </MenuButton>
+            <ArrowImg src={arrow} />
+          </Button>
           <MenuList>
             {items.map(({ id, itemContent }) => (
-              <MenuListItem key={id}>
-                <ListItem to={market}>{itemContent}</ListItem>
-              </MenuListItem>
+              <ListItem key={id}>
+                <Link to={market}>{itemContent}</Link>
+              </ListItem>
             ))}
           </MenuList>
-        </MobileMenuItem>
+        </MenuItem>
       )),
     [config]
   );
 
-  return <MobileMenuWrapper>{menuItems}</MobileMenuWrapper>;
+  return <Wrapper>{menuItems}</Wrapper>;
 }
 
 export default MobileFooterMenu;

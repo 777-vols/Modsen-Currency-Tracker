@@ -1,6 +1,6 @@
 import styledColors from '@constants/styles/colors';
 
-export default function parseDataForSchedule(dataValues) {
+export default function parseDataForScheduleHelper(dataValues) {
   const colors = [];
   for (let counter = 0; counter < dataValues.length; counter += 1) {
     if (counter === 0) {
