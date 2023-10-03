@@ -12,7 +12,7 @@ export const StyledLabel = styled.label`
   &:after {
     content: '';
     position: absolute;
-    left: ${({ $currentTheme }) => ($currentTheme ? '0px' : '20px')};
+    left: ${({ $currentTheme }) => ($currentTheme === 'lightTheme' ? '20px' : '0px')};
     width: 29px;
     height: 29px;
     top: -1px;
