@@ -5,6 +5,11 @@ const urls = {
   bankCard: '/bankCard',
   contacts: '/contacts',
   market: '/market',
+  sparks: '/sparks',
+  ideas: '/ideas',
+  service: '/service',
+  snaps: '/snaps',
+  streams: '/streams',
   notFound: '/*'
 };
 

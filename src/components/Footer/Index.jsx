@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import logo from '@assets/logo.svg';
-import urls from '@constants/urls';
 
 import { Container } from '@/styled';
 
@@ -22,7 +21,6 @@ import {
   Wrapper
 } from './styled';
 
-const { market } = urls;
 const [{ content: infoName }, { content: infoBody }, { content: footerSpan }, configMenuItems] =
   config;
 
@@ -33,15 +31,15 @@ function Footer() {
         <MenuItem key={header}>
           <MenuSpan>{header}</MenuSpan>
           <MenuList>
-            {items.map(({ id, itemContent }) => (
+            {items.map(({ id, itemContent, url }) => (
               <li key={id}>
-                <ListItem to={market}>{itemContent}</ListItem>
+                <ListItem to={url}>{itemContent}</ListItem>
               </li>
             ))}
           </MenuList>
         </MenuItem>
       )),
-    [config]
+    []
   );
   return (
     <footer>

@@ -1,3 +1,7 @@
+import urls from '@constants/urls';
+
+const { market, sparks, ideas, service, snaps, streams } = urls;
+
 const config = [
   {
     id: 1,
@@ -18,11 +22,13 @@ const config = [
       items: [
         {
           id: 1,
-          itemContent: 'Market'
+          itemContent: 'Market',
+          url: market
         },
         {
           id: 2,
-          itemContent: 'Service'
+          itemContent: 'Service',
+          url: service
         }
       ]
     },
@@ -31,11 +37,13 @@ const config = [
       items: [
         {
           id: 1,
-          itemContent: 'Sparks'
+          itemContent: 'Sparks',
+          url: sparks
         },
         {
           id: 2,
-          itemContent: 'Snaps'
+          itemContent: 'Snaps',
+          url: snaps
         }
       ]
     },
@@ -44,11 +52,13 @@ const config = [
       items: [
         {
           id: 1,
-          itemContent: 'Ideas'
+          itemContent: 'Ideas',
+          url: ideas
         },
         {
           id: 2,
-          itemContent: 'Streams'
+          itemContent: 'Streams',
+          url: streams
         }
       ]
     }

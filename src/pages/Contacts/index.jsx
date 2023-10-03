@@ -13,7 +13,7 @@ function Contacts() {
           <StyledSpan>{content}</StyledSpan>
         </Item>
       )),
-    [config]
+    []
   );
   return (
     <section>

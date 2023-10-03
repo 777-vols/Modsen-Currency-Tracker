@@ -31,7 +31,7 @@ function MobileFooterMenu() {
           </MenuList>
         </MenuItem>
       )),
-    [config]
+    []
   );
 
   return <Wrapper>{menuItems}</Wrapper>;

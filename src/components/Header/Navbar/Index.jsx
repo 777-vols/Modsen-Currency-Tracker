@@ -45,7 +45,7 @@ function Navbar() {
           </MenuLink>
         </LinkWrapper>
       )),
-    [config]
+    []
   );
   return (
     <Container>

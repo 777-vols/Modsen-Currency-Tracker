@@ -5,7 +5,7 @@ import Home from '@pages/Home';
 import PageNotFound from '@pages/PageNotFound';
 import Timeline from '@pages/Timeline';
 
-import MarketPage from '@/pages/MarketPage';
+import Market from '@/pages/Market';
 
 const routesConfig = [
   {
@@ -30,7 +30,27 @@ const routesConfig = [
   },
   {
     path: urls.market,
-    Component: MarketPage
+    Component: Market
+  },
+  {
+    path: urls.sparks,
+    Component: Market
+  },
+  {
+    path: urls.ideas,
+    Component: Market
+  },
+  {
+    path: urls.service,
+    Component: Market
+  },
+  {
+    path: urls.snaps,
+    Component: Market
+  },
+  {
+    path: urls.streams,
+    Component: Market
   }
 ];
 

@@ -4,7 +4,7 @@ import { Container } from '@/styled';
 
 import Header from './styled';
 
-function MarketPage() {
+function Market() {
   return (
     <Container>
       <Header>Market Page</Header>
@@ -12,4 +12,4 @@ function MarketPage() {
   );
 }
 
-export default MarketPage;
+export default Market;
