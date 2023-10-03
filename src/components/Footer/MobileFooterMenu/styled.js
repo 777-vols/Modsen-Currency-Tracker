@@ -1,14 +1,15 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const MobileMenuWrapper = styled.div`
-  margin: 0 auto;
+export const Wrapper = styled.nav`
+  margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 355px;
   width: 100%;
   @media (min-width: 500px) {
     display: none;
   }
 `;
-export const MobileMenuItem = styled.div``;
+export const MenuItem = styled.div``;
 export const MenuList = styled.ul`
   display: none;
   transform: translateX(-150%);
@@ -23,12 +24,14 @@ export const MenuList = styled.ul`
   }
 `;
 
-export const MenuListItem = styled.li`
-  padding: 15px;
+export const ListItem = styled.li`
+  padding: ${(props) => props.theme.padding.ten}px;
 `;
-export const MenuListSpan = styled.span``;
+export const Link = styled(NavLink)`
+  color: ${(props) => props.theme.color};
+`;
 
-export const MenuButton = styled.button`
+export const Button = styled.button`
   color: ${(props) => props.theme.color};
   background-color: transparent;
   width: 100%;
@@ -40,6 +43,6 @@ export const MenuButton = styled.button`
   border-bottom: 1px solid ${(props) => props.theme.color};
 `;
 
-export const MenuItemArrow = styled.img`
+export const ArrowImg = styled.img`
   transition: 0.3s;
 `;

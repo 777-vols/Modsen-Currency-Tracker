@@ -1,26 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import store from '@store';
 
 import App from './App.jsx';
 import Global from './GlobalStyled.js';
-import { BrowserRouter } from 'react-router-dom';
-import ErrorBoundary from './components/ErrorBoundary/Index.jsx';
-import { Provider } from 'react-redux';
-import store from '@store/index.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ErrorBoundary>
-    <BrowserRouter>
-      <Global />
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </ErrorBoundary>
+  <HashRouter>
+    <Global />
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </HashRouter>
 );
 
-if ('development' && module && module.hot) {
-  module.hot.accept();
+if ('development' && import.meta.webpackHot) {
+  import.meta.webpackHot.accept();
 }

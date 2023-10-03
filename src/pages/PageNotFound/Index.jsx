@@ -1,17 +1,16 @@
 import React from 'react';
+import urls from '@constants/urls';
 
-import * as urls from '@constants/urls';
+import { Container } from '@/styled';
 
-import { Container } from '../../styled';
-
-import { LinkWrapper, PageNotFoundHeader, PageNotFoundLink } from './styled';
+import { Header, Link, LinkWrapper } from './styled';
 
 function PageNotFound() {
   return (
     <Container>
-      <PageNotFoundHeader>Page not found, please try again</PageNotFoundHeader>
+      <Header>Page not found, please try again</Header>
       <LinkWrapper>
-        <PageNotFoundLink to={urls.home}>Go back to home page</PageNotFoundLink>
+        <Link to={urls.home}>Go back to home page</Link>
       </LinkWrapper>
     </Container>
   );

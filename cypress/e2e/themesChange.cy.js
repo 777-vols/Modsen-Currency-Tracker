@@ -4,7 +4,7 @@ describe('Themes changrer test', () => {
     cy.get('header label').click();
     cy.get('#root div')
       .first()
-      .should('have.css', 'background-color', `rgb(217, 217, 217)`)
+      .should('have.css', 'background-color', `rgb(236, 236, 236)`)
       .should('have.css', 'color', `rgb(3, 3, 4)`);
 
     cy.get('header label').click();

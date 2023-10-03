@@ -1,116 +1,123 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const FooterWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 1256px;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  padding-top: 96px;
-  @media (max-width: 650px) {
-    padding-top: 150px;
+  margin: ${(props) => props.theme.padding.zero}px auto;
+  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.twelve}px;
+  padding-top: ${(props) => props.theme.padding.hundred}px;
+  @media (${(props) => props.theme.media.smallL}) {
+    padding-top: ${(props) => props.theme.padding.oneHundredFifty}px;
   }
 `;
-export const FooterInner = styled.div`
+export const Inner = styled.div`
   display: flex;
-  @media (max-width: 1050px) {
+  @media (${(props) => props.theme.media.largeS}) {
     flex-direction: column;
   }
 `;
-export const FooterInfo = styled.div`
+export const Info = styled.div`
   max-width: 485px;
   width: 100%;
-  margin-top: 20px;
-  @media (max-width: 1050px) {
-    margin: 0 auto;
+  margin-top: ${(props) => props.theme.padding.twenty}px;
+  @media (${(props) => props.theme.media.largeS}) {
+    margin: ${(props) => props.theme.padding.zero}px auto;
     display: flex;
     justify-content: center;
   }
 `;
-export const FooterInfoHead = styled.div`
+export const InfoHead = styled.div`
   display: flex;
   align-items: flex-end;
-  @media (max-width: 1050px) {
-    margin-bottom: 30px;
+  @media (${(props) => props.theme.media.largeS}) {
+    margin-bottom: ${(props) => props.theme.padding.thirty}px;
   }
 `;
-export const FooterInfoLogo = styled.img`
+export const InfoLogo = styled.img`
   width: 40px;
   height: 46px;
-  @media (max-width: 900px) {
+  @media (${(props) => props.theme.media.mediumL}) {
     width: 30px;
     height: 34px;
   }
 `;
-export const FooterInfoName = styled.span`
-  background: linear-gradient(90.18deg, #00ce2c 0.2%, #aedf23 50%, #a3dc00 100%);
+export const InfoName = styled.span`
+  background: ${(props) => props.theme.colors.textGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 26px;
-  font-weight: 600;
-  margin-left: 22px;
+  font-size: ${(props) => props.theme.fontSize.mediumM};
+  font-weight: ${(props) => props.theme.fontWeight.medium};
+  margin-left: ${(props) => props.theme.padding.twentyTwo}px;
   white-space: nowrap;
-  @media (max-width: 500px) {
-    font-size: 20px;
+  @media (${(props) => props.theme.media.smallS}) {
+    font-size: ${(props) => props.theme.fontSize.mediumS};
   }
 `;
-export const FooterInfoBody = styled.div`
-  font-size: 24px;
+export const InfoBody = styled.div`
+  font-size: ${(props) => props.theme.fontSize.mediumM};
   line-height: 36px;
   width: 482px;
   width: 100%;
-  margin-top: 19px;
-  font-weight: 300;
-  @media (max-width: 1050px) {
+  margin-top: ${(props) => props.theme.padding.twenty}px;
+  font-weight: ${(props) => props.theme.fontWeight.small};
+  @media (${(props) => props.theme.media.largeS}) {
     display: none;
   }
 `;
-export const FooterMenu = styled.div`
+export const Menu = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-left: 105px;
-  @media (max-width: 1050px) {
-    padding-left: 0;
+  padding-left: ${(props) => props.theme.padding.hundred}px;
+  @media (${(props) => props.theme.media.largeS}) {
+    padding-left: ${(props) => props.theme.padding.zero}px;
   }
-  @media (max-width: 500px) {
+  @media (${(props) => props.theme.media.smallS}) {
     display: none;
   }
 `;
-export const FooterMenuItem = styled.div`
-  padding: 10px;
+export const MenuItem = styled.div`
+  padding: ${(props) => props.theme.padding.ten}px;
   width: 100%;
 `;
-export const FooterMenuSpan = styled.span`
-  font-size: 28px;
-  margin-bottom: 32px;
+export const MenuSpan = styled.span`
+  font-size: ${(props) => props.theme.fontSize.mediumM};
+  margin-bottom: ${(props) => props.theme.padding.thirtyTwo}px;
   display: block;
-  @media (max-width: 1050px) {
-    font-size: 23px;
+  @media (${(props) => props.theme.media.largeS}) {
+    font-size: ${(props) => props.theme.fontSize.mediumS};
     display: flex;
     justify-content: center;
   }
 `;
-export const FooterMenuList = styled.ul``;
-export const ListItem = styled.span`
+export const MenuList = styled.ul``;
+export const ListItem = styled(NavLink)`
   display: block;
-  color: rgb(137, 137, 137);
-  font-size: 24px;
-  padding: 8px 0;
-  @media (max-width: 1050px) {
-    font-size: 18px;
+  color: ${(props) => props.theme.colors.lightGreyColor};
+  font-size: ${(props) => props.theme.fontSize.mediumM};
+  padding: ${(props) => props.theme.padding.eight}px ${(props) => props.theme.padding.zero};
+  @media (${(props) => props.theme.media.largeS}) {
+    font-size: ${(props) => props.theme.fontSize.smallL};
     display: flex;
     justify-content: center;
   }
+  &:hover {
+    color: ${(props) => props.theme.color};
+  }
 `;
-export const FooterSpan = styled.div`
-  padding: 55px 0 40px 0;
-  color: rgb(137, 137, 137);
+export const StyledSpan = styled.div`
+  padding-top: ${(props) => props.theme.padding.fiftyFive}px;
+  padding-bottom: ${(props) => props.theme.padding.fourty}px;
+  color: ${(props) => props.theme.colors.lightGreyColor};
   display: flex;
   justify-content: center;
-  font-size: 24px;
-  @media (max-width: 1050px) {
-    font-size: 15px;
-    padding: 36px 0 20px 0;
+  font-size: ${(props) => props.theme.fontSize.mediumM};
+  transition: 0.2s;
+  @media (${(props) => props.theme.media.largeS}) {
+    font-size: ${(props) => props.theme.fontSize.smallM};
+    padding-top: ${(props) => props.theme.padding.thirtyFive}px;
+    padding-bottom: ${(props) => props.theme.padding.twenty}px;
   }
 `;

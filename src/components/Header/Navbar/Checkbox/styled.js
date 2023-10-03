@@ -12,7 +12,7 @@ export const StyledLabel = styled.label`
   &:after {
     content: '';
     position: absolute;
-    left: ${({ $currentTheme }) => ($currentTheme ? '0px' : '20px')};
+    left: ${({ $currentTheme }) => ($currentTheme === 'lightTheme' ? '20px' : '0px')};
     width: 29px;
     height: 29px;
     top: -1px;
@@ -22,7 +22,7 @@ export const StyledLabel = styled.label`
     transition: 0.2s;
   }
 
-  @media (max-width: 750px) {
+  @media (${(props) => props.theme.media.mediumM}) {
     min-width: 28px;
     height: 15px;
     border: 1px solid ${(props) => props.theme.color};

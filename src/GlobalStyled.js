@@ -1,3 +1,5 @@
+import styledColors from '@constants/styles/colors';
+import paddings from '@constants/styles/paddings';
 import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
@@ -5,17 +7,17 @@ html {
 	box-sizing: border-box;
 
   ::-webkit-scrollbar {
-	  width: 12px;
+	  width: ${paddings.twelve}px;
   }
 
   ::-webkit-scrollbar-track {
-	  background: rgb(39, 39, 39);
+	  background: ${styledColors.darkGreyColor};
   }
 
   ::-webkit-scrollbar-thumb {
-	  background: rgb(22, 218, 12);
+	  background: ${styledColors.greenColor};
 	  border-radius: 10px;
-	  border: 1px solid rgb(39, 39, 39);
+	  border: 1px solid ${styledColors.greyColor};
   }
 }
 
@@ -27,7 +29,7 @@ html {
 
 ul[class],
 ol[class] {
-	padding: 0;
+	padding: ${paddings.zero};
 }
 
 ul[class] {
@@ -50,7 +52,7 @@ figcaption,
 blockquote,
 dl,
 dd {
-	margin: 0;
+	margin: ${paddings.zero};
 	font-size: inherit;
 }
 

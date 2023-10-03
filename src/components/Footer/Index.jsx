@@ -1,82 +1,63 @@
-import React from 'react';
-
+import React, { useMemo } from 'react';
 import logo from '@assets/logo.svg';
 
-import { Container } from '../../styled';
+import { Container } from '@/styled';
 
-import MobileFooterMenu from './MobileFooterMenu/Index';
+import config from './config';
+import MobileFooterMenu from './MobileFooterMenu';
 import {
-  FooterInfo,
-  FooterInfoBody,
-  FooterInfoHead,
-  FooterInfoLogo,
-  FooterInfoName,
-  FooterInner,
-  FooterMenu,
-  FooterMenuItem,
-  FooterMenuList,
-  FooterMenuSpan,
-  FooterSpan,
-  FooterWrapper,
-  ListItem
+  Info,
+  InfoBody,
+  InfoHead,
+  InfoLogo,
+  InfoName,
+  Inner,
+  ListItem,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuSpan,
+  StyledSpan,
+  Wrapper
 } from './styled';
 
+const [{ content: infoName }, { content: infoBody }, { content: footerSpan }, configMenuItems] =
+  config;
+
 function Footer() {
+  const menuItems = useMemo(
+    () =>
+      configMenuItems.map(({ header, items }) => (
+        <MenuItem key={header}>
+          <MenuSpan>{header}</MenuSpan>
+          <MenuList>
+            {items.map(({ id, itemContent, url }) => (
+              <li key={id}>
+                <ListItem to={url}>{itemContent}</ListItem>
+              </li>
+            ))}
+          </MenuList>
+        </MenuItem>
+      )),
+    []
+  );
   return (
     <footer>
       <Container>
-        <FooterWrapper>
-          <FooterInner>
-            <FooterInfo>
-              <FooterInfoHead>
-                <FooterInfoLogo src={logo} />
-                <FooterInfoName>Modsen Currency Tracker</FooterInfoName>
-              </FooterInfoHead>
-              <FooterInfoBody>
-                Since then, the company has grown organically to. Starsup is the world&apos;s
-                largest trading platform, with $12 billion worth of currency trading and 500,000
-                tickets sold daily to tens of thousands of traders worldwide.
-              </FooterInfoBody>
-            </FooterInfo>
+        <Wrapper>
+          <Inner>
+            <Info>
+              <InfoHead>
+                <InfoLogo src={logo} />
+                <InfoName>{infoName}</InfoName>
+              </InfoHead>
+              <InfoBody>{infoBody}</InfoBody>
+            </Info>
             <MobileFooterMenu />
-            <FooterMenu>
-              <FooterMenuItem>
-                <FooterMenuSpan>General</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem>Market</ListItem>
-                  </li>
-                  <li>
-                    <ListItem>Service</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-              <FooterMenuItem>
-                <FooterMenuSpan>Product</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem>Sparks</ListItem>
-                  </li>
-                  <li>
-                    <ListItem>Snaps</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-              <FooterMenuItem>
-                <FooterMenuSpan>Community</FooterMenuSpan>
-                <FooterMenuList>
-                  <li>
-                    <ListItem>Ideas</ListItem>
-                  </li>
-                  <li>
-                    <ListItem>Streams</ListItem>
-                  </li>
-                </FooterMenuList>
-              </FooterMenuItem>
-            </FooterMenu>
-          </FooterInner>
-          <FooterSpan>Startsup © 2023-2024, All Rights Reserved</FooterSpan>
-        </FooterWrapper>
+            <Menu>{menuItems}</Menu>
+          </Inner>
+          <StyledSpan>{footerSpan}</StyledSpan>
+        </Wrapper>
       </Container>
     </footer>
   );

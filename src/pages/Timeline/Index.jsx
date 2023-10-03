@@ -1,141 +1,189 @@
 import React, { Component } from 'react';
-
-import currencyCardsData from '@constants/currencyCardsData';
-
-import { Container } from '../../styled';
-
-import TimelineChartSchedule from './TimelineChartSchedule/Index';
-import TimeLineCurrencyCard from './TimelineCurrrencyCard/Index';
-import TimelineModal from './TimelineModal/Index';
+import Select from 'react-select';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData';
+import * as allThemes from '@constants/themes';
 import {
-  SelectOption,
-  TimelineModalOpenButton,
-  TimelineSchedule,
-  TimelineScheduleWrapper,
-  TimelineSelect,
-  TimelineSelectWrapper,
-  TimelineWrapper
+  isHighInputValueIncorrect,
+  isLowPriceInputValueIncorrect
+} from '@helpers/isPriceInputValueIncorrectHelper';
+import observer from '@observer/observer';
+
+import { Container } from '@/styled';
+
+import TimelineChartSchedule from './ChartSchedule';
+import config from './config';
+import TimeLineCurrencyCard from './CurrrencyCard';
+import TimelineModal from './ModalWindow';
+import {
+  ModalOpenButton,
+  PanelWrapper,
+  Schedule,
+  ScheduleWrapper,
+  SelectWrapper,
+  Wrapper
 } from './styled';
+
+const { buttonValue } = config;
+const { quotesCards } = constCurrencyCardsData;
 
 class Timeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTimelineCurrency: 'USD',
-      timelineCurrencyCard: currencyCardsData.quotesCards.USD,
+      timelineCurrencyCard: quotesCards.USD,
       modalInputsData: {},
       sheduleData: {},
       modalIsOpen: false,
-      listeners: []
+      warningIsActive: false
     };
   }
 
-  subscribe = (listener) => {
-    this.setState((prevState) => ({ listeners: [...prevState.listeners, listener] }));
-
-    return () => {
-      this.setState((prevState) => ({
-        listeners: [...prevState.listeners.filter((element) => element !== listener)]
-      }));
-    };
-  };
-
-  notifyAll = () => {
-    this.state.listeners.forEach((listener) => listener());
-  };
-
-  setModalInputsDataLow = (day, value) => {
-    if (
-      this.state.modalInputsData[day] === undefined ||
-      +this.state.modalInputsData[day].highPrice < +value
-    ) {
+  setModalInputsDataLow = (inputDay, inputValue) => {
+    const { modalInputsData } = this.state;
+    if (isLowPriceInputValueIncorrect(inputValue, modalInputsData, inputDay)) {
       return;
     }
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...this.state.modalInputsData[day], lowPrice: value }
+        [inputDay]: { ...modalInputsData[inputDay], lowPrice: inputValue }
       }
     }));
   };
 
-  setModalInputsDataHigh = (day, value) => {
+  setModalInputsDataHigh = (inputDay, inputValue) => {
+    const { modalInputsData } = this.state;
+    if (isHighInputValueIncorrect(inputValue)) {
+      return;
+    }
     this.setState((prevState) => ({
       modalInputsData: {
         ...prevState.modalInputsData,
-        [day]: { ...this.state.modalInputsData[day], highPrice: value }
+        [inputDay]: { ...modalInputsData[inputDay], highPrice: inputValue }
       }
     }));
   };
 
   setModalIsOpen = () => {
-    this.setState((prevState) => ({
-      modalIsOpen: !prevState.modalIsOpen
+    this.setState(({ modalIsOpen }) => ({
+      modalIsOpen: !modalIsOpen
     }));
-    if (
-      Object.values(this.state.modalInputsData).filter((value) => value !== '').length === 30 &&
-      this.state.modalIsOpen
-    ) {
-      this.notifyAll();
-    }
-    if (this.state.modalIsOpen) {
-      this.setState((prevState) => ({ sheduleData: { ...prevState.modalInputsData } }));
+  };
+
+  clearAllInputsValues = () => {
+    this.setState({ modalInputsData: {} });
+  };
+
+  createSheduleHandler = () => {
+    const { modalIsOpen, modalInputsData } = this.state;
+    const correctInputsForDay = Object.values(modalInputsData).filter((value) => {
+      const dayValuesArray = Object.values(value);
+      if (
+        dayValuesArray[0] !== '' &&
+        dayValuesArray[1] !== '' &&
+        Number(dayValuesArray[1] >= 100)
+      ) {
+        return value;
+      }
+      return null;
+    });
+    if (modalIsOpen && observer.checkNumberOfFilledDays(correctInputsForDay)) {
+      this.setState((prevState) => ({
+        sheduleData: { ...prevState.modalInputsData },
+        modalIsOpen: false
+      }));
+    } else {
+      this.setState({ warningIsActive: true });
+      setTimeout(() => this.setState({ warningIsActive: false }), 3000);
     }
   };
 
-  setTimelineCurrency = (event) => {
+  setTimelineCurrency = (selectedOption) => {
     this.setState({
-      currentTimelineCurrency: event.target.value,
-      timelineCurrencyCard: currencyCardsData.quotesCards[event.target.value],
+      currentTimelineCurrency: selectedOption.value,
+      timelineCurrencyCard: quotesCards[selectedOption.value],
       modalInputsData: {}
     });
   };
 
-  selectOptionsList = Object.keys(currencyCardsData.quotesCards).reduce(
+  selectOptionsList = Object.keys(quotesCards).reduce(
     (accum, element) => [
       ...accum,
-      <SelectOption key={element} value={element}>
-        {currencyCardsData.quotesCards[element].name}
-      </SelectOption>
+      {
+        value: element,
+        label: quotesCards[element].name
+      }
     ],
     []
   );
 
+  colourStyles = {
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: 'transparent',
+      color: 'inherit',
+      cursor: 'pointer'
+    }),
+    option: (styles) => {
+      const styleObject = {
+        ...styles,
+        color: allThemes.lightTheme.color,
+        cursor: 'pointer'
+      };
+      return styleObject;
+    },
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'inherit',
+      cursor: 'pointer'
+    })
+  };
+
   render() {
+    const { currentTimelineCurrency, sheduleData, warningIsActive, modalIsOpen, modalInputsData } =
+      this.state;
+    const { name: currencyFullName, img: currencyImg } = this.state.timelineCurrencyCard;
     return (
       <section>
         <Container>
-          <TimelineWrapper>
-            <TimelineSelectWrapper>
-              <TimelineSelect id="timeline-select" onChange={this.setTimelineCurrency}>
-                {this.selectOptionsList}
-              </TimelineSelect>
-              <TimelineModalOpenButton id="enter-values" onClick={this.setModalIsOpen}>
-                Enter your values
-              </TimelineModalOpenButton>
-            </TimelineSelectWrapper>
-            <TimelineScheduleWrapper>
+          <Wrapper>
+            <PanelWrapper>
+              <SelectWrapper>
+                <Select
+                  data-cy="timeline-select"
+                  styles={this.colourStyles}
+                  onChange={this.setTimelineCurrency}
+                  defaultValue={this.selectOptionsList[0]}
+                  options={this.selectOptionsList}></Select>
+              </SelectWrapper>
+              <ModalOpenButton data-cy="enter-values" onClick={this.setModalIsOpen}>
+                {buttonValue}
+              </ModalOpenButton>
+            </PanelWrapper>
+            <ScheduleWrapper>
               <TimeLineCurrencyCard
-                currencyShortName={this.state.currentTimelineCurrency}
-                currencyFullName={this.state.timelineCurrencyCard.name}
-                currencyImg={this.state.timelineCurrencyCard.img}
+                currencyShortName={currentTimelineCurrency}
+                currencyFullName={currencyFullName}
+                currencyImg={currencyImg}
               />
-              <TimelineSchedule>
-                <TimelineChartSchedule
-                  subscribe={this.subscribe}
-                  modalData={this.state.sheduleData}
-                />
-              </TimelineSchedule>
-            </TimelineScheduleWrapper>
-          </TimelineWrapper>
+              <Schedule>
+                <TimelineChartSchedule modalData={sheduleData} />
+              </Schedule>
+            </ScheduleWrapper>
+          </Wrapper>
         </Container>
-        <TimelineModal
-          isOpen={this.state.modalIsOpen}
-          closeModalWindow={this.setModalIsOpen}
-          handleInputLow={this.setModalInputsDataLow}
-          handleInputHigh={this.setModalInputsDataHigh}
-          inputsData={this.state.modalInputsData}
-        />
+        {modalIsOpen && (
+          <TimelineModal
+            warningIsActive={warningIsActive}
+            closeModalWindow={this.setModalIsOpen}
+            clearAllInputsValues={this.clearAllInputsValues}
+            createSheduleHandler={this.createSheduleHandler}
+            handleInputLow={this.setModalInputsDataLow}
+            handleInputHigh={this.setModalInputsDataHigh}
+            inputsData={modalInputsData}
+          />
+        )}
       </section>
     );
   }
