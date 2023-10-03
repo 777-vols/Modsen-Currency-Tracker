@@ -1,6 +1,16 @@
-export const baseUrl = '/';
-export const home = '/';
-export const timeline = '/timeline';
-export const bankCard = '/bankCard';
-export const contact = '/contacts';
-export const notFound = '/*';
+const urls = {
+  baseUrl: '/',
+  home: '/',
+  timeline: '/timeline',
+  bankCard: '/bankCard',
+  contacts: '/contacts',
+  market: '/market',
+  sparks: '/sparks',
+  ideas: '/ideas',
+  service: '/service',
+  snaps: '/snaps',
+  streams: '/streams',
+  notFound: '/*'
+};
+
+export default urls;

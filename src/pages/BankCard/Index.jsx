@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
+import searchImg from '@assets/searchIcon.svg';
+import constBanksList from '@constants/constBanksList';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData';
+import elasticSearchHelper from '@helpers/elasticSearchHelper';
 
-import searchImg from '@assets/search-normal.svg';
-import banksList from '@constants/banksList';
-import currencyCardsData from '@constants/currencyCardsData';
+import { Container } from '@/styled';
 
-import { Container } from '../../styled';
-
-import BankCardMap from './BankCardMap/Index';
-import SerachAnswer from './SearchAnswer/Index';
+import BankCardMap from './BankCardMap';
+import config from './config';
+import SearchResultItem from './SearchResultItem';
 import {
-  BankCardHeader,
-  BankCardInput,
-  BankCardInputWrapper,
-  BankCardMapWrapper,
-  BankCardWrapper,
-  InputAnswersWrapper,
-  SearchInputImage
+  Header,
+  Input,
+  InputWrapper,
+  MapWrapper,
+  SearchInputImage,
+  SearchResultWrapper,
+  Wrapper
 } from './styled';
+
+const { header, placeholderValue, notFound } = config;
 
 class BankCard extends Component {
   constructor(props) {
@@ -24,14 +27,14 @@ class BankCard extends Component {
     this.state = {
       currentCyrrency: {},
       currencies: [],
-      searchAnswers: [],
+      searchResultElements: [],
       searchValue: '',
       banksCoords: []
     };
   }
 
   componentDidMount() {
-    const currenciesList = Object.entries(currencyCardsData.quotesCards).map((card) => ({
+    const currenciesList = Object.entries(constCurrencyCardsData.quotesCards).map((card) => ({
       shortName: card[0],
       fullName: card[1].name
     }));
@@ -39,56 +42,47 @@ class BankCard extends Component {
   }
 
   elasticSearchHandle = (event) => {
+    const { currencies } = this.state;
     this.setState({ searchValue: event.target.value });
-    if (event.target.value !== '') {
-      const answers = Object.values(this.state.currencies).filter((currency) => {
-        const inputValue = event.target.value.toLowerCase();
-        if (
-          currency.shortName.toLowerCase().includes(inputValue) ||
-          currency.fullName.toLowerCase().includes(inputValue)
-        )
-          return currency;
-        return null;
-      });
-      this.setState({ searchAnswers: answers });
-    } else {
-      this.setState({ searchAnswers: [] });
-    }
+    elasticSearchHelper(event, currencies, notFound, this.setState.bind(this));
   };
 
   handleCurrencySelection = (shortName) => {
-    this.setState({ searchAnswers: [], searchValue: shortName });
-    const banks = banksList.filter((bank) => bank.currencies.includes(shortName.toLowerCase()));
+    this.setState({ searchResultElements: [], searchValue: shortName });
+    const banks = constBanksList.filter((bank) =>
+      bank.currencies.includes(shortName.toLowerCase())
+    );
     this.setState({ banksCoords: banks });
   };
 
   render() {
-    const serchAnswersComponents = this.state.searchAnswers.map((answer, index) => (
-      <SerachAnswer
-        key={index}
-        shortName={answer.shortName}
-        fullName={answer.fullName}
+    const { searchResultElements, searchValue, banksCoords } = this.state;
+    const searchResultComponets = searchResultElements.map(({ shortName, fullName }) => (
+      <SearchResultItem
+        key={shortName}
+        shortName={shortName}
+        fullName={fullName}
         handleClick={this.handleCurrencySelection}
       />
     ));
     return (
       <section>
         <Container>
-          <BankCardWrapper>
-            <BankCardHeader>Search currency in the bank</BankCardHeader>
-            <BankCardInputWrapper>
-              <BankCardInput
-                value={this.state.searchValue}
+          <Wrapper>
+            <Header>{header}</Header>
+            <InputWrapper>
+              <Input
+                value={searchValue}
                 onChange={this.elasticSearchHandle}
-                placeholder="Currency search..."
+                placeholder={placeholderValue}
               />
               <SearchInputImage src={searchImg} />
-              <InputAnswersWrapper>{serchAnswersComponents}</InputAnswersWrapper>
-            </BankCardInputWrapper>
-            <BankCardMapWrapper>
-              <BankCardMap banksCoords={this.state.banksCoords} />
-            </BankCardMapWrapper>
-          </BankCardWrapper>
+              <SearchResultWrapper>{searchResultComponets}</SearchResultWrapper>
+            </InputWrapper>
+            <MapWrapper>
+              <BankCardMap banksCoords={banksCoords} />
+            </MapWrapper>
+          </Wrapper>
         </Container>
       </section>
     );

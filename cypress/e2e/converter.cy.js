@@ -8,10 +8,10 @@ describe('Convert 10 usd to btc', () => {
         4
       )}`;
       cy.visit('/');
-      cy.get('#card-usd').click();
-      cy.get('#home-modal input').type('{backspace}10');
-      cy.get('#home-modal select').select('btc');
-      cy.get('#converter-result').should('have.text', result);
+      cy.get("[data-cy='card-usd']").click();
+      cy.get("[data-cy='homeModal-input']").type('{backspace}10');
+      cy.get('#homeModal-select').type('btc{enter}{enter}');
+      cy.get("[data-cy='converter-result']").should('have.text', result);
     });
   });
 });
@@ -26,10 +26,9 @@ describe('Convert 0.5 btc to usd', () => {
         4
       )}`;
       cy.visit('/');
-      cy.get('#card-btc').click();
-      cy.get('#home-modal input').type('{backspace}0.5');
-      cy.get('#home-modal select').select('usd');
-      cy.get('#converter-result').should('have.text', result);
+      cy.get("[data-cy='card-btc']").click();
+      cy.get("[data-cy='homeModal-input']").type('{backspace}0.5');
+      cy.get("[data-cy='converter-result']").should('have.text', result);
     });
   });
 });
@@ -37,29 +36,29 @@ describe('Convert 0.5 btc to usd', () => {
 describe('Convert string to btc', () => {
   it('Should return NaN', () => {
     cy.visit('/');
-    cy.get('#card-usd').click();
-    cy.get('#home-modal input').type('{backspace}somedata');
-    cy.get('#home-modal select').select('btc');
-    cy.get('#converter-result').should('have.text', 'NaN');
+    cy.get("[data-cy='card-usd']").click();
+    cy.get("[data-cy='homeModal-input']").type('{backspace}somedata');
+    cy.get('#homeModal-select').type('btc{enter}{enter}');
+    cy.get("[data-cy='converter-result']").should('have.text', 'NaN');
   });
 });
 
 describe('Convert dot to btc', () => {
   it('Should return NaN', () => {
     cy.visit('/');
-    cy.get('#card-usd').click();
-    cy.get('#home-modal input').type('{backspace}.');
-    cy.get('#home-modal select').select('btc');
-    cy.get('#converter-result').should('have.text', 'NaN');
+    cy.get("[data-cy='card-usd']").click();
+    cy.get("[data-cy='homeModal-input']").type('{backspace}.');
+    cy.get('#homeModal-select').type('btc{enter}{enter}');
+    cy.get("[data-cy='converter-result']").should('have.text', 'NaN');
   });
 });
 
 describe('Convert string empty string to btc', () => {
   it('Should return 0.00000', () => {
     cy.visit('/');
-    cy.get('#card-usd').click();
-    cy.get('#home-modal input').type('{backspace}');
-    cy.get('#home-modal select').select('btc');
-    cy.get('#converter-result').should('have.text', '0.0000');
+    cy.get("[data-cy='card-usd']").click();
+    cy.get("[data-cy='homeModal-input']").type('{backspace}');
+    cy.get('#homeModal-select').type('btc{enter}{enter}');
+    cy.get("[data-cy='converter-result']").should('have.text', '0.0000');
   });
 });

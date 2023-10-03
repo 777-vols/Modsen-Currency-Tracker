@@ -1,9 +1,11 @@
-import * as urls from '@constants/urls';
-import BankCard from '@pages/BankCard/Index';
-import Contact from '@pages/Contact/Index';
-import Home from '@pages/Home/Index';
-import PageNotFound from '@pages/PageNotFound/Index';
-import Timeline from '@pages/Timeline/Index';
+import urls from '@constants/urls';
+import BankCard from '@pages/BankCard';
+import Contacts from '@pages/Contacts';
+import Home from '@pages/Home';
+import PageNotFound from '@pages/PageNotFound';
+import Timeline from '@pages/Timeline';
+
+import Market from '@/pages/Market';
 
 const routesConfig = [
   {
@@ -19,12 +21,36 @@ const routesConfig = [
     Component: BankCard
   },
   {
-    path: urls.contact,
-    Component: Contact
+    path: urls.contacts,
+    Component: Contacts
   },
   {
     path: urls.notFound,
     Component: PageNotFound
+  },
+  {
+    path: urls.market,
+    Component: Market
+  },
+  {
+    path: urls.sparks,
+    Component: Market
+  },
+  {
+    path: urls.ideas,
+    Component: Market
+  },
+  {
+    path: urls.service,
+    Component: Market
+  },
+  {
+    path: urls.snaps,
+    Component: Market
+  },
+  {
+    path: urls.streams,
+    Component: Market
   }
 ];
 

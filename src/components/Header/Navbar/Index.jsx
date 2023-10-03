@@ -1,53 +1,74 @@
-import React from 'react';
-
+import React, { useMemo, useRef, useState } from 'react';
 import logo from '@assets/logo.svg';
-import * as urls from '@constants/urls';
+import urls from '@constants/urls';
+import useOnClickOutside from '@hooks/useOnCickOutside';
 
-import Checkbox from './Checkbox/Index';
+import { Container } from '@/styled';
+
+import Checkbox from './Checkbox';
+import config from './config';
 import {
+  BurgerMenuButton,
+  ButtonsWrapper,
   LinkWrapper,
   Logo,
   LogoLink,
   MenuLink,
   MenuList,
-  NavbarWrapper,
-  StyledNav
+  StyledBar,
+  StyledNav,
+  Wrapper
 } from './styled';
 
 function Navbar() {
+  const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
+  const navRef = useRef();
+
+  function burgerButtonHandle() {
+    setBurgerMenuIsOpen((prevState) => !prevState);
+  }
+
+  useOnClickOutside(navRef, () => {
+    if (burgerMenuIsOpen) {
+      burgerButtonHandle();
+    }
+  });
+
+  const { baseUrl } = urls;
+
+  const navbarItems = useMemo(
+    () =>
+      config.map(({ name, url }) => (
+        <LinkWrapper key={name}>
+          <MenuLink data-cy={`nav_${name}`} to={url}>
+            {name}
+          </MenuLink>
+        </LinkWrapper>
+      )),
+    []
+  );
   return (
-    <NavbarWrapper>
-      <LogoLink link_test="logo" to={urls.baseUrl}>
-        <Logo src={logo} alt="logo" />
-      </LogoLink>
+    <Container>
+      <Wrapper ref={navRef}>
+        <LogoLink data-cy="nav_logo" to={baseUrl}>
+          <Logo src={logo} alt="logo" />
+        </LogoLink>
 
-      <StyledNav>
-        <MenuList id="menuList">
-          <LinkWrapper>
-            <MenuLink link_test="menu_home" to={urls.home}>
-              Home
-            </MenuLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <MenuLink link_test="menu_timeline" to={urls.timeline}>
-              Timeline
-            </MenuLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <MenuLink link_test="menu_bankCard" to={urls.bankCard}>
-              Bank card
-            </MenuLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <MenuLink link_test="menu_contacts" to={urls.contact}>
-              Contato
-            </MenuLink>
-          </LinkWrapper>
-        </MenuList>
-      </StyledNav>
-
-      <Checkbox />
-    </NavbarWrapper>
+        <StyledNav open={burgerMenuIsOpen}>
+          <MenuList data-cy="navList">{navbarItems}</MenuList>
+        </StyledNav>
+        <ButtonsWrapper>
+          <BurgerMenuButton
+            className={burgerMenuIsOpen ? 'active' : ''}
+            onClick={burgerButtonHandle}>
+            <StyledBar />
+            <StyledBar />
+            <StyledBar />
+          </BurgerMenuButton>
+          <Checkbox />
+        </ButtonsWrapper>
+      </Wrapper>
+    </Container>
   );
 }
 

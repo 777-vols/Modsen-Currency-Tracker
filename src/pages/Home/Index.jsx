@@ -1,62 +1,32 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import constCurrencyCardsData from '@constants/constCurrencyCardsData.js';
+import useLocaleStorage from '@hooks/useLocaleStorage';
 
-import getCurrenciesList from '@api/apiRequests';
-import CurrencyCard from '@components/СurrencyСard/Index';
-import currencyCardsData from '@constants/currencyCardsData.js';
-import {
-  clearLocaleStorage,
-  getLocaleStorageItem,
-  setLocaleStorageItem
-} from '@helpers/localeStorageHelpers';
+import { Container } from '@/styled';
 
-import { Container } from '../../styled';
+import config from './config';
+import Modal from './HomeModal';
+import { CardsWrapper, Quotes, Stocks, StyledSpan, Wrapper } from './styled';
+import CurrencyCard from './СurrencyСard';
 
-import Modal from './HomeModal/Index';
-import { CardsWrapper, HomeWrapper, Quotes, Stocks, StyledSpan } from './styled';
+const { quotesCards, stocksCards } = constCurrencyCardsData;
+const [{ content: stocksContent }, { content: quotesContent }] = config;
 
 function Home() {
-  const { quotesCards, stocksCards } = currencyCardsData;
-
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [apiCurrenciesData, setApiCurrenciesData] = useState({});
-  const [currenciesList, setCurrenciesList] = useState([]);
   const currentExchangeCurrencies = useRef({ from: '', to: '' });
 
-  useEffect(() => {
-    const limit = 24 * 3600 * 1000;
-    const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
-    const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
-    if (localStorageInitTime === null || localStorageInitData == null) {
-      getCurrenciesList().then((res) => {
-        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
-        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
+  const setDataHandler = useCallback((data) => setApiCurrenciesData(data), []);
 
-        setApiCurrenciesData(res.data);
-        setCurrenciesList(Object.keys(res.data.usd));
-      });
-    } else if (Number(new Date() - localStorageInitTime > limit)) {
-      getCurrenciesList().then((res) => {
-        clearLocaleStorage();
-        setLocaleStorageItem('localStorageInitTime', Number(new Date()));
-        setLocaleStorageItem('localStorageCurrencyData', JSON.stringify(res.data));
-      });
-    }
+  useLocaleStorage(setDataHandler);
 
-    if (getLocaleStorageItem('localStorageCurrencyData')) {
-      const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
-      setApiCurrenciesData(data);
-      setCurrenciesList(Object.keys(data.usd));
-    }
-  }, []);
+  const openCloseModal = useCallback(() => setIsOpenModal(!isOpenModal), [isOpenModal]);
 
-  function openCloseModal() {
-    setIsOpenModal(!isOpenModal);
-  }
-
-  function exchangeCurrenciesHandler(newFrom, newTo = 'usd') {
+  const exchangeCurrenciesHandler = useCallback((newFrom, newTo = 'usd') => {
     currentExchangeCurrencies.current.from = newFrom;
     currentExchangeCurrencies.current.to = newTo;
-  }
+  }, []);
 
   const quotesCardsList = useMemo(
     () =>
@@ -75,7 +45,7 @@ function Home() {
         ],
         []
       ),
-    [apiCurrenciesData]
+    [apiCurrenciesData, exchangeCurrenciesHandler, openCloseModal]
   );
 
   const stocksCardsList = useMemo(
@@ -89,34 +59,34 @@ function Home() {
             currencyFullName={stocksCards[element].name}
             currencyImg={stocksCards[element].img}
             openModalWindow={null}
+            usdData={apiCurrenciesData.usd}
           />
         ],
         []
       ),
-    [stocksCards]
+    [apiCurrenciesData]
   );
-
   return (
     <section>
       <Container>
-        <HomeWrapper>
+        <Wrapper>
           <Stocks>
-            <StyledSpan>Stocks</StyledSpan>
+            <StyledSpan>{stocksContent}</StyledSpan>
             <CardsWrapper>{stocksCardsList}</CardsWrapper>
           </Stocks>
           <Quotes>
-            <StyledSpan>Quotes</StyledSpan>
+            <StyledSpan>{quotesContent}</StyledSpan>
             <CardsWrapper>{quotesCardsList}</CardsWrapper>
           </Quotes>
-        </HomeWrapper>
+        </Wrapper>
       </Container>
-      <Modal
-        convertFromTo={currentExchangeCurrencies.current}
-        allCurrenciesList={currenciesList}
-        usdCourse={apiCurrenciesData.usd}
-        isOpen={isOpenModal}
-        closeModalWindow={openCloseModal}
-      />
+      {isOpenModal && (
+        <Modal
+          convertFromTo={currentExchangeCurrencies.current}
+          usdCourse={apiCurrenciesData.usd}
+          closeModalWindow={openCloseModal}
+        />
+      )}
     </section>
   );
 }

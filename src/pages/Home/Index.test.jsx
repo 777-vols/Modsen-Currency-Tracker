@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 
-import Home from './Index';
-
 import '@testing-library/jest-dom';
+
+import Home from './index';
 
 describe('rendering HomePage', () => {
   test('check text', async () => {

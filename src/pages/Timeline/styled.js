@@ -1,76 +1,67 @@
 import styled from 'styled-components';
 
-export const TimelineWrapper = styled.div`
-  margin: 0 auto;
+export const Wrapper = styled.div`
+  margin: ${(props) => props.theme.padding.zero}px auto;
   max-width: 1206px;
   width: 100%;
 `;
-export const TimelineSelectWrapper = styled.div`
+export const PanelWrapper = styled.div`
+  color: ${(props) => props.theme.color};
   display: flex;
   align-items: center;
-  @media (max-width: 600px) {
+  margin-bottom: ${(props) => props.theme.padding.twentyFive}px;
+  @media (${(props) => props.theme.media.smallM}) {
     flex-direction: column;
   }
 `;
-export const TimelineSelect = styled.select`
-  cursor: pointer;
-  max-width: 300px;
+export const SelectWrapper = styled.div`
+  max-width: 330px;
   width: 100%;
-  height: 51px;
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color};
-  font-size: 30px;
-  border-radius: 5px;
-  @media (max-width: 900px) {
-    font-size: 25px;
+  font-size: ${(props) => props.theme.fontSize.mediumL};
+  @media (${(props) => props.theme.media.largeL}) {
+    max-width: 280px;
+    font-size: ${(props) => props.theme.fontSize.mediumM};
   }
-  @media (max-width: 600px) {
+  @media (${(props) => props.theme.media.mediumL}) {
     max-width: 250px;
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: ${(props) => props.theme.fontSize.smallL};
+  }
+  @media (${(props) => props.theme.media.smallM}) {
+    margin-bottom: ${(props) => props.theme.padding.twenty}px;
   }
 `;
-export const TimelineModalOpenButton = styled.button`
+
+export const ModalOpenButton = styled.button`
   cursor: pointer;
   background-color: transparent;
   color: ${(props) => props.theme.color};
   border: 1px solid ${(props) => props.theme.color};
   border-radius: 5px;
   height: 51px;
-  margin-left: 20px;
-  padding: 0 20px;
-  font-size: 20px;
+  margin-left: ${(props) => props.theme.padding.twenty}px;
+  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.twenty}px;
+  font-size: ${(props) => props.theme.fontSize.mediumS};
   &:hover {
-    box-shadow: 10px 5px 5px rgb(22, 218, 12);
-    border: 1px solid rgb(22, 218, 12);
-    color: rgb(22, 218, 12);
+    box-shadow: 10px 5px 5px ${(props) => props.theme.colors.greenColor};
+    border: 1px solid ${(props) => props.theme.colors.greenColor};
+    color: ${(props) => props.theme.colors.greenColor};
   }
-  @media (max-width: 900px) {
-    font-size: 17px;
+  @media (${(props) => props.theme.media.mediumL}) {
+    height: 41px;
+    font-size: ${(props) => props.theme.fontSize.smallL};
   }
-  @media (max-width: 600px) {
-    font-size: 14px;
-  }
-`;
-export const SelectOption = styled.option`
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color};
-  font-size: 20px;
-  @media (max-width: 900px) {
-    font-size: 17px;
-  }
-  @media (max-width: 600px) {
-    font-size: 14px;
+  @media (${(props) => props.theme.media.smallM}) {
+    font-size: ${(props) => props.theme.fontSize.smallM};
   }
 `;
 
-export const TimelineScheduleWrapper = styled.div`
-  margin-top: 123px;
-  @media (max-width: 900px) {
-    margin-top: 60px;
+export const ScheduleWrapper = styled.div`
+  margin-top: ${(props) => props.theme.padding.hundredTwentyThree}px;
+  @media (${(props) => props.theme.media.mediumL}) {
+    margin-top: ${(props) => props.theme.padding.sixty}px;
   }
 `;
-export const TimelineSchedule = styled.div`
+export const Schedule = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
