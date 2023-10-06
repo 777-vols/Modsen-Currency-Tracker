@@ -155,7 +155,8 @@ class Timeline extends Component {
                   styles={this.colourStyles}
                   onChange={this.setTimelineCurrency}
                   defaultValue={this.selectOptionsList[0]}
-                  options={this.selectOptionsList}></Select>
+                  options={this.selectOptionsList}
+                  isSearchable={false}></Select>
               </SelectWrapper>
               <ModalOpenButton data-cy="enter-values" onClick={this.setModalIsOpen}>
                 {buttonValue}

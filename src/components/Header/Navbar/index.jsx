@@ -22,13 +22,13 @@ import {
 
 function Navbar() {
   const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
-  const navRef = useRef();
+  const mobileMenuRef = useRef();
 
   function burgerButtonHandle() {
     setBurgerMenuIsOpen((prevState) => !prevState);
   }
 
-  useOnClickOutside(navRef, () => {
+  useOnClickOutside(mobileMenuRef, () => {
     if (burgerMenuIsOpen) {
       burgerButtonHandle();
     }
@@ -49,7 +49,7 @@ function Navbar() {
   );
   return (
     <Container>
-      <Wrapper ref={navRef}>
+      <Wrapper ref={mobileMenuRef}>
         <LogoLink data-cy="nav_logo" to={baseUrl}>
           <Logo src={logo} alt="logo" />
         </LogoLink>

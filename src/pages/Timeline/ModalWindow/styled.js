@@ -36,6 +36,7 @@ export const InfoButton = styled.button`
   right: 15px;
   top: 60px;
   transition: 0.2s;
+  z-index: 1000;
 
   &:hover {
     background: ${(props) => props.theme.colors.lightRed};
@@ -46,8 +47,8 @@ export const InfoWrapper = styled.span`
   background-color: ${(props) => props.theme.color};
   color: ${(props) => props.theme.background};
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: 0px;
+  left: 0px;
   margin-right: ${(props) => props.theme.padding.eighty}px;
   max-width: 800px;
 `;
@@ -60,6 +61,7 @@ export const InputsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+  position: relative;
 `;
 
 export const ButtonsWrapper = styled.div`
