@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useState } from 'react';
 import logo from '@assets/logo.svg';
 import urls from '@constants/urls';
 import useOnClickOutside from '@hooks/useOnCickOutside';
+import React, { useMemo, useRef, useState } from 'react';
 
 import { Container } from '@/styled';
 
@@ -17,6 +17,7 @@ import {
   MenuList,
   StyledBar,
   StyledNav,
+  StyledNavMobile,
   Wrapper
 } from './styled';
 
@@ -57,6 +58,9 @@ function Navbar() {
         <StyledNav open={burgerMenuIsOpen}>
           <MenuList data-cy="navList">{navbarItems}</MenuList>
         </StyledNav>
+        <StyledNavMobile open={burgerMenuIsOpen}>
+          <MenuList data-cy="navList">{navbarItems}</MenuList>
+        </StyledNavMobile>
         <ButtonsWrapper>
           <BurgerMenuButton
             className={burgerMenuIsOpen ? 'active' : ''}

@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-import Select from 'react-select';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import * as allThemes from '@constants/themes';
 import {
@@ -7,6 +5,8 @@ import {
   isLowPriceInputValueIncorrect
 } from '@helpers/isPriceInputValueIncorrectHelper';
 import observer from '@observer/observer';
+import React, { Component } from 'react';
+import Select from 'react-select';
 
 import { Container } from '@/styled';
 

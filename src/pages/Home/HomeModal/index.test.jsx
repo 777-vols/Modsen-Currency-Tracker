@@ -1,6 +1,6 @@
-import React from 'react';
 import { constAllCurrenciesListMock, contsUsdCourseMock } from '@constants/constCurrenciesMock';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 
 import Modal from './index';
 

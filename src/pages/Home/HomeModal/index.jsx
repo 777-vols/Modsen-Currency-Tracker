@@ -1,9 +1,9 @@
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
-import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
 import { constAllCurrenciesListMock } from '@constants/constCurrenciesMock';
 import useOnClickOutside from '@hooks/useOnCickOutside';
 import PropTypes from 'prop-types';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import Select from 'react-select';
 
 import config from './config';
 import {

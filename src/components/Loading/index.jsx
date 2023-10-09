@@ -1,6 +1,6 @@
+import styledColors from '@constants/styles/colors';
 import React from 'react';
 import { BallTriangle } from 'react-loader-spinner';
-import styledColors from '@constants/styles/colors';
 
 import { Wrapper } from './styled';
 

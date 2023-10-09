@@ -71,6 +71,13 @@ export const StyledNav = styled.nav`
     padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.ten}px;
   }
   @media (${(props) => props.theme.media.smallS}) {
+    display: none;
+  }
+`;
+export const StyledNavMobile = styled.nav`
+  display: none;
+  @media (${(props) => props.theme.media.smallS}) {
+    display: block;
     position: absolute;
     border: 2px solid ${(props) => props.theme.color};
     top: 49px;

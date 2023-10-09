@@ -1,8 +1,8 @@
+import store from '@store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import store from '@store';
 
 import App from './App.jsx';
 import Global from './GlobalStyled.js';

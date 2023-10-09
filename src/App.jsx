@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from 'react';
-import { useSelector } from 'react-redux';
 import ErrorBoundary from '@components/ErrorBoundary';
 import Loading from '@components/Loading';
+import React, { lazy, Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 const Layout = lazy(() => import('@components/Layout'));

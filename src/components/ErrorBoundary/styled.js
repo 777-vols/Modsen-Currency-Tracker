@@ -1,3 +1,4 @@
+import error from '@assets/error.svg';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -18,7 +19,7 @@ export const Content = styled.div`
   height: 700px;
   display: flex;
   justify-content: center;
-  background-image: url(../../../error.svg);
+  background-image: url(${error});
   @media (${(props) => props.theme.media.mediumS}) {
     width: 500px;
     height: 500px;

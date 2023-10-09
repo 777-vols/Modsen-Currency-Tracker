@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
 import PortalCreator from '@components/PortalCreator';
 import { Background, CloseButton } from '@pages/Home/HomeModal/styled';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import config from './config';
 import TimelineModalInput from './ModalInput';
