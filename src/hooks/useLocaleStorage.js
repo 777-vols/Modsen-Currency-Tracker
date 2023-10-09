@@ -7,11 +7,12 @@ import {
 import { useEffect } from 'react';
 
 function useLocaleStorage(setApiCurrenciesData) {
+  const timePeriodMilliSeconds = 1000;
+  const timePeriodSeconds = 3600;
+  const timePeriodHours = 24;
+  const updateTimePeriod = timePeriodHours * timePeriodSeconds * timePeriodMilliSeconds;
+
   useEffect(() => {
-    const timePeriodMilliSeconds = 1000;
-    const timePeriodSeconds = 3600;
-    const timePeriodHours = 24;
-    const updateTimePeriod = timePeriodHours * timePeriodSeconds * timePeriodMilliSeconds;
     const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
     const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
     if (localStorageInitTime === null || localStorageInitData == null) {
@@ -30,7 +31,7 @@ function useLocaleStorage(setApiCurrenciesData) {
       const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
       setApiCurrenciesData(data);
     }
-  }, [setApiCurrenciesData]);
+  }, [setApiCurrenciesData, updateTimePeriod]);
 }
 
 export default useLocaleStorage;
