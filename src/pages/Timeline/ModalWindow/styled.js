@@ -42,15 +42,14 @@ export const InfoButton = styled.button`
     background: ${({ theme }) => theme.colors.lightRed};
   }
 `;
-export const InfoWrapper = styled.span`
+export const InfoWrapper = styled.div`
   padding: ${({ theme }) => theme.padding.twenty}px;
   background-color: ${({ theme }) => theme.color};
   color: ${({ theme }) => theme.background};
   position: absolute;
   top: 0px;
   left: 0px;
-  margin-right: ${({ theme }) => theme.margin.eighty}px;
-  max-width: 800px;
+  width: 100%;
 `;
 export const InfoSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSize.smallM};
