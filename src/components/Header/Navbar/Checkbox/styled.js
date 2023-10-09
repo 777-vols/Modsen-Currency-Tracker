@@ -6,7 +6,7 @@ export const StyledLabel = styled.label`
   height: 30px;
   background: transparent;
   display: block;
-  border: 2px solid ${(props) => props.theme.color};
+  border: 2px solid ${({ theme }) => theme.color};
   border-radius: 50px;
   position: relative;
   &:after {
@@ -17,20 +17,20 @@ export const StyledLabel = styled.label`
     height: 29px;
     top: -1px;
     background: transparent;
-    border: 2px solid ${(props) => props.theme.color};
+    border: 2px solid ${({ theme }) => theme.color};
     border-radius: 50px;
     transition: 0.2s;
   }
 
-  @media (${(props) => props.theme.media.mediumM}) {
+  @media (${({ theme }) => theme.media.mediumM}) {
     min-width: 28px;
     height: 15px;
-    border: 1px solid ${(props) => props.theme.color};
+    border: 1px solid ${({ theme }) => theme.color};
     &:after {
-      left: ${({ $currentTheme }) => ($currentTheme ? '0px' : '11px')};
+      left: ${({ $currentTheme }) => ($currentTheme === 'lightTheme' ? '11px' : '0px')};
       width: 15.5px;
       height: 15.5px;
-      border: 1px solid ${(props) => props.theme.color};
+      border: 1px solid ${({ theme }) => theme.color};
     }
   }
 `;

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-color: ${(props) => props.theme.colors.lightPink};
+  background-color: ${({ theme }) => theme.colors.lightPink};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,11 +20,11 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   background-image: url(${error});
-  @media (${(props) => props.theme.media.mediumS}) {
+  @media (${({ theme }) => theme.media.mediumS}) {
     width: 500px;
     height: 500px;
   }
-  @media (${(props) => props.theme.media.smallS}) {
+  @media (${({ theme }) => theme.media.smallS}) {
     width: 300px;
     height: 300px;
   }

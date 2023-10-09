@@ -17,7 +17,6 @@ function Checkbox() {
   function handleChangeTheme() {
     changeThemeHelper(dispatch);
   }
-
   return (
     <StyledLabel
       htmlFor="themeCheckbox"
