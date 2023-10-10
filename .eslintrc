@@ -1,15 +1,17 @@
 {
-  "extends": ["airbnb-base","prettier","plugin:react/recommended","plugin:cypress/recommended","plugin:react-hooks/recommended"],
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "env": {
-    "es6":true,
+    "es6": true,
     "browser": true
   },
   "parser": "@babel/eslint-parser",
-  "plugins": [
-    "simple-import-sort",
-    "prettier",
-    "jest-dom"
-  ],
+  "plugins": ["simple-import-sort", "prettier", "jest-dom"],
   "settings": {
     "import/resolver": {
       "webpack": {
@@ -18,42 +20,31 @@
     }
   },
   "rules": {
-    "simple-import-sort/imports": [
-      "error",
-      {
-        "groups": [
-          ["^react", "^@?\\w"],
-          ["^(@|components)(/.*|$)"],
-          ["^\\u0000"],
-          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-          ["^.+\\.?(css)$"]
-        ]
-      }
-    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "no-unused-vars": "warn",
     "no-console": "warn",
     "prefer-const": "error",
     "linebreak-style": 0,
     "global-require": 0,
-    "eslint linebreak-style": [
-      0,
+    "eslint linebreak-style": [0, "error", "windows"],
+    "import/extensions": [0, { "<js>": "always" }],
+    "prettier/prettier": [
       "error",
-      "windows"
+      {
+        "endOfLine": "auto"
+      }
     ],
-    "import/extensions": [0, {  "<js>": "always"  }],
-    "prettier/prettier": ["error",{
-      "endOfLine": "auto"}
-    ],
-    "import/no-extraneous-dependencies": [
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-param-reassign": [
       "error",
-      {"devDependencies": true}
-    ],
-    "no-param-reassign": ["error", {
-      "props": true,
-      "ignorePropertyModificationsFor": [
-        "state"
-      ]
-    }]
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ]
   }
 }

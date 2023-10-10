@@ -1,6 +1,6 @@
-import React from 'react';
 import circleImg from '@assets/LastUpdateIcons/small.svg';
 import currentDateHelper from '@helpers/currentDateHelper';
+import React from 'react';
 
 import config from './config';
 import { CircleAnimation, StyledSpan, Wrapper } from './styled';

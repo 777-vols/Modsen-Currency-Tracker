@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PortalCreator from '@components/PortalCreator';
+import React, { Component } from 'react';
 
 import config from './config';
 import { Content, Wrapper } from './styled';

@@ -9,24 +9,24 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) => props.theme.colors.homeModalBg};
+  background: ${({ theme }) => theme.colors.homeModalBg};
 `;
 export const Window = styled.div`
-  font-family: ${(props) => props.theme.fontFamily};
-  background: ${(props) => props.theme.background};
+  font-family: ${({ theme }) => theme.fontFamily};
+  background: ${({ theme }) => theme.background};
   max-width: 500px;
   width: 100%;
   max-height: 300px;
   height: 100%;
   border-radius: 20px;
   position: relative;
-  padding: ${(props) => props.theme.padding.fifteen}px;
-  margin: ${(props) => props.theme.padding.fifteen}px;
+  padding: ${({ theme }) => theme.padding.fifteen}px;
+  margin: ${({ theme }) => theme.margin.fifteen}px;
 `;
 export const CloseButton = styled.button`
   cursor: pointer;
-  color: ${(props) => props.theme.color};
-  font-size: ${(props) => props.theme.fontSize.mediumS};
+  color: ${({ theme }) => theme.color};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
   border-radius: 5px;
   width: 35px;
   height: 35px;
@@ -37,23 +37,23 @@ export const CloseButton = styled.button`
   right: 15px;
   transition: 0.3s;
   &:hover {
-    background-color: ${(props) => props.theme.colors.lightRed};
+    background-color: ${({ theme }) => theme.colors.lightRed};
   }
 `;
 
 export const Header = styled.h5`
-  color: ${(props) => props.theme.color};
-  font-size: ${(props) => props.theme.fontSize.mediumL};
+  color: ${({ theme }) => theme.color};
+  font-size: ${({ theme }) => theme.fontSize.mediumL};
   display: flex;
   justify-content: center;
-  @media (${(props) => props.theme.media.smallS}) {
-    font-size: ${(props) => props.theme.fontSize.mediumS};
+  @media (${({ theme }) => theme.media.smallS}) {
+    font-size: ${({ theme }) => theme.fontSize.mediumS};
   }
 `;
 
 export const InnerBlock = styled.div`
-  padding-top: ${(props) => props.theme.padding.thirty}px;
-  padding-bottom: ${(props) => props.theme.padding.twenty}px;
+  padding-top: ${({ theme }) => theme.padding.thirty}px;
+  padding-bottom: ${({ theme }) => theme.padding.twenty}px;
   display: flex;
   justify-content: space-around;
 `;
@@ -62,70 +62,70 @@ export const Panel = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: ${(props) => props.theme.padding.ten}px;
+  padding: ${({ theme }) => theme.padding.ten}px;
   width: 100%;
 `;
 export const SelectSpan = styled.span`
-  margin: ${(props) => props.theme.padding.zero}px auto;
-  margin-bottom: ${(props) => props.theme.padding.ten}px;
-  color: ${(props) => props.theme.color};
-  font-size: ${(props) => props.theme.fontSize.mediumS};
+  margin: ${({ theme }) => theme.margin.zero}px auto;
+  margin-bottom: ${({ theme }) => theme.margin.ten}px;
+  color: ${({ theme }) => theme.color};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
   white-space: nowrap;
   border-radius: 5px;
-  @media (${(props) => props.theme.media.smallS}) {
-    font-size: ${(props) => props.theme.fontSize.smallL};
+  @media (${({ theme }) => theme.media.smallS}) {
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
 `;
 export const StyledSpan = styled.span`
   text-align: center;
-  font-size: ${(props) => props.theme.fontSize.mediumS};
-  background: ${(props) => props.theme.colors.darkFontColor};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
+  background: ${({ theme }) => theme.colors.darkFontColor};
   width: 100%;
   height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  @media (${(props) => props.theme.media.smallS}) {
+  @media (${({ theme }) => theme.media.smallS}) {
     height: 40px;
-    font-size: ${(props) => props.theme.fontSize.smallL};
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
 `;
 export const StyledInput = styled.input`
   text-align: center;
-  font-size: ${(props) => props.theme.fontSize.mediumS};
-  background: ${(props) => props.theme.colors.darkFontColor};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
+  background: ${({ theme }) => theme.colors.darkFontColor};
   width: 100%;
   height: 46px;
   border-radius: 5px;
-  @media (${(props) => props.theme.media.smallS}) {
+  @media (${({ theme }) => theme.media.smallS}) {
     height: 40px;
-    font-size: ${(props) => props.theme.fontSize.smallL};
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
 `;
 export const Result = styled.div`
   white-space: nowrap;
   overflow: auto;
   text-align: center;
-  color: ${(props) => props.theme.color};
-  font-size: ${(props) => props.theme.fontSize.mediumL};
-  margin-bottom: ${(props) => props.theme.padding.twenty}px;
+  color: ${({ theme }) => theme.color};
+  font-size: ${({ theme }) => theme.fontSize.mediumL};
+  margin-bottom: ${({ theme }) => theme.margin.twenty}px;
   overflow: auto;
-  @media (${(props) => props.theme.media.smallS}) {
-    margin-left: ${(props) => props.theme.padding.twentyFive}px;
-    font-size: ${(props) => props.theme.fontSize.mediumM};
+  @media (${({ theme }) => theme.media.smallS}) {
+    margin-left: ${({ theme }) => theme.margin.twentyFive}px;
+    font-size: ${({ theme }) => theme.fontSize.mediumM};
   }
 `;
 
 export const StyledSelect = styled.div`
-  font-size: ${(props) => props.theme.fontSize.mediumS};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
   min-width: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: ${(props) => props.theme.padding.five}px;
+  padding: ${({ theme }) => theme.padding.five}px;
   width: 100%;
-  @media (${(props) => props.theme.media.smallS}) {
-    font-size: ${(props) => props.theme.fontSize.smallL};
+  @media (${({ theme }) => theme.media.smallS}) {
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
 `;

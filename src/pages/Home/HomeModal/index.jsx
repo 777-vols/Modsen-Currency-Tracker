@@ -1,8 +1,9 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
-import Select from 'react-select';
 import PortalCreator from '@components/PortalCreator';
 import { constAllCurrenciesListMock } from '@constants/constCurrenciesMock';
+import useOnClickOutside from '@hooks/useOnCickOutside';
 import PropTypes from 'prop-types';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import Select from 'react-select';
 
 import config from './config';
 import {
@@ -25,7 +26,7 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
   const [sumValue, setSumValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState('usd');
   const { from: convertFrom } = convertFromTo;
-
+  const converterRef = useRef();
   const handleInputType = useCallback((event) => setSumValue(event.target.value), []);
 
   const selectorHandler = useCallback(
@@ -39,14 +40,19 @@ function Modal({ closeModalWindow, convertFromTo, usdCourse }) {
     setConvertToValue('usd');
   }, [closeModalWindow]);
 
+  useOnClickOutside(converterRef, () => {
+    handleCloseModal();
+  });
+
   const convertCurrency = useMemo(
     () => ((1 / usdCourse[convertFrom]) * (1 * usdCourse[convertToValue]) * sumValue).toFixed(4),
     [convertFrom, convertToValue, sumValue, usdCourse]
   );
+
   return (
     <PortalCreator wrapperId="home-modal">
-      <Background onClick={(e) => e.currentTarget === e.target && handleCloseModal()}>
-        <Window>
+      <Background>
+        <Window ref={converterRef}>
           <CloseButton onClick={handleCloseModal}>X</CloseButton>
           <Header>{header}</Header>
           <InnerBlock>

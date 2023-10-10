@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
 import logo from '@assets/logo.svg';
+import React, { useMemo } from 'react';
 
 import { Container } from '@/styled';
 

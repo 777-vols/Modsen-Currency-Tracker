@@ -1,5 +1,5 @@
-import React from 'react';
 import urls from '@constants/urls';
+import React from 'react';
 
 import { Container } from '@/styled';
 

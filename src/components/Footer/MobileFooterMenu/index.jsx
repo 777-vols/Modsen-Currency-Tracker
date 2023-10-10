@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
 import arrow from '@assets/arrow.svg';
 import config from '@components/Footer/config';
 import urls from '@constants/urls';
 import mobileFooterButtonClickHelper from '@helpers/mobileFooterButtonClickHelper';
+import React, { useMemo } from 'react';
 
 import { ArrowImg, Button, Link, ListItem, MenuItem, MenuList, Wrapper } from './styled';
 

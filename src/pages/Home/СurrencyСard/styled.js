@@ -6,87 +6,87 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 153px;
   border-radius: 8px;
-  border: 2px solid ${(props) => props.theme.colors.lightGreyColor};
-  background-color: ${(props) => props.theme.colors.greyColor};
+  border: 2px solid ${({ theme }) => theme.colors.lightGreyColor};
+  background-color: ${({ theme }) => theme.colors.greyColor};
   display: flex;
   align-items: center;
-  margin-top: ${(props) => props.theme.padding.fifty}px;
+  margin-top: ${({ theme }) => theme.margin.fifty}px;
   transition: 0.3s;
   &:hover {
-    background-color: ${(props) => props.theme.colors.darkGreyColor};
-    box-shadow: 10px 5px 5px ${(props) => props.theme.colors.greenColor};
-    border: 2px solid ${(props) => props.theme.colors.greenColor};
+    background-color: ${({ theme }) => theme.colors.darkGreyColor};
+    box-shadow: 10px 5px 5px ${({ theme }) => theme.colors.greenColor};
+    border: 2px solid ${({ theme }) => theme.colors.greenColor};
   }
 
-  @media (${(props) => props.theme.media.largeM}) {
+  @media (${({ theme }) => theme.media.largeM}) {
     height: 120px;
   }
-  @media (${(props) => props.theme.media.mediumL}) {
+  @media (${({ theme }) => theme.media.mediumL}) {
     height: 80px;
   }
-  @media (${(props) => props.theme.media.smallL}) {
+  @media (${({ theme }) => theme.media.smallL}) {
     height: 62px;
     max-width: 361px;
     border-radius: 3px;
-    margin-top: ${(props) => props.theme.padding.twenty}px;
+    margin-top: ${({ theme }) => theme.margin.twenty}px;
   }
 `;
 export const InnerBlock = styled.div`
-  margin-left: ${(props) => props.theme.padding.thirtyTwo}px;
+  margin-left: ${({ theme }) => theme.margin.thirtyTwo}px;
   display: flex;
   align-items: center;
-  @media (${(props) => props.theme.media.mediumL}) {
-    margin-left: ${(props) => props.theme.padding.twenty}px;
+  @media (${({ theme }) => theme.media.mediumL}) {
+    margin-left: ${({ theme }) => theme.margin.twenty}px;
   }
 `;
 export const Stats = styled.div`
-  margin-left: ${(props) => props.theme.padding.thirty}px;
+  margin-left: ${({ theme }) => theme.margin.thirty}px;
   display: flex;
   flex-direction: column;
-  @media (${(props) => props.theme.media.mediumL}) {
-    margin-left: ${(props) => props.theme.padding.twenty}px;
+  @media (${({ theme }) => theme.media.mediumL}) {
+    margin-left: ${({ theme }) => theme.margin.twenty}px;
   }
 `;
 export const Image = styled.img`
-  @media (${(props) => props.theme.media.largeM}) {
+  @media (${({ theme }) => theme.media.largeM}) {
     height: 60px;
     width: 60px;
   }
-  @media (${(props) => props.theme.media.mediumL}) {
+  @media (${({ theme }) => theme.media.mediumL}) {
     height: 45px;
     width: 45px;
   }
-  @media (${(props) => props.theme.media.smallL}) {
+  @media (${({ theme }) => theme.media.smallL}) {
     height: 30px;
     width: 30px;
   }
 `;
 export const Name = styled.span`
-  margin-top: ${(props) => props.theme.padding.five}px;
-  font-size: ${(props) => props.theme.fontSize.mediumXL};
-  font-weight: ${(props) => props.theme.fontWeight.small};
-  color: ${(props) => props.theme.colors.currencyNameColor};
-  @media (${(props) => props.theme.media.largeM}) {
-    font-size: ${(props) => props.theme.fontSize.mediumM};
+  margin-top: ${({ theme }) => theme.margin.five}px;
+  font-size: ${({ theme }) => theme.fontSize.mediumXL};
+  font-weight: ${({ theme }) => theme.fontWeight.small};
+  color: ${({ theme }) => theme.colors.currencyNameColor};
+  @media (${({ theme }) => theme.media.largeM}) {
+    font-size: ${({ theme }) => theme.fontSize.mediumM};
   }
-  @media (${(props) => props.theme.media.mediumL}) {
-    font-size: ${(props) => props.theme.fontSize.mediumS};
+  @media (${({ theme }) => theme.media.mediumL}) {
+    font-size: ${({ theme }) => theme.fontSize.mediumS};
   }
-  @media (${(props) => props.theme.media.smallL}) {
-    font-size: ${(props) => props.theme.fontSize.smallS};
+  @media (${({ theme }) => theme.media.smallL}) {
+    font-size: ${({ theme }) => theme.fontSize.smallS};
   }
 `;
 export const Rate = styled.span`
-  font-size: ${(props) => props.theme.fontSize.mediumL};
-  color: ${(props) => props.theme.colors.currencyRateColor};
-  font-weight: ${(props) => props.theme.fontWeight.small};
-  @media (${(props) => props.theme.media.largeM}) {
-    font-size: ${(props) => props.theme.fontSize.mediumS};
+  font-size: ${({ theme }) => theme.fontSize.mediumL};
+  color: ${({ theme }) => theme.colors.currencyRateColor};
+  font-weight: ${({ theme }) => theme.fontWeight.small};
+  @media (${({ theme }) => theme.media.largeM}) {
+    font-size: ${({ theme }) => theme.fontSize.mediumS};
   }
-  @media (${(props) => props.theme.media.mediumL}) {
-    font-size: ${(props) => props.theme.fontSize.smallL};
+  @media (${({ theme }) => theme.media.mediumL}) {
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
-  @media (${(props) => props.theme.media.smallL}) {
-    font-size: ${(props) => props.theme.fontSize.smallS};
+  @media (${({ theme }) => theme.media.smallL}) {
+    font-size: ${({ theme }) => theme.fontSize.smallS};
   }
 `;

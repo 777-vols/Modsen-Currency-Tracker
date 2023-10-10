@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
 import PortalCreator from '@components/PortalCreator';
 import { Background, CloseButton } from '@pages/Home/HomeModal/styled';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import config from './config';
 import TimelineModalInput from './ModalInput';
@@ -68,6 +68,19 @@ class TimelineModal extends PureComponent {
     </React.Fragment>
   ));
 
+  modalBackgroundClickHandler = (event) => {
+    const { closeModalWindow } = this.props;
+    if (event.currentTarget === event.target) {
+      closeModalWindow();
+    }
+  };
+
+  descriptionBackgroundClickHandler = (event) => {
+    if (event.currentTarget === event.target && this.state.descriptionIsOpen) {
+      this.descriptionIsOpenHandler();
+    }
+  };
+
   render() {
     const inputsArray = this.getACoupleofInputsForEveryDay();
 
@@ -78,20 +91,21 @@ class TimelineModal extends PureComponent {
 
     return (
       <PortalCreator wrapperId="timeline-modal">
-        <Background onClick={(e) => e.currentTarget === e.target && closeModalWindow()}>
-          <Window>
+        <Background onClick={this.modalBackgroundClickHandler}>
+          <Window onClick={this.descriptionBackgroundClickHandler}>
             {warningIsActive && <WarningSpan>{warning}</WarningSpan>}
             <CloseButton id="chart-modal-close" onClick={closeModalWindow}>
               X
             </CloseButton>
             <InfoButton onClick={this.descriptionIsOpenHandler}>?</InfoButton>
-            {descriptionIsOpen && (
-              <InfoWrapper
-                onClick={(e) => e.currentTarget === e.target && this.descriptionIsOpenHandler()}>
-                <InfoSpan>{this.modalRules}</InfoSpan>
-              </InfoWrapper>
-            )}
-            <InputsWrapper>{inputsArray}</InputsWrapper>
+            <InputsWrapper>
+              {descriptionIsOpen && (
+                <InfoWrapper>
+                  <InfoSpan>{this.modalRules}</InfoSpan>
+                </InfoWrapper>
+              )}
+              {inputsArray}
+            </InputsWrapper>
             <ButtonsWrapper>
               <ModalButton data-cy="clearAllValues" onClick={clearAllInputsValues}>
                 {clearButton}

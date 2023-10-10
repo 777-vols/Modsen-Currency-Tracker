@@ -1,64 +1,64 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: ${(props) => props.theme.padding.zero}px auto;
+  margin: ${({ theme }) => theme.margin.zero}px auto;
   max-width: 1206px;
   width: 100%;
 `;
 export const PanelWrapper = styled.div`
-  color: ${(props) => props.theme.color};
+  color: ${({ theme }) => theme.color};
   display: flex;
   align-items: center;
-  margin-bottom: ${(props) => props.theme.padding.twentyFive}px;
-  @media (${(props) => props.theme.media.smallM}) {
+  margin-bottom: ${({ theme }) => theme.margin.twentyFive}px;
+  @media (${({ theme }) => theme.media.smallM}) {
     flex-direction: column;
   }
 `;
 export const SelectWrapper = styled.div`
   max-width: 330px;
   width: 100%;
-  font-size: ${(props) => props.theme.fontSize.mediumL};
-  @media (${(props) => props.theme.media.largeL}) {
+  font-size: ${({ theme }) => theme.fontSize.mediumL};
+  @media (${({ theme }) => theme.media.largeL}) {
     max-width: 280px;
-    font-size: ${(props) => props.theme.fontSize.mediumM};
+    font-size: ${({ theme }) => theme.fontSize.mediumM};
   }
-  @media (${(props) => props.theme.media.mediumL}) {
+  @media (${({ theme }) => theme.media.mediumL}) {
     max-width: 250px;
-    font-size: ${(props) => props.theme.fontSize.smallL};
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
-  @media (${(props) => props.theme.media.smallM}) {
-    margin-bottom: ${(props) => props.theme.padding.twenty}px;
+  @media (${({ theme }) => theme.media.smallM}) {
+    margin-bottom: ${({ theme }) => theme.margin.twenty}px;
   }
 `;
 
 export const ModalOpenButton = styled.button`
   cursor: pointer;
   background-color: transparent;
-  color: ${(props) => props.theme.color};
-  border: 1px solid ${(props) => props.theme.color};
+  color: ${({ theme }) => theme.color};
+  border: 1px solid ${({ theme }) => theme.color};
   border-radius: 5px;
   height: 51px;
-  margin-left: ${(props) => props.theme.padding.twenty}px;
-  padding: ${(props) => props.theme.padding.zero}px ${(props) => props.theme.padding.twenty}px;
-  font-size: ${(props) => props.theme.fontSize.mediumS};
+  margin-left: ${({ theme }) => theme.margin.twenty}px;
+  padding: ${({ theme }) => theme.padding.zero}px ${({ theme }) => theme.padding.twenty}px;
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
   &:hover {
-    box-shadow: 10px 5px 5px ${(props) => props.theme.colors.greenColor};
-    border: 1px solid ${(props) => props.theme.colors.greenColor};
-    color: ${(props) => props.theme.colors.greenColor};
+    box-shadow: 10px 5px 5px ${({ theme }) => theme.colors.greenColor};
+    border: 1px solid ${({ theme }) => theme.colors.greenColor};
+    color: ${({ theme }) => theme.colors.greenColor};
   }
-  @media (${(props) => props.theme.media.mediumL}) {
+  @media (${({ theme }) => theme.media.mediumL}) {
     height: 41px;
-    font-size: ${(props) => props.theme.fontSize.smallL};
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
-  @media (${(props) => props.theme.media.smallM}) {
-    font-size: ${(props) => props.theme.fontSize.smallM};
+  @media (${({ theme }) => theme.media.smallM}) {
+    font-size: ${({ theme }) => theme.fontSize.smallM};
   }
 `;
 
 export const ScheduleWrapper = styled.div`
-  margin-top: ${(props) => props.theme.padding.hundredTwentyThree}px;
-  @media (${(props) => props.theme.media.mediumL}) {
-    margin-top: ${(props) => props.theme.padding.sixty}px;
+  margin-top: ${({ theme }) => theme.margin.hundredTwentyThree}px;
+  @media (${({ theme }) => theme.media.mediumL}) {
+    margin-top: ${({ theme }) => theme.margin.sixty}px;
   }
 `;
 export const Schedule = styled.div`

@@ -2,33 +2,33 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header = styled.h1`
-  margin-top: ${(props) => props.theme.padding.thirty}px;
-  font-size: ${(props) => props.theme.fontSize.mediumXL};
+  margin-top: ${({ theme }) => theme.margin.thirty}px;
+  font-size: ${({ theme }) => theme.fontSize.mediumXL};
   display: flex;
   justify-content: center;
   color: red;
-  @media (${(props) => props.theme.media.mediumL}) {
-    font-size: ${(props) => props.theme.fontSize.mediumM};
+  @media (${({ theme }) => theme.media.mediumL}) {
+    font-size: ${({ theme }) => theme.fontSize.mediumM};
   }
-  @media (${(props) => props.theme.media.smallM}) {
-    font-size: ${(props) => props.theme.fontSize.smallL};
+  @media (${({ theme }) => theme.media.smallM}) {
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
 `;
 export const LinkWrapper = styled.div`
-  margin-top: ${(props) => props.theme.padding.thirty}px;
+  margin-top: ${({ theme }) => theme.margin.thirty}px;
   display: flex;
   justify-content: center;
   height: 30px;
 `;
 export const Link = styled(NavLink)`
-  color: ${(props) => props.theme.color};
-  font-size: ${(props) => props.theme.fontSize.mediumS};
+  color: ${({ theme }) => theme.color};
+  font-size: ${({ theme }) => theme.fontSize.mediumS};
   opacity: 0.8;
   transition: 0.3s;
   &:hover {
     opacity: 1;
   }
-  @media (${(props) => props.theme.media.smallM}) {
-    font-size: ${(props) => props.theme.fontSize.smallM};
+  @media (${({ theme }) => theme.media.smallM}) {
+    font-size: ${({ theme }) => theme.fontSize.smallM};
   }
 `;
