@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
 import searchImg from '@assets/searchIcon.svg';
 import constBanksList from '@constants/constBanksList';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData';
 import elasticSearchHelper from '@helpers/elasticSearchHelper';
+import React, { Component } from 'react';
 
 import { Container } from '@/styled';
 
@@ -29,7 +29,8 @@ class BankCard extends Component {
       currencies: [],
       searchResultElements: [],
       searchValue: '',
-      banksCoords: []
+      banksCoords: [],
+      searchResultComponets: []
     };
   }
 
@@ -41,10 +42,26 @@ class BankCard extends Component {
     this.setState({ currencies: currenciesList });
   }
 
+  searchResultComponetsMapper = (searchResultElements) =>
+    searchResultElements.map(({ shortName, fullName }) => (
+      <SearchResultItem
+        key={shortName}
+        shortName={shortName}
+        fullName={fullName}
+        handleClick={this.handleCurrencySelection}
+      />
+    ));
+
   elasticSearchHandle = (event) => {
     const { currencies } = this.state;
     this.setState({ searchValue: event.target.value });
-    elasticSearchHelper(event, currencies, notFound, this.setState.bind(this));
+    elasticSearchHelper(
+      event,
+      currencies,
+      notFound,
+      this.setState.bind(this),
+      this.searchResultComponetsMapper
+    );
   };
 
   handleCurrencySelection = (shortName) => {
@@ -56,15 +73,7 @@ class BankCard extends Component {
   };
 
   render() {
-    const { searchResultElements, searchValue, banksCoords } = this.state;
-    const searchResultComponets = searchResultElements.map(({ shortName, fullName }) => (
-      <SearchResultItem
-        key={shortName}
-        shortName={shortName}
-        fullName={fullName}
-        handleClick={this.handleCurrencySelection}
-      />
-    ));
+    const { searchValue, banksCoords } = this.state;
     return (
       <section>
         <Container>
@@ -77,7 +86,7 @@ class BankCard extends Component {
                 placeholder={placeholderValue}
               />
               <SearchInputImage src={searchImg} />
-              <SearchResultWrapper>{searchResultComponets}</SearchResultWrapper>
+              <SearchResultWrapper>{this.state.searchResultComponets}</SearchResultWrapper>
             </InputWrapper>
             <MapWrapper>
               <BankCardMap banksCoords={banksCoords} />

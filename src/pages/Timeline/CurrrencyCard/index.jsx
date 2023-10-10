@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import { FullName, Image, ShortName, Stats, Wrapper } from './styled';
 

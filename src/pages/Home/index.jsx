@@ -1,6 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
 import constCurrencyCardsData from '@constants/constCurrencyCardsData.js';
 import useLocaleStorage from '@hooks/useLocaleStorage';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import { Container } from '@/styled';
 

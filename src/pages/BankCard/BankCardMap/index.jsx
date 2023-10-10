@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
-import Map, { Marker, NavigationControl } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 import { constMapSettings, constMapStyles } from '@constants/mapConstants';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import Map, { Marker, NavigationControl } from 'react-map-gl';
 
 import constEnvVariables from '@/constants/constEnvVariables';
-
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 class BankCardMap extends PureComponent {
   render() {

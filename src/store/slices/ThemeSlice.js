@@ -8,7 +8,8 @@ const themeSlice = createSlice({
   },
   reducers: {
     toggleTheme(state, action) {
-      state.currentTheme = allThemes[action.payload];
+      const { payload } = action;
+      state.currentTheme = allThemes[payload];
     }
   }
 });

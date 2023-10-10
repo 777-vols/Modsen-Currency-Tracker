@@ -6,8 +6,9 @@ class Observer {
   checkNumberOfFilledDays = (numberOfFilledDays) => {
     if (numberOfFilledDays.length === 30) {
       this.notifyAll();
+      return true;
     }
-    return true;
+    return false;
   };
 
   subscribe = (listener) => {

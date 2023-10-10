@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.nav`
-  margin: ${(props) => props.theme.padding.zero}px auto;
+  margin: ${({ theme }) => theme.margin.zero}px auto;
   max-width: 355px;
   width: 100%;
   @media (min-width: 500px) {
@@ -25,14 +25,14 @@ export const MenuList = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  padding: ${(props) => props.theme.padding.ten}px;
+  padding: ${({ theme }) => theme.padding.ten}px;
 `;
 export const Link = styled(NavLink)`
-  color: ${(props) => props.theme.color};
+  color: ${({ theme }) => theme.color};
 `;
 
 export const Button = styled.button`
-  color: ${(props) => props.theme.color};
+  color: ${({ theme }) => theme.color};
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -40,7 +40,7 @@ export const Button = styled.button`
   justify-content: space-between;
   height: 54px;
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.color};
+  border-bottom: 1px solid ${({ theme }) => theme.color};
 `;
 
 export const ArrowImg = styled.img`

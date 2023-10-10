@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { Image, InnerBlock, Name, Rate, Stats, Wrapper } from './styled';
 

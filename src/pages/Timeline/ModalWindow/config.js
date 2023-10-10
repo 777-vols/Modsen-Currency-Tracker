@@ -22,6 +22,11 @@ const config = {
     {
       id: 5,
       content: '*To create a schedule, all rules must be followed!!!.'
+    },
+    {
+      id: 6,
+      content:
+        '!!! It is better that the difference between the lowest and highest prices is not too small!.'
     }
   ]
 };

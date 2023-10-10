@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import createWrapperAndAppendToBody from '@helpers/createWrapperAndAppendToBody';
 import PropTypes from 'prop-types';
+import { useLayoutEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function PortalCreator({ children, wrapperId = 'react-portal-wrapper' }) {
   const [wrapperElement, setWrapperElement] = useState(null);

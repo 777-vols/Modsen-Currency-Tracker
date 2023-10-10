@@ -1,4 +1,4 @@
-function elasticSearchHelper(event, currencies, notFound, setState) {
+function elasticSearchHelper(event, currencies, notFound, setState, searchResultComponetsMapper) {
   if (event.target.value !== '') {
     const searchResults = Object.values(currencies).filter((currency) => {
       const inputValue = event.target.value.toLowerCase();
@@ -10,12 +10,18 @@ function elasticSearchHelper(event, currencies, notFound, setState) {
       return null;
     });
     if (searchResults.length === 0) {
-      setState({ searchResultElements: [{ fullName: '', shortName: notFound }] });
+      setState({
+        searchResultElements: [{ fullName: '', shortName: notFound }],
+        searchResultComponets: []
+      });
     } else {
-      setState({ searchResultElements: searchResults });
+      setState({
+        searchResultElements: searchResults,
+        searchResultComponets: searchResultComponetsMapper(searchResults)
+      });
     }
   } else {
-    setState({ searchResultElements: [] });
+    setState({ searchResultElements: [], searchResultComponets: [] });
   }
 }
 

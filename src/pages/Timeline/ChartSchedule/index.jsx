@@ -1,5 +1,3 @@
-import React, { PureComponent } from 'react';
-import { Bar } from 'react-chartjs-2';
 import barOptions from '@constants/constBarOptions';
 import parseDataForScheduleHelper from '@helpers/parseDataForScheduleHelper';
 import observer from '@observer/observer';
@@ -14,6 +12,8 @@ import {
   Tooltip
 } from 'chart.js';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 

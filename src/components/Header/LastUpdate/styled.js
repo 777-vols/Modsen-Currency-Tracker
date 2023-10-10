@@ -1,28 +1,28 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: ${(props) => props.theme.padding.fiftyFive}px ${(props) => props.theme.padding.zero}px;
+  padding: ${({ theme }) => theme.padding.fiftyFive}px ${({ theme }) => theme.padding.zero}px;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (${(props) => props.theme.media.mediumL}) {
-    padding: ${(props) => props.theme.padding.thirty}px ${(props) => props.theme.padding.zero}px;
+  @media (${({ theme }) => theme.media.mediumL}) {
+    padding: ${({ theme }) => theme.padding.thirty}px ${({ theme }) => theme.padding.zero}px;
   }
-  @media (${(props) => props.theme.media.smallS}) {
-    padding: ${(props) => props.theme.padding.twenty}px ${(props) => props.theme.padding.zero}px;
+  @media (${({ theme }) => theme.media.smallS}) {
+    padding: ${({ theme }) => theme.padding.twenty}px ${({ theme }) => theme.padding.zero}px;
   }
 `;
 export const StyledSpan = styled.span`
-  margin-left: ${(props) => props.theme.padding.eighteen}px;
-  font-size: ${(props) => props.theme.fontSize.mediumXL};
+  margin-left: ${({ theme }) => theme.margin.eighteen}px;
+  font-size: ${({ theme }) => theme.fontSize.mediumXL};
   display: flex;
   align-items: center;
-  @media (${(props) => props.theme.media.mediumL}) {
-    font-size: ${(props) => props.theme.fontSize.smallL};
+  @media (${({ theme }) => theme.media.mediumL}) {
+    font-size: ${({ theme }) => theme.fontSize.smallL};
   }
-  @media (${(props) => props.theme.media.smallS}) {
-    margin-left: ${(props) => props.theme.padding.ten}px;
-    font-size: ${(props) => props.theme.fontSize.smallS};
+  @media (${({ theme }) => theme.media.smallS}) {
+    margin-left: ${({ theme }) => theme.margin.ten}px;
+    font-size: ${({ theme }) => theme.fontSize.smallS};
     line-height: 23px;
   }
 `;

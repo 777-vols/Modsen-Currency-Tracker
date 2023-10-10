@@ -1,14 +1,18 @@
-import { useEffect } from 'react';
 import getCurrenciesList from '@api/apiRequests';
 import {
   clearLocaleStorage,
   getLocaleStorageItem,
   setDateAndDataToLocaleStorage
 } from '@helpers/localeStorageHelpers';
+import { useEffect } from 'react';
 
 function useLocaleStorage(setApiCurrenciesData) {
+  const timePeriodMilliSeconds = 1000;
+  const timePeriodSeconds = 3600;
+  const timePeriodHours = 24;
+  const updateTimePeriod = timePeriodHours * timePeriodSeconds * timePeriodMilliSeconds;
+
   useEffect(() => {
-    const updateTimePeriod = 24 * 3600 * 1000;
     const localStorageInitTime = getLocaleStorageItem('localStorageInitTime');
     const localStorageInitData = getLocaleStorageItem('localStorageCurrencyData');
     if (localStorageInitTime === null || localStorageInitData == null) {
@@ -27,7 +31,7 @@ function useLocaleStorage(setApiCurrenciesData) {
       const data = JSON.parse(getLocaleStorageItem('localStorageCurrencyData'));
       setApiCurrenciesData(data);
     }
-  }, [setApiCurrenciesData]);
+  }, [setApiCurrenciesData, updateTimePeriod]);
 }
 
 export default useLocaleStorage;
