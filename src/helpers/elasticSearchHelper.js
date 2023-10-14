@@ -11,8 +11,7 @@ function elasticSearchHelper(event, currencies, notFound, setState, searchResult
     });
     if (searchResults.length === 0) {
       setState({
-        searchResultElements: [{ fullName: '', shortName: notFound }],
-        searchResultComponets: []
+        searchResultComponets: searchResultComponetsMapper([{ fullName: notFound, shortName: '' }])
       });
     } else {
       setState({

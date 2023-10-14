@@ -120,4 +120,7 @@ export const StyledSpan = styled.div`
     padding-top: ${({ theme }) => theme.padding.thirtyFive}px;
     padding-bottom: ${({ theme }) => theme.padding.twenty}px;
   }
+  @media (${({ theme }) => theme.media.smallS}) {
+    font-size: ${({ theme }) => theme.fontSize.smallS};
+  }
 `;
