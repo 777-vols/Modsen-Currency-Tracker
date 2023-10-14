@@ -65,7 +65,7 @@ class BankCard extends Component {
   };
 
   handleCurrencySelection = (shortName) => {
-    this.setState({ searchResultElements: [], searchValue: shortName });
+    this.setState({ searchResultElements: [], searchResultComponets: [], searchValue: shortName });
     const banks = constBanksList.filter((bank) =>
       bank.currencies.includes(shortName.toLowerCase())
     );
